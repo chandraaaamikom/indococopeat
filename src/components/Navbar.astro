@@ -1,0 +1,557 @@
+---
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = '' } = Astro.props;
+---
+
+<header class="navbar" id="navbar" role="banner">
+  <div class="navbar__container">
+    <a href="/home" class="navbar__logo" aria-label="INDOCOCOPEAT — Go to homepage">
+      <span class="navbar__logo-text">
+        <span class="navbar__logo-green">INDOCO</span><span class="navbar__logo-brown">PEAT</span>
+      </span>
+      <span class="navbar__logo-tagline">Pure Fiber, Global Growth</span>
+    </a>
+
+    <nav class="navbar__nav" aria-label="Main navigation">
+      <ul class="navbar__links">
+        <li>
+          <a
+            href="/home"
+            class:list={['navbar__link', { active: currentPage === 'home' }]}
+            aria-current={currentPage === 'home' ? 'page' : undefined}
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            href="/product"
+            class:list={['navbar__link', { active: currentPage === 'product' }]}
+            aria-current={currentPage === 'product' ? 'page' : undefined}
+          >
+            Product
+          </a>
+        </li>
+        <li>
+          <a
+            href="/farm"
+            class:list={['navbar__link', { active: currentPage === 'farm' }]}
+            aria-current={currentPage === 'farm' ? 'page' : undefined}
+          >
+            Farm
+          </a>
+        </li>
+        <li>
+          <a
+            href="/contact"
+            class:list={['navbar__link', { active: currentPage === 'contact' }]}
+            aria-current={currentPage === 'contact' ? 'page' : undefined}
+          >
+            Contact
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <button
+      class="navbar__logout navbar__logout--desktop"
+      type="button"
+      id="logoutBtnDesktop"
+      aria-label="Log out of INDOCOCOPEAT"
+    >
+      Log Out
+    </button>
+
+    <button
+      class="navbar__hamburger"
+      type="button"
+      id="hamburgerBtn"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="mobileMenu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile backdrop -->
+<div class="navbar__mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
+
+<!-- Mobile slide-in menu -->
+<aside class="navbar__mobile" id="mobileMenu" role="dialog" aria-label="Mobile navigation menu" aria-hidden="true">
+  <button
+    class="navbar__mobile-close"
+    type="button"
+    id="mobileCloseBtn"
+    aria-label="Close navigation menu"
+  >
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <nav aria-label="Mobile navigation">
+    <ul class="navbar__mobile-links">
+      <li>
+        <a
+          href="/home"
+          class:list={['navbar__mobile-link', { active: currentPage === 'home' }]}
+          aria-current={currentPage === 'home' ? 'page' : undefined}
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="/product"
+          class:list={['navbar__mobile-link', { active: currentPage === 'product' }]}
+          aria-current={currentPage === 'product' ? 'page' : undefined}
+        >
+          Product
+        </a>
+      </li>
+      <li>
+        <a
+          href="/farm"
+          class:list={['navbar__mobile-link', { active: currentPage === 'farm' }]}
+          aria-current={currentPage === 'farm' ? 'page' : undefined}
+        >
+          Farm
+        </a>
+      </li>
+      <li>
+        <a
+          href="/contact"
+          class:list={['navbar__mobile-link', { active: currentPage === 'contact' }]}
+          aria-current={currentPage === 'contact' ? 'page' : undefined}
+        >
+          Contact
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <button
+    class="navbar__logout navbar__logout--mobile"
+    type="button"
+    id="logoutBtnMobile"
+    aria-label="Log out of INDOCOCOPEAT"
+  >
+    Log Out
+  </button>
+</aside>
+
+<style>
+  /* ====================================================================
+     Navbar — Fixed Top Bar
+     ==================================================================== */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-sticky, 200);
+    height: var(--navbar-height, 72px);
+    background-color: var(--color-white, #FFFFFF);
+    border-bottom: 1px solid var(--color-border, #E2E0D8);
+    display: flex;
+    align-items: center;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .navbar.scrolled {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  }
+
+  /* ====================================================================
+     Container
+     ==================================================================== */
+  .navbar__container {
+    max-width: var(--container-max, 1200px);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* ====================================================================
+     Logo
+     ==================================================================== */
+  .navbar__logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .navbar__logo:hover {
+    opacity: 0.85;
+  }
+
+  .navbar__logo-text {
+    font-family: var(--font-heading, 'DM Serif Display', Georgia, serif);
+    font-size: 1.375rem;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .navbar__logo-green {
+    color: var(--color-primary, #2D6A4F);
+  }
+
+  .navbar__logo-brown {
+    color: var(--color-secondary, #8B6914);
+  }
+
+  .navbar__logo-tagline {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-text-muted, #7A7A7A);
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  /* ====================================================================
+     Desktop Nav Links
+     ==================================================================== */
+  .navbar__links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar__link {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary, #4A4A4A);
+    text-decoration: none;
+    padding: 4px 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    position: relative;
+  }
+
+  .navbar__link:hover {
+    color: var(--color-primary, #2D6A4F);
+  }
+
+  .navbar__link.active {
+    color: var(--color-primary, #2D6A4F);
+    border-bottom-color: var(--color-primary, #2D6A4F);
+  }
+
+  /* ====================================================================
+     Logout Button (Desktop)
+     ==================================================================== */
+  .navbar__logout {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-muted, #7A7A7A);
+    padding: 6px 12px;
+    border: 1px solid var(--color-border, #E2E0D8);
+    border-radius: 4px;
+    cursor: pointer;
+    background: none;
+    transition: border-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .navbar__logout:hover {
+    border-color: var(--color-primary, #2D6A4F);
+    color: var(--color-primary, #2D6A4F);
+  }
+
+  .navbar__logout--desktop {
+    margin-left: 1.5rem;
+  }
+
+  /* ====================================================================
+     Hamburger Button
+     ==================================================================== */
+  .navbar__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+    position: relative;
+    z-index: 260;
+  }
+
+  .navbar__hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: var(--color-text-primary, #1A1A1A);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border-radius: 1px;
+  }
+
+  .navbar__hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .navbar__hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar__hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ====================================================================
+     Mobile Backdrop
+     ==================================================================== */
+  .navbar__mobile-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 240;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .navbar__mobile-backdrop.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* ====================================================================
+     Mobile Slide-in Menu
+     ==================================================================== */
+  .navbar__mobile {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    height: 100dvh;
+    background-color: var(--color-white, #FFFFFF);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
+    z-index: 250;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 2rem 2rem;
+    overflow-y: auto;
+  }
+
+  .navbar__mobile.open {
+    right: 0;
+  }
+
+  .navbar__mobile-close {
+    position: absolute;
+    top: 22px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid var(--color-border, #E2E0D8);
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--color-text-secondary, #4A4A4A);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .navbar__mobile-close:hover {
+    border-color: var(--color-primary, #2D6A4F);
+    color: var(--color-primary, #2D6A4F);
+  }
+
+  .navbar__mobile-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+  }
+
+  .navbar__mobile-link {
+    display: block;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--color-text-secondary, #4A4A4A);
+    text-decoration: none;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-border, #E2E0D8);
+    transition: color 0.2s ease;
+  }
+
+  .navbar__mobile-link:hover {
+    color: var(--color-primary, #2D6A4F);
+  }
+
+  .navbar__mobile-link.active {
+    color: var(--color-primary, #2D6A4F);
+    font-weight: 600;
+  }
+
+  .navbar__logout--mobile {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    font-size: 0.8125rem;
+  }
+
+  /* ====================================================================
+     Responsive — Mobile breakpoint
+     ==================================================================== */
+  @media (max-width: 768px) {
+    .navbar {
+      height: var(--navbar-height, 64px);
+    }
+
+    .navbar__container {
+      padding: 0 1rem;
+    }
+
+    .navbar__links {
+      display: none;
+    }
+
+    .navbar__logout--desktop {
+      display: none;
+    }
+
+    .navbar__hamburger {
+      display: flex;
+    }
+
+    .navbar__logo-text {
+      font-size: 1.2rem;
+    }
+
+    .navbar__logo-tagline {
+      font-size: 0.4375rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // === Element references ===
+    const navbar = document.getElementById('navbar') as HTMLElement | null;
+    const hamburgerBtn = document.getElementById('hamburgerBtn') as HTMLButtonElement | null;
+    const mobileMenu = document.getElementById('mobileMenu') as HTMLElement | null;
+    const mobileBackdrop = document.getElementById('mobileBackdrop') as HTMLElement | null;
+    const mobileCloseBtn = document.getElementById('mobileCloseBtn') as HTMLButtonElement | null;
+    const logoutBtnDesktop = document.getElementById('logoutBtnDesktop') as HTMLButtonElement | null;
+    const logoutBtnMobile = document.getElementById('logoutBtnMobile') as HTMLButtonElement | null;
+
+    // === Scroll detection — add shadow when scrolled ===
+    let ticking = false;
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          if (navbar) {
+            if (window.scrollY > 10) {
+              navbar.classList.add('scrolled');
+            } else {
+              navbar.classList.remove('scrolled');
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // Run once on load in case the page is already scrolled
+    onScroll();
+
+    // === Mobile menu toggle ===
+    function openMobileMenu() {
+      if (mobileMenu && mobileBackdrop && hamburgerBtn) {
+        mobileMenu.classList.add('open');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+        mobileBackdrop.classList.add('open');
+        hamburgerBtn.classList.add('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeMobileMenu() {
+      if (mobileMenu && mobileBackdrop && hamburgerBtn) {
+        mobileMenu.classList.remove('open');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        mobileBackdrop.classList.remove('open');
+        hamburgerBtn.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (hamburgerBtn) {
+      hamburgerBtn.addEventListener('click', function () {
+        const isOpen = mobileMenu?.classList.contains('open');
+        if (isOpen) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      });
+    }
+
+    if (mobileCloseBtn) {
+      mobileCloseBtn.addEventListener('click', closeMobileMenu);
+    }
+
+    if (mobileBackdrop) {
+      mobileBackdrop.addEventListener('click', closeMobileMenu);
+    }
+
+    // Close mobile menu on Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileMenu?.classList.contains('open')) {
+        closeMobileMenu();
+      }
+    });
+
+    // Close mobile menu on resize to desktop
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 768 && mobileMenu?.classList.contains('open')) {
+        closeMobileMenu();
+      }
+    });
+
+    // === Logout function ===
+    function handleLogout() {
+      localStorage.removeItem('indococopeat_access');
+      window.location.href = '/';
+    }
+
+    if (logoutBtnDesktop) {
+      logoutBtnDesktop.addEventListener('click', handleLogout);
+    }
+
+    if (logoutBtnMobile) {
+      logoutBtnMobile.addEventListener('click', handleLogout);
+    }
+  });
+</script>

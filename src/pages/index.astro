@@ -1,0 +1,262 @@
+---
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="INDOCOCOPEAT Private Access Portal" />
+  <title>INDOCOCOPEAT — Access Portal</title>
+  <style>
+    body {
+      background-color: #FAFAF5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      position: relative;
+    }
+    
+    .organic-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      background-image:
+        radial-gradient(ellipse 80px 60px at 20% 30%, #2D6A4F 0%, transparent 70%),
+        radial-gradient(ellipse 60px 80px at 70% 60%, #8B6914 0%, transparent 70%),
+        radial-gradient(ellipse 100px 40px at 50% 80%, #40916C 0%, transparent 70%),
+        radial-gradient(ellipse 40px 90px at 85% 20%, #D4A574 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      padding: 3rem 2.5rem;
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: #2D6A4F;
+      margin-bottom: 0.25rem;
+    }
+
+    .logo span {
+      color: #8B6914;
+    }
+
+    .tagline {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: #7A7A7A;
+      margin: 0;
+    }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background-color: #2D6A4F;
+      margin: 1.5rem auto;
+    }
+
+    .heading {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.375rem;
+      color: #1A1A1A;
+      margin: 0 0 0.375rem 0;
+    }
+
+    .subtitle {
+      font-size: 0.875rem;
+      color: #7A7A7A;
+      margin: 0;
+    }
+
+    .form {
+      margin-top: 2rem;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      text-align: center;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      border: 1.5px solid #E2E0D8;
+      border-radius: 8px;
+      outline: none;
+      transition: all 0.25s ease;
+      font-family: inherit;
+    }
+
+    .input-field:focus {
+      border-color: #2D6A4F;
+      box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+    }
+
+    .input-field.error {
+      border-color: #C53030;
+      box-shadow: 0 0 0 3px rgba(197, 48, 48, 0.1);
+    }
+
+    .error-msg {
+      display: none;
+      font-size: 0.8125rem;
+      color: #C53030;
+      margin-top: 0.5rem;
+    }
+
+    .btn {
+      width: 100%;
+      margin-top: 1.25rem;
+      background-color: #2D6A4F;
+      color: white;
+      padding: 0.875rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .btn:hover {
+      background-color: #1B4332;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .note {
+      font-size: 0.75rem;
+      color: #9A9A9A;
+      margin-top: 1.5rem;
+    }
+
+    .copyright {
+      font-size: 0.6875rem;
+      color: #9A9A9A;
+      margin-top: 2rem;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="organic-bg"></div>
+  
+  <div class="container">
+    <div class="card">
+      <div class="logo">INDOCO<span>PEAT</span></div>
+      <p class="tagline">PURE FIBER, GLOBAL GROWTH</p>
+      
+      <div class="divider"></div>
+      
+      <h1 class="heading">Private Access Portal</h1>
+      <p class="subtitle">Enter your access code to continue</p>
+      
+      <div class="form">
+        <input type="text" id="accessCode" class="input-field" placeholder="Enter access code" autocomplete="off" />
+        <div id="errorMsg" class="error-msg">Invalid access code. Please try again.</div>
+        <button id="enterBtn" class="btn">Enter Website</button>
+      </div>
+      
+      <p class="note">This portal is reserved for authorized business partners.</p>
+    </div>
+    
+    <div class="copyright">© 2024 PT. Abbasy Jaya Makmur</div>
+  </div>
+
+  <script is:inline>
+    (function() {
+      // Check if already authenticated — redirect to /home
+      const sessionData = localStorage.getItem('indococopeat_access');
+      if (sessionData) {
+        try {
+          const parsed = JSON.parse(sessionData);
+          if (parsed.authenticated && (Date.now() - parsed.timestamp) < 86400000) {
+            window.location.href = '/home';
+          }
+        } catch (e) {}
+      }
+
+      // Form submission
+      const codeInput = document.getElementById('accessCode');
+      const enterBtn = document.getElementById('enterBtn');
+      const errorMsg = document.getElementById('errorMsg');
+
+      function handleSubmit() {
+        const code = codeInput.value.trim();
+        if (!code) {
+          showError();
+          return;
+        }
+        
+        enterBtn.textContent = 'Verifying...';
+        enterBtn.style.pointerEvents = 'none';
+        enterBtn.style.opacity = '0.7';
+        
+        // Simulate brief verification delay for premium feel
+        setTimeout(() => {
+          if (code.toUpperCase() === 'INDOCO2024') {
+            localStorage.setItem('indococopeat_access', JSON.stringify({
+              authenticated: true,
+              timestamp: Date.now()
+            }));
+            window.location.href = '/home';
+          } else {
+            showError();
+            enterBtn.textContent = 'Enter Website';
+            enterBtn.style.pointerEvents = 'auto';
+            enterBtn.style.opacity = '1';
+          }
+        }, 800);
+      }
+
+      function showError() {
+        errorMsg.style.display = 'block';
+        codeInput.classList.add('error');
+        codeInput.focus();
+      }
+
+      codeInput.addEventListener('input', () => {
+        errorMsg.style.display = 'none';
+        codeInput.classList.remove('error');
+      });
+
+      enterBtn.addEventListener('click', handleSubmit);
+      codeInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') handleSubmit();
+      });
+    })();
+  </script>
+</body>
+</html>

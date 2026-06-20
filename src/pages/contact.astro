@@ -1,0 +1,246 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { company } from '../data/company';
+import { socialLinks } from '../data/social';
+---
+
+<MainLayout title="Contact Us | INDOCOCOPEAT" currentPage="contact">
+  <div class="page-content" style="background-color: #FAFAF5; min-height: 100vh;">
+    
+    <!-- Header -->
+    <div style="background-color: #1B4332; color: white; padding: 4rem 0;">
+      <div class="container text-center">
+        <h1 style="font-family: 'DM Serif Display', serif; font-size: 3rem; margin-bottom: 1rem;">Get in Touch</h1>
+        <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; line-height: 1.6;">
+          Ready to order or have questions about our products? Our export team is ready to assist you.
+        </p>
+      </div>
+    </div>
+
+    <div class="container section" style="margin-top: -3rem; padding-top: 0; position: relative; z-index: 10;">
+      <div class="grid grid--2" style="align-items: start; gap: 2rem;">
+        
+        <!-- Contact Information -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+          
+          <!-- Contact Card -->
+          <div style="background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+            <h2 style="font-family: 'DM Serif Display', serif; font-size: 1.75rem; color: #1A1A1A; margin-bottom: 1.5rem;">Company Info</h2>
+            
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+              <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(45,106,79,0.08); display: flex; align-items: center; justify-content: center; color: #2D6A4F; flex-shrink: 0;">
+                  <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                </div>
+                <div>
+                  <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #7A7A7A; margin-bottom: 0.25rem;">Office & Factory</div>
+                  <div style="font-weight: 500; color: #1A1A1A; line-height: 1.5;">
+                    {company.legalName}<br />
+                    {company.address.street}, {company.address.province}<br />
+                    {company.address.country} {company.address.postalCode}
+                  </div>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(45,106,79,0.08); display: flex; align-items: center; justify-content: center; color: #2D6A4F; flex-shrink: 0;">
+                  <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                </div>
+                <div>
+                  <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #7A7A7A; margin-bottom: 0.25rem;">Hotline</div>
+                  <div style="font-weight: 500; color: #1A1A1A;">{company.hotline}</div>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(45,106,79,0.08); display: flex; align-items: center; justify-content: center; color: #2D6A4F; flex-shrink: 0;">
+                  <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </div>
+                <div>
+                  <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #7A7A7A; margin-bottom: 0.25rem;">Email</div>
+                  <div style="font-weight: 500; color: #1A1A1A;">{company.email}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Direct Actions -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <a href={`https://wa.me/${company.whatsappNumber}`} target="_blank" rel="noopener noreferrer" style="background: #25D366; color: white; padding: 1rem; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;" class="contact-btn">
+              <span style="font-size: 1.5rem;">💬</span>
+              <span style="font-weight: 600; font-size: 0.875rem;">WhatsApp</span>
+            </a>
+            <a href={`mailto:${company.email}`} style="background: #2D6A4F; color: white; padding: 1rem; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;" class="contact-btn">
+              <span style="font-size: 1.5rem;">✉️</span>
+              <span style="font-weight: 600; font-size: 0.875rem;">Email Us</span>
+            </a>
+          </div>
+
+          <!-- Social Media -->
+          <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.875rem; font-weight: 600; color: #1A1A1A;">Follow Us</span>
+            <div style="display: flex; gap: 0.75rem;">
+              {socialLinks.map((link) => (
+                <a href={link.url} target="_blank" rel="noopener noreferrer" title={link.name} style="width: 36px; height: 36px; border-radius: 50%; background: #F5F5F0; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 0.2s;" class="social-btn">
+                  {link.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div style="background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+          <h2 style="font-family: 'DM Serif Display', serif; font-size: 1.75rem; color: #1A1A1A; margin-bottom: 0.5rem;">Send a Message</h2>
+          <p style="color: #7A7A7A; font-size: 0.875rem; margin-bottom: 2rem;">Fill out the form below and our team will get back to you shortly.</p>
+          
+          <form id="contactForm" class="grid gap-4">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="name" class="form-label">Full Name *</label>
+              <input type="text" id="name" name="name" class="form-input" required placeholder="John Doe" />
+              <div class="form-error" id="nameError" style="display: none;">Name is required</div>
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="email" class="form-label">Email Address *</label>
+              <input type="email" id="email" name="email" class="form-input" required placeholder="john@example.com" />
+              <div class="form-error" id="emailError" style="display: none;">Valid email is required</div>
+            </div>
+            
+            <div class="grid grid--2" style="gap: 1rem;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="company" class="form-label">Company</label>
+                <input type="text" id="company" name="company" class="form-input" placeholder="Company Ltd" />
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="country" class="form-label">Country *</label>
+                <input type="text" id="country" name="country" class="form-input" required placeholder="e.g. Australia" />
+                <div class="form-error" id="countryError" style="display: none;">Country is required</div>
+              </div>
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="message" class="form-label">Message *</label>
+              <textarea id="message" name="message" class="form-textarea" required placeholder="Tell us about your requirements..."></textarea>
+              <div class="form-error" id="messageError" style="display: none;">Message is required</div>
+            </div>
+            
+            <button type="submit" id="submitBtn" class="btn btn--primary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+              Send Message
+            </button>
+            
+            <div id="successMsg" style="display: none; padding: 1rem; background: #D1E7DD; color: #0F5132; border-radius: 8px; font-size: 0.875rem; text-align: center; margin-top: 1rem;">
+              Thank you for your message! Our team will contact you soon.
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    .social-btn:hover {
+      background: #E2E0D8 !important;
+    }
+    @media (max-width: 768px) {
+      .grid--2 {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contactForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const successMsg = document.getElementById('successMsg');
+      
+      if(form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          
+          // Basic client-side validation
+          let isValid = true;
+          
+          const name = document.getElementById('name');
+          const email = document.getElementById('email');
+          const country = document.getElementById('country');
+          const message = document.getElementById('message');
+          
+          if (!name.value.trim()) {
+            document.getElementById('nameError').style.display = 'block';
+            name.classList.add('error');
+            isValid = false;
+          } else {
+            document.getElementById('nameError').style.display = 'none';
+            name.classList.remove('error');
+          }
+          
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!email.value.trim() || !emailRegex.test(email.value)) {
+            document.getElementById('emailError').style.display = 'block';
+            email.classList.add('error');
+            isValid = false;
+          } else {
+            document.getElementById('emailError').style.display = 'none';
+            email.classList.remove('error');
+          }
+          
+          if (!country.value.trim()) {
+            document.getElementById('countryError').style.display = 'block';
+            country.classList.add('error');
+            isValid = false;
+          } else {
+            document.getElementById('countryError').style.display = 'none';
+            country.classList.remove('error');
+          }
+          
+          if (!message.value.trim()) {
+            document.getElementById('messageError').style.display = 'block';
+            message.classList.add('error');
+            isValid = false;
+          } else {
+            document.getElementById('messageError').style.display = 'none';
+            message.classList.remove('error');
+          }
+          
+          if (isValid) {
+            submitBtn.textContent = 'Sending...';
+            submitBtn.style.opacity = '0.7';
+            submitBtn.style.pointerEvents = 'none';
+            
+            // Simulate API call
+            setTimeout(() => {
+              form.reset();
+              submitBtn.textContent = 'Send Message';
+              submitBtn.style.opacity = '1';
+              submitBtn.style.pointerEvents = 'auto';
+              
+              successMsg.style.display = 'block';
+              
+              setTimeout(() => {
+                successMsg.style.display = 'none';
+              }, 5000);
+            }, 1000);
+          }
+        });
+        
+        // Clear errors on input
+        const inputs = form.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+          input.addEventListener('input', () => {
+            input.classList.remove('error');
+            const errorId = input.id + 'Error';
+            const errorEl = document.getElementById(errorId);
+            if (errorEl) errorEl.style.display = 'none';
+          });
+        });
+      }
+    });
+  </script>
+</MainLayout>

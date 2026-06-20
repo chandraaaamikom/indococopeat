@@ -1,0 +1,96 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { farms, farmStatistics } from '../data/farms';
+---
+
+<MainLayout title="Our Farms & Supply Chain | INDOCOCOPEAT" currentPage="farm">
+  <div class="page-content" style="background-color: #FAFAF5; min-height: 100vh; padding-bottom: 4rem;">
+    
+    <!-- Header -->
+    <div style="background-color: #1B4332; color: white; padding: 4rem 0;">
+      <div class="container text-center">
+        <h1 style="font-family: 'DM Serif Display', serif; font-size: 3rem; margin-bottom: 1rem;">Our Supply Chain</h1>
+        <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; line-height: 1.6;">
+          We work directly with local farmers across Central Java to ensure a consistent, high-quality, and sustainable supply of coconut husks.
+        </p>
+      </div>
+    </div>
+
+    <!-- Farm Statistics -->
+    <div class="container" style="margin-top: -2rem; position: relative; z-index: 10;">
+      <div class="grid grid--3" style="background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden;">
+        {farmStatistics.map((stat, index) => (
+          <div style={`padding: 2rem; text-align: center; ${index !== 0 ? 'border-left: 1px solid #E2E0D8;' : ''}`} class={index !== 0 ? 'stat-border' : ''}>
+            <div style="font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: #2D6A4F; line-height: 1; margin-bottom: 0.5rem;">
+              {stat.value}{stat.suffix}
+            </div>
+            <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #7A7A7A; font-weight: 600;">
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Farm Grid -->
+    <div class="container section" style="padding-top: 4rem;">
+      <div class="section-header text-center" style="margin-bottom: 3rem;">
+        <h2 style="font-family: 'DM Serif Display', serif; font-size: 2rem; color: #1A1A1A;">Our Collection Centers</h2>
+      </div>
+
+      <div class="grid grid--2">
+        {farms.map((farm) => (
+          <div class="farm-card reveal" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+            
+            <!-- Image placeholder -->
+            <div style="height: 200px; background-color: #E2E0D8; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+               <span style="font-size: 4rem; color: #9A9A9A; z-index: 0;">🌴</span>
+               <div style="position: absolute; bottom: 1rem; left: 1rem; background: rgba(0,0,0,0.6); color: white; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; backdrop-filter: blur(4px);">
+                 {farm.province}
+               </div>
+            </div>
+            
+            <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;">
+              <h3 style="font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 0.25rem; color: #1A1A1A;">{farm.name}</h3>
+              <div style="font-size: 0.875rem; color: #2D6A4F; font-weight: 500; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                {farm.location}
+              </div>
+              
+              <p style="font-size: 0.875rem; color: #7A7A7A; line-height: 1.6; margin-bottom: 1.5rem;">
+                {farm.description}
+              </p>
+              
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; padding: 1rem; background: #FAFAF5; border-radius: 8px;">
+                <div>
+                  <div style="font-size: 0.75rem; color: #7A7A7A; text-transform: uppercase; margin-bottom: 0.25rem;">Farmers</div>
+                  <div style="font-weight: 600; color: #1A1A1A;">{farm.farmerCount}</div>
+                </div>
+                <div>
+                  <div style="font-size: 0.75rem; color: #7A7A7A; text-transform: uppercase; margin-bottom: 0.25rem;">Production</div>
+                  <div style="font-weight: 600; color: #1A1A1A;">{farm.monthlyProduction}</div>
+                </div>
+              </div>
+              
+              <div style="margin-top: auto;">
+                <a href={farm.mapsUrl} target="_blank" rel="noopener noreferrer" class="btn btn--secondary" style="width: 100%; text-align: center; justify-content: center;">
+                  <svg style="width: 18px; height: 18px; margin-right: 0.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                  View on Google Maps
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @media (max-width: 768px) {
+      .stat-border {
+        border-left: none !important;
+        border-top: 1px solid #E2E0D8;
+      }
+    }
+  </style>
+</MainLayout>

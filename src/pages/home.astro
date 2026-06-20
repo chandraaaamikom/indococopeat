@@ -1,0 +1,249 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { company, statistics, whyChooseUs, businessProcess } from '../data/company';
+---
+
+<MainLayout title="INDOCOCOPEAT — Premium Cocopeat & Coconut Fiber Export" currentPage="home">
+  <!-- SECTION 1: Hero Section -->
+  <section class="hero relative flex items-center" style="min-height: 90vh; background-color: #1B4332; position: relative;">
+    <div class="hero-bg" style="position: absolute; inset: 0; opacity: 0.04; background-image: repeating-linear-gradient(45deg, #000 0, #000 1px, transparent 0, transparent 50%); background-size: 30px 30px;"></div>
+    
+    <div class="container relative" style="z-index: 10;">
+      <div class="grid grid--2 items-center">
+        <!-- Left Column -->
+        <div>
+          <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 600; color: #D4A574; margin-bottom: 1rem;">
+            INDONESIA'S PREMIUM EXPORT
+          </div>
+          <h1 style="font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3.25rem); color: white; line-height: 1.12; margin-bottom: 1.25rem;">
+            Sustainable Cocopeat & Coconut Fiber for Global Markets
+          </h1>
+          <p style="font-size: 1.0625rem; color: rgba(255,255,255,0.75); line-height: 1.7; max-width: 540px; margin-bottom: 2rem;">
+            INDOCOCOPEAT is a premium Indonesian cocopeat and coconut fiber export company under PT. Abbasy Jaya Makmur. We specialize in processing and supplying high-quality cocopeat, coconut fiber, and coir products to international markets.
+          </p>
+          <div class="flex gap-4">
+            <a href="/product" class="btn btn--white">Explore Products</a>
+            <a href="/contact" class="btn btn--outlined-white" style="border: 2px solid white; color: white; background: transparent;">Contact Us</a>
+          </div>
+        </div>
+        
+        <!-- Right Column (Desktop Only) -->
+        <div class="hero-stats hidden md-block">
+          <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+            {statistics.slice(0, 3).map((stat, i) => (
+              <div class="stat-item" style={i !== 0 ? 'border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;' : ''}>
+                <div style="font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: white; line-height: 1;">
+                  {stat.value}{stat.suffix}
+                </div>
+                <div style="font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); margin-top: 0.25rem;">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: About Company -->
+  <section class="about section section--white">
+    <div class="container">
+      <div class="grid grid--2 items-center gap-8 reveal">
+        <!-- Left Column -->
+        <div>
+          <div class="section-label">ABOUT US</div>
+          <h2 class="section-title">Rooted in Indonesia, Reaching the World</h2>
+          <div class="divider"></div>
+          <p>INDOCOCOPEAT is a premium Indonesian cocopeat and coconut fiber export company under PT. Abbasy Jaya Makmur. We specialize in processing and supplying high-quality cocopeat, coconut fiber, and coir products to international markets.</p>
+          <p style="margin-top: 1rem;">Based in Magelang, Central Java — the heart of Indonesia's coconut production region — we connect sustainable agriculture with global demand for renewable growing media. Our commitment to quality, consistency, and environmental responsibility drives every aspect of our operations.</p>
+        </div>
+        
+        <!-- Right Column -->
+        <div>
+          <div style="background-color: #F5F5F0; border-radius: 16px; padding: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem;">
+            <div class="flex items-center gap-4">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(45,106,79,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🌴</div>
+              <div>
+                <div style="font-weight: 600; font-size: 0.9375rem; color: var(--color-text-primary);">Sustainable Sourcing</div>
+                <div style="font-size: 0.8125rem; color: var(--color-text-muted);">Working with 200+ local farmers</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(45,106,79,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🌍</div>
+              <div>
+                <div style="font-weight: 600; font-size: 0.9375rem; color: var(--color-text-primary);">Global Reach</div>
+                <div style="font-size: 0.8125rem; color: var(--color-text-muted);">Exporting to 12+ countries</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(45,106,79,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">✅</div>
+              <div>
+                <div style="font-weight: 600; font-size: 0.9375rem; color: var(--color-text-primary);">Quality Assured</div>
+                <div style="font-size: 0.8125rem; color: var(--color-text-muted);">International export standards</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: Why Choose Us -->
+  <section class="why-us section section--offwhite">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">WHY CHOOSE US</div>
+        <h2 class="section-title">The INDOCOCOPEAT Advantage</h2>
+        <p class="section-subtitle">We combine sustainable practices with professional processing to deliver export-grade coconut fiber products that meet the highest international standards.</p>
+      </div>
+      
+      <div class="grid grid--3 reveal">
+        {whyChooseUs.map((item, index) => (
+          <div class="card card-hover" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: var(--shadow-card); transition: all var(--transition-base);">
+            <div style="width: 52px; height: 52px; border-radius: 50%; background: rgba(45,106,79,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem;">
+              {item.icon || '✨'}
+            </div>
+            <h3 style="font-size: 1.0625rem; font-weight: 600; font-family: 'Inter', sans-serif; margin-bottom: 0.5rem; color: var(--color-text-primary);">{item.title}</h3>
+            <p style="font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.7;">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: Business Process -->
+  <section class="process section section--white">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">OUR PROCESS</div>
+        <h2 class="section-title">From Coconut Husk to Global Markets</h2>
+      </div>
+      
+      <div class="process-wrapper reveal" style="display: flex; justify-content: space-between; align-items: flex-start; position: relative; margin-top: 3rem;">
+        {businessProcess.map((step, index) => (
+          <div class="process-step" style="display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; position: relative; z-index: 1;">
+            <div class="process-icon" style="width: 72px; height: 72px; border-radius: 50%; background: rgba(45,106,79,0.05); border: 2px solid var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.75rem; margin-bottom: 1rem; position: relative; z-index: 2;">
+              {step.icon || '🔄'}
+            </div>
+            <div style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: 0.25rem;">Step 0{index + 1}</div>
+            <h3 style="font-size: 0.9375rem; font-weight: 600; font-family: 'Inter', sans-serif; margin-bottom: 0.5rem;">{step.title}</h3>
+            <p style="font-size: 0.8125rem; color: var(--color-text-secondary); max-width: 180px;">{step.description}</p>
+          </div>
+        ))}
+        <!-- Desktop Connector Line -->
+        <div class="process-line hidden md-block" style="position: absolute; top: 36px; left: 10%; right: 10%; height: 2px; background: rgba(45,106,79,0.2); z-index: 0;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: Company Highlights -->
+  <section class="highlights section section--dark" style="background-color: #1B4332;">
+    <div class="container">
+      <div class="grid grid--4 reveal">
+        {statistics.map((stat) => (
+          <div style="text-align: center;">
+            <div style="font-family: 'DM Serif Display', serif; font-size: 3rem; color: white;">
+              <span data-count={stat.value}>{stat.value}</span>{stat.suffix}
+            </div>
+            <div style="font-size: 0.875rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.25rem;">
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: CTA Section -->
+  <section class="cta section" style="background: linear-gradient(135deg, #2D6A4F 0%, #1B4332 100%); color: white; text-align: center;">
+    <div class="container reveal">
+      <div style="max-width: 600px; margin: 0 auto;">
+        <h2 style="font-family: 'DM Serif Display', serif; font-size: 2.25rem; margin-bottom: 1rem; color: white;">Ready to Source Premium Cocopeat?</h2>
+        <p style="font-size: 1rem; color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 2rem;">
+          Explore our complete product catalog with detailed specifications, or get in touch with our export team for custom requirements.
+        </p>
+        <div class="flex items-center justify-center gap-4">
+          <a href="/product" class="btn btn--white">View Products</a>
+          <a href="/contact" class="btn" style="border: 2px solid white; color: white; background: transparent;">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @media (max-width: 768px) {
+      .hidden\.md-block { display: none !important; }
+      
+      .process-wrapper {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 2rem;
+      }
+      
+      .process-step {
+        flex-direction: row !important;
+        text-align: left !important;
+        gap: 1.5rem;
+      }
+      
+      .process-step p {
+        max-width: 100% !important;
+      }
+      
+      .process-icon {
+        margin-bottom: 0 !important;
+        flex-shrink: 0;
+      }
+      
+      .process-line {
+        display: none !important;
+      }
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    .btn--outlined-white:hover {
+      background: white !important;
+      color: #1B4332 !important;
+    }
+  </style>
+
+  <script is:inline>
+    // Count-up animation for statistics
+    function animateCountUp(el, target, duration = 2000) {
+      let start = 0;
+      const increment = target / (duration / 16);
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+          el.textContent = target.toString();
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(start).toString();
+        }
+      }, 16);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const counters = entry.target.querySelectorAll('[data-count]');
+            counters.forEach(counter => {
+              const target = parseInt(counter.getAttribute('data-count') || '0', 10);
+              animateCountUp(counter, target);
+            });
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      const highlightsSection = document.querySelector('.highlights');
+      if (highlightsSection) statsObserver.observe(highlightsSection);
+    });
+  </script>
+</MainLayout>
