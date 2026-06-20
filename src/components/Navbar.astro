@@ -1,557 +1,298 @@
 ---
-interface Props {
+export interface Props {
   currentPage?: string;
 }
 
 const { currentPage = '' } = Astro.props;
 ---
 
-<header class="navbar" id="navbar" role="banner">
-  <div class="navbar__container">
-    <a href="/home" class="navbar__logo" aria-label="INDOCOCOPEAT — Go to homepage">
-      <span class="navbar__logo-text">
-        <span class="navbar__logo-green">INDOCO</span><span class="navbar__logo-brown">PEAT</span>
-      </span>
-      <span class="navbar__logo-tagline">Pure Fiber, Global Growth</span>
+<nav class="navbar" id="navbar">
+  <div class="container navbar__container">
+    
+    <!-- Logo -->
+    <a href="/home" class="navbar__logo">
+      <div class="navbar__logo-icon">🌴</div>
+      <div class="navbar__logo-text">
+        <span class="navbar__logo-main">INDOCOCOPEAT</span>
+        <span class="navbar__logo-sub">PT. ABBASY JAYA MAKMUR</span>
+      </div>
     </a>
 
-    <nav class="navbar__nav" aria-label="Main navigation">
-      <ul class="navbar__links">
-        <li>
-          <a
-            href="/home"
-            class:list={['navbar__link', { active: currentPage === 'home' }]}
-            aria-current={currentPage === 'home' ? 'page' : undefined}
-          >
-            Home
-          </a>
-        </li>
-        <li>
-          <a
-            href="/product"
-            class:list={['navbar__link', { active: currentPage === 'product' }]}
-            aria-current={currentPage === 'product' ? 'page' : undefined}
-          >
-            Product
-          </a>
-        </li>
-        <li>
-          <a
-            href="/farm"
-            class:list={['navbar__link', { active: currentPage === 'farm' }]}
-            aria-current={currentPage === 'farm' ? 'page' : undefined}
-          >
-            Farm
-          </a>
-        </li>
-        <li>
-          <a
-            href="/contact"
-            class:list={['navbar__link', { active: currentPage === 'contact' }]}
-            aria-current={currentPage === 'contact' ? 'page' : undefined}
-          >
-            Contact
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <!-- Desktop Nav Links -->
+    <ul class="navbar__links hidden md-flex">
+      <li><a href="/home" class={currentPage === 'home' ? 'active' : ''}>Home</a></li>
+      <li><a href="#" class={currentPage === 'about' ? 'active' : ''}>About Us</a></li>
+      <li><a href="/product" class={currentPage === 'product' ? 'active' : ''}>Products</a></li>
+      <li><a href="/farm" class={currentPage === 'farm' ? 'active' : ''}>Farm</a></li>
+      <li><a href="#" class={currentPage === 'sustainability' ? 'active' : ''}>Sustainability</a></li>
+      <li><a href="/contact" class={currentPage === 'contact' ? 'active' : ''}>Contact</a></li>
+    </ul>
 
-    <button
-      class="navbar__logout navbar__logout--desktop"
-      type="button"
-      id="logoutBtnDesktop"
-      aria-label="Log out of INDOCOCOPEAT"
-    >
-      Log Out
-    </button>
+    <!-- Right Actions -->
+    <div class="navbar__actions hidden md-flex">
+      <div class="lang-selector">
+        🌐 EN <svg style="width:12px; height:12px; margin-left:2px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </div>
+      <a href="/contact" class="btn btn--primary" style="background-color: var(--color-primary); color: white; padding: 0.5rem 1.25rem; font-size: 0.875rem;">Get in Touch &rarr;</a>
+      <button id="logoutBtn" class="logout-btn" title="Logout" style="background:none; border:none; color: var(--color-text-light); cursor:pointer; margin-left: 0.5rem;">
+        <svg style="width:20px; height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+      </button>
+    </div>
 
-    <button
-      class="navbar__hamburger"
-      type="button"
-      id="hamburgerBtn"
-      aria-label="Open navigation menu"
-      aria-expanded="false"
-      aria-controls="mobileMenu"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
+    <!-- Mobile Hamburger -->
+    <button class="navbar__mobile-toggle md-hidden" id="mobileToggle" aria-label="Toggle Menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
     </button>
   </div>
-</header>
 
-<!-- Mobile backdrop -->
-<div class="navbar__mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
-
-<!-- Mobile slide-in menu -->
-<aside class="navbar__mobile" id="mobileMenu" role="dialog" aria-label="Mobile navigation menu" aria-hidden="true">
-  <button
-    class="navbar__mobile-close"
-    type="button"
-    id="mobileCloseBtn"
-    aria-label="Close navigation menu"
-  >
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-    </svg>
-  </button>
-
-  <nav aria-label="Mobile navigation">
-    <ul class="navbar__mobile-links">
-      <li>
-        <a
-          href="/home"
-          class:list={['navbar__mobile-link', { active: currentPage === 'home' }]}
-          aria-current={currentPage === 'home' ? 'page' : undefined}
-        >
-          Home
-        </a>
-      </li>
-      <li>
-        <a
-          href="/product"
-          class:list={['navbar__mobile-link', { active: currentPage === 'product' }]}
-          aria-current={currentPage === 'product' ? 'page' : undefined}
-        >
-          Product
-        </a>
-      </li>
-      <li>
-        <a
-          href="/farm"
-          class:list={['navbar__mobile-link', { active: currentPage === 'farm' }]}
-          aria-current={currentPage === 'farm' ? 'page' : undefined}
-        >
-          Farm
-        </a>
-      </li>
-      <li>
-        <a
-          href="/contact"
-          class:list={['navbar__mobile-link', { active: currentPage === 'contact' }]}
-          aria-current={currentPage === 'contact' ? 'page' : undefined}
-        >
-          Contact
-        </a>
-      </li>
-    </ul>
-  </nav>
-
-  <button
-    class="navbar__logout navbar__logout--mobile"
-    type="button"
-    id="logoutBtnMobile"
-    aria-label="Log out of INDOCOCOPEAT"
-  >
-    Log Out
-  </button>
-</aside>
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu__inner">
+      <ul class="mobile-menu__links">
+        <li><a href="/home" class={currentPage === 'home' ? 'active' : ''}>Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="/product" class={currentPage === 'product' ? 'active' : ''}>Products</a></li>
+        <li><a href="/farm" class={currentPage === 'farm' ? 'active' : ''}>Farm</a></li>
+        <li><a href="#">Sustainability</a></li>
+        <li><a href="/contact" class={currentPage === 'contact' ? 'active' : ''}>Contact</a></li>
+      </ul>
+      <div class="mobile-menu__actions">
+        <a href="/contact" class="btn btn--primary" style="width:100%; justify-content:center;">Get in Touch</a>
+        <button id="mobileLogoutBtn" class="btn btn--ghost" style="width:100%; justify-content:center; margin-top:1rem;">Logout Access</button>
+      </div>
+    </div>
+  </div>
+</nav>
 
 <style>
-  /* ====================================================================
-     Navbar — Fixed Top Bar
-     ==================================================================== */
   .navbar {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    z-index: var(--z-sticky, 200);
-    height: var(--navbar-height, 72px);
-    background-color: var(--color-white, #FFFFFF);
-    border-bottom: 1px solid var(--color-border, #E2E0D8);
-    display: flex;
-    align-items: center;
-    transition: box-shadow 0.3s ease;
+    width: 100%;
+    height: var(--navbar-height);
+    background-color: rgba(253, 251, 247, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+    z-index: var(--z-sticky);
+    transition: all 0.3s ease;
   }
 
   .navbar.scrolled {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-sm);
+    height: 64px;
   }
 
-  /* ====================================================================
-     Container
-     ==================================================================== */
   .navbar__container {
-    max-width: var(--container-max, 1200px);
-    margin: 0 auto;
-    padding: 0 1.5rem;
+    height: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    width: 100%;
+    justify-content: space-between;
   }
 
-  /* ====================================================================
-     Logo
-     ==================================================================== */
+  /* Logo */
   .navbar__logo {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
     text-decoration: none;
-    flex-shrink: 0;
   }
 
-  .navbar__logo:hover {
-    opacity: 0.85;
+  .navbar__logo-icon {
+    font-size: 1.5rem;
   }
 
   .navbar__logo-text {
-    font-family: var(--font-heading, 'DM Serif Display', Georgia, serif);
-    font-size: 1.375rem;
-    letter-spacing: -0.02em;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navbar__logo-main {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    color: var(--color-primary);
     line-height: 1;
+    letter-spacing: 0.02em;
   }
 
-  .navbar__logo-green {
-    color: var(--color-primary, #2D6A4F);
-  }
-
-  .navbar__logo-brown {
-    color: var(--color-secondary, #8B6914);
-  }
-
-  .navbar__logo-tagline {
-    font-family: var(--font-body, 'Inter', sans-serif);
+  .navbar__logo-sub {
     font-size: 0.5rem;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--color-text-muted, #7A7A7A);
-    margin-top: 2px;
-    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-top: 0.125rem;
   }
 
-  /* ====================================================================
-     Desktop Nav Links
-     ==================================================================== */
+  /* Links */
   .navbar__links {
     display: flex;
     gap: 2rem;
     align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
   }
 
-  .navbar__link {
-    font-family: var(--font-body, 'Inter', sans-serif);
+  .navbar__links a {
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--color-text-secondary, #4A4A4A);
-    text-decoration: none;
-    padding: 4px 0;
-    border-bottom: 2px solid transparent;
-    transition: color 0.2s ease, border-color 0.2s ease;
+    color: var(--color-text-secondary);
     position: relative;
+    padding: 0.5rem 0;
   }
 
-  .navbar__link:hover {
-    color: var(--color-primary, #2D6A4F);
+  .navbar__links a:hover {
+    color: var(--color-primary);
   }
 
-  .navbar__link.active {
-    color: var(--color-primary, #2D6A4F);
-    border-bottom-color: var(--color-primary, #2D6A4F);
+  .navbar__links a.active {
+    color: var(--color-primary);
   }
 
-  /* ====================================================================
-     Logout Button (Desktop)
-     ==================================================================== */
-  .navbar__logout {
-    font-family: var(--font-body, 'Inter', sans-serif);
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--color-text-muted, #7A7A7A);
-    padding: 6px 12px;
-    border: 1px solid var(--color-border, #E2E0D8);
-    border-radius: 4px;
-    cursor: pointer;
-    background: none;
-    transition: border-color 0.2s ease, color 0.2s ease;
-    white-space: nowrap;
-  }
-
-  .navbar__logout:hover {
-    border-color: var(--color-primary, #2D6A4F);
-    color: var(--color-primary, #2D6A4F);
-  }
-
-  .navbar__logout--desktop {
-    margin-left: 1.5rem;
-  }
-
-  /* ====================================================================
-     Hamburger Button
-     ==================================================================== */
-  .navbar__hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 4px;
-    background: none;
-    border: none;
-    position: relative;
-    z-index: 260;
-  }
-
-  .navbar__hamburger span {
-    display: block;
-    width: 22px;
+  .navbar__links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
     height: 2px;
-    background-color: var(--color-text-primary, #1A1A1A);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    border-radius: 1px;
+    background-color: var(--color-accent-warm);
   }
 
-  .navbar__hamburger.open span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+  /* Actions */
+  .navbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
   }
 
-  .navbar__hamburger.open span:nth-child(2) {
-    opacity: 0;
+  .lang-selector {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
   }
+  .lang-selector:hover { color: var(--color-primary); }
 
-  .navbar__hamburger.open span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-  }
-
-  /* ====================================================================
-     Mobile Backdrop
-     ==================================================================== */
-  .navbar__mobile-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 240;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-
-  .navbar__mobile-backdrop.open {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  /* ====================================================================
-     Mobile Slide-in Menu
-     ==================================================================== */
-  .navbar__mobile {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 280px;
-    height: 100vh;
-    height: 100dvh;
-    background-color: var(--color-white, #FFFFFF);
-    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
-    z-index: 250;
-    transition: right 0.3s ease;
+  /* Mobile Toggle */
+  .navbar__mobile-toggle {
     display: flex;
     flex-direction: column;
-    padding: 80px 2rem 2rem;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 201;
+  }
+
+  .navbar__mobile-toggle .bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: all 0.3s;
+  }
+
+  .navbar__mobile-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .navbar__mobile-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .navbar__mobile-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* Mobile Menu */
+  .mobile-menu {
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--navbar-height));
+    background-color: var(--color-white);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 200;
     overflow-y: auto;
   }
 
-  .navbar__mobile.open {
-    right: 0;
+  .mobile-menu.active {
+    transform: translateX(0);
   }
 
-  .navbar__mobile-close {
-    position: absolute;
-    top: 22px;
-    right: 20px;
-    width: 36px;
-    height: 36px;
+  .mobile-menu__inner {
+    padding: 2rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    border: 1px solid var(--color-border, #E2E0D8);
-    border-radius: 6px;
-    cursor: pointer;
-    color: var(--color-text-secondary, #4A4A4A);
-    transition: border-color 0.2s ease, color 0.2s ease;
+    flex-direction: column;
+    height: 100%;
   }
 
-  .navbar__mobile-close:hover {
-    border-color: var(--color-primary, #2D6A4F);
-    color: var(--color-primary, #2D6A4F);
+  .mobile-menu__links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
   }
 
-  .navbar__mobile-links {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    flex: 1;
+  .mobile-menu__links a {
+    font-size: 1.25rem;
+    font-family: var(--font-heading);
+    color: var(--color-text-primary);
+  }
+  
+  .mobile-menu__links a.active {
+    color: var(--color-primary);
   }
 
-  .navbar__mobile-link {
-    display: block;
-    font-family: var(--font-body, 'Inter', sans-serif);
-    font-size: 1.125rem;
-    font-weight: 500;
-    color: var(--color-text-secondary, #4A4A4A);
-    text-decoration: none;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--color-border, #E2E0D8);
-    transition: color 0.2s ease;
-  }
-
-  .navbar__mobile-link:hover {
-    color: var(--color-primary, #2D6A4F);
-  }
-
-  .navbar__mobile-link.active {
-    color: var(--color-primary, #2D6A4F);
-    font-weight: 600;
-  }
-
-  .navbar__logout--mobile {
+  .mobile-menu__actions {
     margin-top: auto;
-    width: 100%;
-    text-align: center;
-    padding: 12px;
-    font-size: 0.8125rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
   }
 
-  /* ====================================================================
-     Responsive — Mobile breakpoint
-     ==================================================================== */
-  @media (max-width: 768px) {
-    .navbar {
-      height: var(--navbar-height, 64px);
-    }
-
-    .navbar__container {
-      padding: 0 1rem;
-    }
-
-    .navbar__links {
-      display: none;
-    }
-
-    .navbar__logout--desktop {
-      display: none;
-    }
-
-    .navbar__hamburger {
-      display: flex;
-    }
-
-    .navbar__logo-text {
-      font-size: 1.2rem;
-    }
-
-    .navbar__logo-tagline {
-      font-size: 0.4375rem;
-    }
+  .md-hidden { display: none; }
+  
+  @media (max-width: 1024px) {
+    .hidden\.md-flex { display: none !important; }
+    .md-hidden { display: flex !important; }
   }
 </style>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // === Element references ===
-    const navbar = document.getElementById('navbar') as HTMLElement | null;
-    const hamburgerBtn = document.getElementById('hamburgerBtn') as HTMLButtonElement | null;
-    const mobileMenu = document.getElementById('mobileMenu') as HTMLElement | null;
-    const mobileBackdrop = document.getElementById('mobileBackdrop') as HTMLElement | null;
-    const mobileCloseBtn = document.getElementById('mobileCloseBtn') as HTMLButtonElement | null;
-    const logoutBtnDesktop = document.getElementById('logoutBtnDesktop') as HTMLButtonElement | null;
-    const logoutBtnMobile = document.getElementById('logoutBtnMobile') as HTMLButtonElement | null;
-
-    // === Scroll detection — add shadow when scrolled ===
-    let ticking = false;
-
-    function onScroll() {
-      if (!ticking) {
-        window.requestAnimationFrame(function () {
-          if (navbar) {
-            if (window.scrollY > 10) {
-              navbar.classList.add('scrolled');
-            } else {
-              navbar.classList.remove('scrolled');
-            }
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    // Run once on load in case the page is already scrolled
-    onScroll();
-
-    // === Mobile menu toggle ===
-    function openMobileMenu() {
-      if (mobileMenu && mobileBackdrop && hamburgerBtn) {
-        mobileMenu.classList.add('open');
-        mobileMenu.setAttribute('aria-hidden', 'false');
-        mobileBackdrop.classList.add('open');
-        hamburgerBtn.classList.add('open');
-        hamburgerBtn.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
-      }
-    }
-
-    function closeMobileMenu() {
-      if (mobileMenu && mobileBackdrop && hamburgerBtn) {
-        mobileMenu.classList.remove('open');
-        mobileMenu.setAttribute('aria-hidden', 'true');
-        mobileBackdrop.classList.remove('open');
-        hamburgerBtn.classList.remove('open');
-        hamburgerBtn.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      }
-    }
-
-    if (hamburgerBtn) {
-      hamburgerBtn.addEventListener('click', function () {
-        const isOpen = mobileMenu?.classList.contains('open');
-        if (isOpen) {
-          closeMobileMenu();
-        } else {
-          openMobileMenu();
-        }
-      });
-    }
-
-    if (mobileCloseBtn) {
-      mobileCloseBtn.addEventListener('click', closeMobileMenu);
-    }
-
-    if (mobileBackdrop) {
-      mobileBackdrop.addEventListener('click', closeMobileMenu);
-    }
-
-    // Close mobile menu on Escape key
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && mobileMenu?.classList.contains('open')) {
-        closeMobileMenu();
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Scroll Effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
       }
     });
 
-    // Close mobile menu on resize to desktop
-    window.addEventListener('resize', function () {
-      if (window.innerWidth > 768 && mobileMenu?.classList.contains('open')) {
-        closeMobileMenu();
-      }
+    // Mobile Menu
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileToggle.addEventListener('click', () => {
+      mobileToggle.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
     });
 
-    // === Logout function ===
-    function handleLogout() {
+    // Logout Functionality
+    const handleLogout = () => {
       localStorage.removeItem('indococopeat_access');
       window.location.href = '/';
-    }
+    };
 
-    if (logoutBtnDesktop) {
-      logoutBtnDesktop.addEventListener('click', handleLogout);
-    }
-
-    if (logoutBtnMobile) {
-      logoutBtnMobile.addEventListener('click', handleLogout);
-    }
+    const logoutBtn = document.getElementById('logoutBtn');
+    const mobileLogoutBtn = document.getElementById('mobileLogoutBtn');
+    
+    if (logoutBtn) logoutBtn.addEventListener('click', handleLogout);
+    if (mobileLogoutBtn) mobileLogoutBtn.addEventListener('click', handleLogout);
   });
 </script>

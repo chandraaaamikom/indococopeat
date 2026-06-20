@@ -19,9 +19,12 @@ const addressLine = `${company.address.street}, ${company.address.province}\nInd
         <!-- Column 1: About -->
         <div class="footer-col footer-col--about">
           <a href="/" class="footer-logo" aria-label="INDOCOCOPEAT — Home">
-            <span class="footer-logo__indo">INDOCO</span><span class="footer-logo__peat">PEAT</span>
+            <div class="footer-logo__icon">🌴</div>
+            <div class="footer-logo__text">
+              <span class="footer-logo__main">INDOCOCOPEAT</span>
+              <p class="footer-tagline">PT. ABBASY JAYA MAKMUR</p>
+            </div>
           </a>
-          <p class="footer-tagline">PURE FIBER, GLOBAL GROWTH</p>
           <p class="footer-description">{company.shortDescription}</p>
         </div>
 
@@ -96,7 +99,7 @@ const addressLine = `${company.address.street}, ${company.address.province}\nInd
 
   /* ===== Top Section ===== */
   .footer-top {
-    background-color: #1b4332;
+    background-color: var(--color-primary);
     padding: 5rem 0 3rem;
   }
 
@@ -119,20 +122,28 @@ const addressLine = `${company.address.street}, ${company.address.province}\nInd
   }
 
   .footer-logo {
-    display: inline-block;
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.5rem;
-    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     text-decoration: none;
+  }
+
+  .footer-logo__icon {
+    font-size: 1.5rem;
+  }
+
+  .footer-logo__text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .footer-logo__main {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    color: var(--color-white);
+    line-height: 1;
     letter-spacing: 0.02em;
-  }
-
-  .footer-logo__indo {
-    color: #ffffff;
-  }
-
-  .footer-logo__peat {
-    color: #d4a574;
   }
 
   .footer-tagline {
@@ -141,7 +152,7 @@ const addressLine = `${company.address.street}, ${company.address.province}\nInd
     font-variant: small-caps;
     letter-spacing: 0.2em;
     color: rgba(255, 255, 255, 0.5);
-    margin-top: 0.5rem;
+    margin-top: 0.125rem;
     margin-bottom: 0;
   }
 
@@ -161,7 +172,7 @@ const addressLine = `${company.address.street}, ${company.address.province}\nInd
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: #ffffff;
+    color: var(--color-white);
     margin: 0 0 1.25rem;
   }
 
@@ -193,12 +204,12 @@ const addressLine = `${company.address.street}, ${company.address.province}\nInd
 
   .footer-link:hover,
   .footer-link:focus-visible {
-    color: #ffffff;
+    color: var(--color-white);
     transform: translateX(3px);
   }
 
   .footer-link:focus-visible {
-    outline: 2px solid #d4a574;
+    outline: 2px solid var(--color-accent-warm);
     outline-offset: 2px;
     border-radius: 2px;
   }
@@ -246,11 +257,11 @@ const addressLine = `${company.address.street}, ${company.address.province}\nInd
 
   .footer-contact-link:hover,
   .footer-contact-link:focus-visible {
-    color: #ffffff;
+    color: var(--color-white);
   }
 
   .footer-contact-link:focus-visible {
-    outline: 2px solid #d4a574;
+    outline: 2px solid var(--color-accent-warm);
     outline-offset: 2px;
     border-radius: 2px;
   }
@@ -283,13 +294,13 @@ const addressLine = `${company.address.street}, ${company.address.province}\nInd
   }
 
   .footer-social-link:focus-visible {
-    outline: 2px solid #d4a574;
+    outline: 2px solid var(--color-accent-warm);
     outline-offset: 2px;
   }
 
   /* ===== Bottom Bar ===== */
   .footer-bottom {
-    background-color: #152e22;
+    background-color: var(--color-primary-dark);
     padding: 1.25rem 0;
   }
 

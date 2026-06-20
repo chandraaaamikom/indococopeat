@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import { company, statistics } from '../data/company';
+import { socialLinks } from '../data/social';
 ---
 
 <!DOCTYPE html>
@@ -11,193 +13,536 @@ import '../styles/global.css';
   <title>INDOCOCOPEAT — Access Portal</title>
   <style>
     body {
-      background-color: #FAFAF5;
+      background-color: var(--color-offwhite);
       min-height: 100vh;
+      font-family: var(--font-body);
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header-top {
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--color-primary);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      position: relative;
-    }
-    
-    .organic-bg {
-      position: absolute;
-      inset: 0;
-      opacity: 0.04;
-      background-image:
-        radial-gradient(ellipse 80px 60px at 20% 30%, #2D6A4F 0%, transparent 70%),
-        radial-gradient(ellipse 60px 80px at 70% 60%, #8B6914 0%, transparent 70%),
-        radial-gradient(ellipse 100px 40px at 50% 80%, #40916C 0%, transparent 70%),
-        radial-gradient(ellipse 40px 90px at 85% 20%, #D4A574 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
+      font-size: 1.25rem;
     }
 
-    .container {
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-main {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      line-height: 1;
+    }
+
+    .logo-sub {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .main-content {
+      display: flex;
+      flex: 1;
+    }
+
+    /* Left Hero Section */
+    .hero-section {
+      flex: 1.2;
+      padding: 2rem 4rem 4rem 4rem;
+      display: flex;
+      flex-direction: column;
       position: relative;
+      overflow: hidden;
+      border-top-right-radius: 60px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.375rem 1rem;
+      background: white;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 2rem;
+      align-self: flex-start;
+      border: 1px solid var(--color-border);
+    }
+
+    .hero-badge span {
+      width: 8px;
+      height: 8px;
+      background-color: var(--color-primary);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      color: var(--color-primary);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      max-width: 600px;
+    }
+
+    .hero-desc {
+      font-size: 1.125rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-visual {
+      position: absolute;
+      bottom: 0;
+      right: -5%;
+      width: 80%;
+      height: 50%;
+      background-color: var(--color-secondary);
+      border-top-left-radius: 120px;
+      overflow: hidden;
       z-index: 1;
-      width: 100%;
-      padding: 1.5rem;
+    }
+
+    .hero-visual::before {
+      content: '🥥';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15rem;
+      opacity: 0.2;
+    }
+
+    .hero-visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top right, var(--color-secondary-dark), var(--color-secondary-light));
+      opacity: 0.8;
+      mix-blend-mode: multiply;
+    }
+
+    .stats-bar {
+      position: absolute;
+      bottom: 2rem;
+      left: 4rem;
+      right: 4rem;
+      background: var(--color-primary-light);
+      border-radius: var(--radius-xl);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      color: white;
+      z-index: 10;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .stat-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .stat-val {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.8);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Right Access Section */
+    .access-section {
+      flex: 0.8;
+      background-color: var(--color-offwhite);
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
     }
 
-    .card {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      border-radius: 16px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-      padding: 3rem 2.5rem;
+    .leaf-ornament {
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      font-size: 15rem;
+      opacity: 0.05;
+      color: var(--color-primary);
+      pointer-events: none;
+    }
+
+    .access-card {
+      background: var(--color-white);
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+      padding: 3.5rem 3rem;
       width: 100%;
-      max-width: 440px;
+      max-width: 460px;
       text-align: center;
-      animation: fadeInUp 0.6s ease forwards;
+      position: relative;
+      z-index: 2;
+      border: 1px solid var(--color-border);
     }
 
-    .logo {
-      font-family: 'DM Serif Display', serif;
+    .lock-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--color-light-gray);
+      color: var(--color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    .lock-icon svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .access-title {
+      font-family: var(--font-heading);
       font-size: 2rem;
-      color: #2D6A4F;
-      margin-bottom: 0.25rem;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
     }
 
-    .logo span {
-      color: #8B6914;
+    .access-subtitle {
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.5;
     }
 
-    .tagline {
-      font-size: 0.625rem;
-      text-transform: uppercase;
-      letter-spacing: 0.25em;
-      color: #7A7A7A;
-      margin: 0;
+    .input-wrapper {
+      position: relative;
+      margin-bottom: 1.5rem;
+      text-align: left;
     }
 
-    .divider {
-      width: 40px;
-      height: 2px;
-      background-color: #2D6A4F;
-      margin: 1.5rem auto;
+    .input-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: 0.5rem;
     }
 
-    .heading {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.375rem;
-      color: #1A1A1A;
-      margin: 0 0 0.375rem 0;
-    }
-
-    .subtitle {
-      font-size: 0.875rem;
-      color: #7A7A7A;
-      margin: 0;
-    }
-
-    .form {
-      margin-top: 2rem;
-    }
-
-    .input-field {
+    .access-input {
       width: 100%;
-      padding: 0.875rem 1rem;
-      text-align: center;
+      padding: 1rem 1.25rem;
+      background: var(--color-white);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-md);
       font-size: 1rem;
-      letter-spacing: 0.15em;
-      border: 1.5px solid #E2E0D8;
-      border-radius: 8px;
+      color: var(--color-text-primary);
+      transition: all 0.2s;
       outline: none;
-      transition: all 0.25s ease;
-      font-family: inherit;
+      font-family: var(--font-body);
     }
 
-    .input-field:focus {
-      border-color: #2D6A4F;
-      box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+    .access-input:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 4px rgba(26, 54, 38, 0.08);
     }
 
-    .input-field.error {
-      border-color: #C53030;
-      box-shadow: 0 0 0 3px rgba(197, 48, 48, 0.1);
+    .access-input.error {
+      border-color: var(--color-error);
+      background-color: var(--color-error-bg);
     }
 
     .error-msg {
       display: none;
+      color: var(--color-error);
       font-size: 0.8125rem;
-      color: #C53030;
       margin-top: 0.5rem;
+      text-align: left;
     }
 
-    .btn {
+    .verify-btn {
       width: 100%;
-      margin-top: 1.25rem;
-      background-color: #2D6A4F;
+      background-color: var(--color-primary);
       color: white;
-      padding: 0.875rem;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.9375rem;
-      letter-spacing: 0.05em;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      font-weight: 500;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
       cursor: pointer;
       border: none;
-      transition: all 0.2s ease;
-      font-family: inherit;
+      transition: all 0.2s;
     }
 
-    .btn:hover {
-      background-color: #1B4332;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    .verify-btn:hover {
+      background-color: var(--color-primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(26, 54, 38, 0.15);
     }
 
-    .note {
-      font-size: 0.75rem;
-      color: #9A9A9A;
-      margin-top: 1.5rem;
-    }
-
-    .copyright {
-      font-size: 0.6875rem;
-      color: #9A9A9A;
+    .help-text {
       margin-top: 2rem;
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      text-align: left;
+      background: var(--color-light-gray);
+      padding: 1rem;
+      border-radius: var(--radius-md);
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Trust indicators below card */
+    .trust-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .trust-item {
+      text-align: center;
+    }
+
+    .trust-icon {
+      margin-bottom: 0.5rem;
+      color: var(--color-secondary);
+    }
+
+    .trust-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+    }
+
+    /* Footer Bar */
+    .footer-bar {
+      background-color: var(--color-secondary-dark);
+      color: white;
+      padding: 1.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8125rem;
+    }
+
+    @media (max-width: 1024px) {
+      .main-content {
+        flex-direction: column;
+      }
+      .hero-section {
+        padding: 2rem 2rem 8rem 2rem;
+      }
+      .stats-bar {
+        left: 1rem; right: 1rem; bottom: 1rem;
+        flex-direction: column; gap: 1rem;
+        padding: 1rem;
+      }
+      .footer-bar {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        padding: 1.5rem 2rem;
+      }
+      .trust-indicators {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="organic-bg"></div>
   
-  <div class="container">
-    <div class="card">
-      <div class="logo">INDOCO<span>PEAT</span></div>
-      <p class="tagline">PURE FIBER, GLOBAL GROWTH</p>
-      
-      <div class="divider"></div>
-      
-      <h1 class="heading">Private Access Portal</h1>
-      <p class="subtitle">Enter your access code to continue</p>
-      
-      <div class="form">
-        <input type="text" id="accessCode" class="input-field" placeholder="Enter access code" autocomplete="off" />
-        <div id="errorMsg" class="error-msg">Invalid access code. Please try again.</div>
-        <button id="enterBtn" class="btn">Enter Website</button>
+  <div class="header-top">
+    <div class="logo-container">
+      <div class="logo-icon">🌴</div>
+      <div class="logo-text">
+        <span class="logo-main">INDOCOCOPEAT</span>
+        <span class="logo-sub">PT. ABBASY JAYA MAKMUR</span>
+      </div>
+    </div>
+    <div style="font-size: 0.875rem; color: var(--color-text-secondary); display: flex; align-items: center; gap: 0.5rem; background: white; padding: 0.5rem 1rem; border-radius: var(--radius-full); border: 1px solid var(--color-border); box-shadow: var(--shadow-sm);">
+      <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+      Access for partners
+    </div>
+  </div>
+
+  <div class="main-content">
+    
+    <div class="hero-section">
+      <div class="hero-badge">
+        <span></span> PRIVATE EXPORTER <span style="color: var(--color-border); margin: 0 0.25rem;">|</span> Premium Cocopeat & Coconut Fiber
       </div>
       
-      <p class="note">This portal is reserved for authorized business partners.</p>
+      <h1 class="hero-title">Pure fiber,<br/>global growth</h1>
+      
+      <p class="hero-desc">
+        High quality cocopeat and coconut fiber from Indonesia, crafted for international growers and global industries.
+      </p>
+      
+      <div class="hero-visual">
+        <div class="hero-visual-overlay"></div>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-icon">🌱</div>
+          <div>
+            <div class="stat-val">10,000+</div>
+            <div class="stat-label">MT Annual Capacity</div>
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon">🌍</div>
+          <div>
+            <div class="stat-val">25+</div>
+            <div class="stat-label">Countries Served</div>
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon">🏭</div>
+          <div>
+            <div class="stat-val">Export Grade</div>
+            <div class="stat-label">Consistent Quality</div>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div class="copyright">© 2024 PT. Abbasy Jaya Makmur</div>
+
+    <div class="access-section">
+      <div class="leaf-ornament">🌿</div>
+      
+      <div class="access-card">
+        <div class="lock-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+        </div>
+        
+        <h2 class="access-title">Access validation</h2>
+        <p class="access-subtitle">This area is private. Please enter your access code to continue.</p>
+        
+        <div class="input-wrapper">
+          <label class="input-label" for="accessCode">Access code</label>
+          <input type="password" id="accessCode" class="access-input" placeholder="Enter your access code" autocomplete="off" />
+          <div id="errorMsg" class="error-msg">Invalid access code. Please try again.</div>
+        </div>
+        
+        <button id="enterBtn" class="verify-btn">
+          <svg style="width: 18px; height: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+          Verify access
+        </button>
+        
+        <div class="help-text">
+          <svg style="width: 20px; height: 20px; color: var(--color-primary); flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <div>
+            <div style="font-weight: 600; margin-bottom: 0.25rem;">Need access?</div>
+            Contact our team to request your code.
+          </div>
+        </div>
+      </div>
+      
+      <div class="trust-indicators">
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg style="width: 24px; height: 24px; margin: 0 auto;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <div class="trust-label">Consistent Quality</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg style="width: 24px; height: 24px; margin: 0 auto;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <div class="trust-label">Global Export Experience</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg style="width: 24px; height: 24px; margin: 0 auto;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+          </div>
+          <div class="trust-label">Reliable Supply</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <div style="font-size: 1.5rem;">🌴</div>
+      <div>
+        <div style="font-family: var(--font-heading); font-size: 1.125rem;">INDOCOCOPEAT</div>
+        <div style="font-size: 0.625rem; opacity: 0.8; letter-spacing: 0.1em;">PT. ABBASY JAYA MAKMUR</div>
+      </div>
+    </div>
+    <div style="opacity: 0.8; max-width: 300px;">
+      INDOCOCOPEAT is a private export company specializing in premium cocopeat and coconut fiber from Indonesia to the world.
+    </div>
+    <div style="display: flex; gap: 2rem;">
+      <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+        <span>📍</span>
+        <div>{company.address.street}, {company.address.province}<br/>{company.address.country}</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 0.25rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem;"><span>✉️</span> {company.email}</div>
+        <div style="display: flex; align-items: center; gap: 0.5rem;"><span>📞</span> +{company.whatsappNumber}</div>
+      </div>
+    </div>
   </div>
 
   <script is:inline>
     (function() {
-      // Check if already authenticated — redirect to /home
+      // Check if already authenticated
       const sessionData = localStorage.getItem('indococopeat_access');
       if (sessionData) {
         try {
@@ -220,25 +565,29 @@ import '../styles/global.css';
           return;
         }
         
-        enterBtn.textContent = 'Verifying...';
+        enterBtn.innerHTML = '<span style="opacity: 0.8">Verifying...</span>';
         enterBtn.style.pointerEvents = 'none';
-        enterBtn.style.opacity = '0.7';
         
-        // Simulate brief verification delay for premium feel
+        // Simulate brief verification delay
         setTimeout(() => {
           if (code.toUpperCase() === 'INDOCO2024') {
+            enterBtn.innerHTML = '<svg style="width: 18px; height: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Success';
+            enterBtn.style.backgroundColor = '#25D366';
+            
             localStorage.setItem('indococopeat_access', JSON.stringify({
               authenticated: true,
               timestamp: Date.now()
             }));
-            window.location.href = '/home';
+            
+            setTimeout(() => {
+              window.location.href = '/home';
+            }, 400);
           } else {
             showError();
-            enterBtn.textContent = 'Enter Website';
+            enterBtn.innerHTML = '<svg style="width: 18px; height: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg> Verify access';
             enterBtn.style.pointerEvents = 'auto';
-            enterBtn.style.opacity = '1';
           }
-        }, 800);
+        }, 600);
       }
 
       function showError() {
