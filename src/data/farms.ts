@@ -23,7 +23,7 @@ export const farms: Farm[] = [
     monthlyProduction: '150 Tons',
     description:
       'Our primary coconut husk collection center in Magelang, working with local farming communities to source the finest quality coconut husks for cocopeat and fiber production.',
-    image: '/images/farms/farm-magelang.jpg',
+    image: '/images/farms/kebun.jpg',
     mapsUrl: 'https://maps.google.com/?q=Magelang+Jawa+Tengah',
   },
   {
@@ -35,7 +35,7 @@ export const farms: Farm[] = [
     monthlyProduction: '120 Tons',
     description:
       'A strategic collection center serving the southern coastal coconut farming areas, ensuring steady raw material supply throughout the year.',
-    image: '/images/farms/farm-purworejo.jpg',
+    image: '/images/farms/kebun.jpg',
     mapsUrl: 'https://maps.google.com/?q=Purworejo+Jawa+Tengah',
   },
   {
@@ -47,7 +47,7 @@ export const farms: Farm[] = [
     monthlyProduction: '130 Tons',
     description:
       "Located in one of Central Java's most productive coconut regions, this hub processes and forwards raw coconut husks to our main facility.",
-    image: '/images/farms/farm-kebumen.jpg',
+    image: '/images/farms/kebun.jpg',
     mapsUrl: 'https://maps.google.com/?q=Kebumen+Jawa+Tengah',
   },
   {
@@ -59,7 +59,7 @@ export const farms: Farm[] = [
     monthlyProduction: '100 Tons',
     description:
       'An expanding collection network in Temanggung, tapping into highland coconut plantations known for producing husks with excellent fiber quality.',
-    image: '/images/farms/farm-temanggung.jpg',
+    image: '/images/farms/kebun.jpg',
     mapsUrl: 'https://maps.google.com/?q=Temanggung+Jawa+Tengah',
   },
 ];

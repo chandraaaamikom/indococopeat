@@ -21,10 +21,8 @@ const { currentPage = '' } = Astro.props;
     <!-- Desktop Nav Links -->
     <ul class="navbar__links hidden md-flex">
       <li><a href="/home" class={currentPage === 'home' ? 'active' : ''}>Home</a></li>
-      <li><a href="#" class={currentPage === 'about' ? 'active' : ''}>About Us</a></li>
       <li><a href="/product" class={currentPage === 'product' ? 'active' : ''}>Products</a></li>
       <li><a href="/farm" class={currentPage === 'farm' ? 'active' : ''}>Farm</a></li>
-      <li><a href="#" class={currentPage === 'sustainability' ? 'active' : ''}>Sustainability</a></li>
       <li><a href="/contact" class={currentPage === 'contact' ? 'active' : ''}>Contact</a></li>
     </ul>
 
@@ -52,10 +50,8 @@ const { currentPage = '' } = Astro.props;
     <div class="mobile-menu__inner">
       <ul class="mobile-menu__links">
         <li><a href="/home" class={currentPage === 'home' ? 'active' : ''}>Home</a></li>
-        <li><a href="#">About Us</a></li>
         <li><a href="/product" class={currentPage === 'product' ? 'active' : ''}>Products</a></li>
         <li><a href="/farm" class={currentPage === 'farm' ? 'active' : ''}>Farm</a></li>
-        <li><a href="#">Sustainability</a></li>
         <li><a href="/contact" class={currentPage === 'contact' ? 'active' : ''}>Contact</a></li>
       </ul>
       <div class="mobile-menu__actions">

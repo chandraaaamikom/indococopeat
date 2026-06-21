@@ -20,7 +20,7 @@ export const products: Product[] = [
     category: 'Cocopeat',
     description:
       'Cocopeat polybag is a polybag filled with cocopeat, used in agriculture, horticulture, hydroponic media, and as a substitute for soil media. Our cocopeat polybag offers excellent water retention, proper aeration, and optimal pH levels for plant growth.',
-    image: '/images/products/cocopeat-polybag.jpg',
+    image: '/images/products/coco.jpg',
     specifications: {
       Size: '30 x 40 x 70 cm',
       Weight: '30 kg',
@@ -47,7 +47,7 @@ export const products: Product[] = [
     category: 'Fiber',
     description:
       'Natural fiber extracted from coconut husk, used in horticulture and hydroponic systems because it retains moisture, provides aeration, and has good drainage. Our cocofiber is carefully processed to maintain fiber integrity and minimize dust content.',
-    image: '/images/products/cocofiber.jpg',
+    image: '/images/products/coco.jpg',
     specifications: {
       'Fibre Length': '5 - 20 cm',
       'Load Ability': '18 - 18.5 tons in 40ft HC Container',
@@ -71,7 +71,7 @@ export const products: Product[] = [
     category: 'Fiber',
     description:
       'Coconut fiber rope made from coconut husk fiber. Our coir rope is strong, durable, and biodegradable — ideal for agricultural, horticultural, and landscaping applications where natural fiber solutions are preferred.',
-    image: '/images/products/coconut-coir-rope.jpg',
+    image: '/images/products/coco.jpg',
     specifications: {
       Diameter: '6 mm',
       Weight: '10 kg / Roll',
@@ -93,7 +93,7 @@ export const products: Product[] = [
     category: 'Cocopeat',
     description:
       'Cocopeat is a byproduct from coir fiber processing. It is natural, renewable, and organic, used for gardening, horticulture, and hydroponics. Our cocopeat bricks are sun-dried and compressed for maximum expansion and easy shipping.',
-    image: '/images/products/cocopeat-brick.jpg',
+    image: '/images/products/coco.jpg',
     specifications: {
       Size: '30 x 30 x 13 cm',
       Weight: '5 kg',
