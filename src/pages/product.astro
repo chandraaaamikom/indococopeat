@@ -54,7 +54,6 @@ import { products, productCategories } from '../data/products';
     <!-- Product Grid -->
     <div class="container section" style="padding-top: 0; padding-bottom: 6rem;">
       <div id="noResults" style="display: none; text-align: center; padding: 4rem 0;">
-        <div style="font-size: 4rem; margin-bottom: 1rem;">🔍</div>
         <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-primary); margin-bottom: 0.5rem;">
           No products found
         </h3>
@@ -64,81 +63,46 @@ import { products, productCategories } from '../data/products';
       </div>
 
       <div class="product-layout" id="productGrid">
-        {products.map((product, index) => (
-          <div 
-            class={`product-card ${index === 0 ? 'featured-card' : 'standard-card'}`} 
+        {products.map((product) => (
+          <article 
+            class="product-card" 
             data-category={product.category}
             data-name={product.name.toLowerCase()}
+            role="button"
+            tabindex="0"
             onclick={`openModal('${product.id}')`}
+            onkeydown={`if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openModal('${product.id}'); }`}
           >
-            {index === 0 ? (
-              <div class="featured-inner">
-                <div class="featured-content">
-                  <div class="badge" style="background: rgba(255,255,255,0.1); color: var(--color-accent-warm); border: 1px solid rgba(255,255,255,0.2); margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
-                    <span>★</span> FEATURED
-                  </div>
+            <div class="product-card__image">
+              <img
+                src={product.image}
+                alt={product.name}
+                loading="lazy"
+              />
+            </div>
 
-                  <h2 style="font-family: var(--font-heading); font-size: 2.5rem; color: white; margin-bottom: 1rem;">
-                    {product.name}
-                  </h2>
+            <div class="product-card__body">
+              <div class="product-card__category">{product.category}</div>
 
-                  <p style="color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 2rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                    {product.description}
-                  </p>
-                  
-                  <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; display: flex; flex-direction: column; gap: 0.75rem;">
-                    {product.features.slice(0, 3).map((feat) => (
-                      <li style="display: flex; align-items: flex-start; gap: 0.75rem; color: white; font-size: 0.875rem;">
-                        <svg style="width: 18px; height: 18px; color: var(--color-accent-warm); flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        {feat}
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <div style="margin-top: auto;">
-                    <span class="btn" style="background: var(--color-accent-warm); color: white; border-radius: var(--radius-full); padding: 0.75rem 1.5rem;">
-                      View Details &rarr;
-                    </span>
-                  </div>
-                </div>
+              <h2 class="product-card__title">
+                {product.name}
+              </h2>
 
-                <div class="featured-image">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    loading="lazy"
-                  />
-                  <div class="featured-image-overlay"></div>
-                </div>
+              <p class="product-card__description">
+                {product.description}
+              </p>
+
+              <ul class="product-card__features" aria-label={`${product.name} highlights`}>
+                {product.features.slice(0, 2).map((feat) => (
+                  <li>{feat}</li>
+                ))}
+              </ul>
+
+              <div class="product-card__footer">
+                <span>View Product &rarr;</span>
               </div>
-            ) : (
-              <div class="standard-inner">
-                <div class="standard-image">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    loading="lazy"
-                  />
-                </div>
-
-                <div class="standard-content">
-                  <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-primary); margin-bottom: 0.5rem;">
-                    {product.name}
-                  </h3>
-
-                  <p style="font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                    {product.description}
-                  </p>
-
-                  <div style="margin-top: auto; color: var(--color-accent-warm); font-size: 0.875rem; font-weight: 600; display: flex; align-items: center; gap: 0.25rem;">
-                    View Product &rarr;
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
+            </div>
+          </article>
         ))}
       </div>
     </div>
@@ -218,102 +182,54 @@ import { products, productCategories } from '../data/products';
   <style>
     .product-layout {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.25rem;
+      align-items: stretch;
     }
 
     .product-card {
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-radius: 24px;
-      overflow: hidden;
-    }
-
-    .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-xl);
-    }
-
-    .featured-card {
-      grid-column: span 7;
-      grid-row: span 2;
-      background-color: var(--color-primary);
-    }
-
-    .featured-inner {
-      display: flex;
-      height: 100%;
-      min-height: 500px;
-    }
-
-    .featured-content {
-      flex: 1;
-      padding: 3rem;
+      min-width: 0;
+      min-height: 460px;
       display: flex;
       flex-direction: column;
-      position: relative;
-      z-index: 2;
-    }
-
-    .featured-image {
-      flex: 0.8;
-      background-color: var(--color-secondary-light);
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-top-left-radius: 60px;
-      border-bottom-left-radius: 60px;
+      cursor: pointer;
+      border-radius: 20px;
       overflow: hidden;
-      min-height: 100%;
-    }
-
-    .featured-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      position: absolute;
-      inset: 0;
-      transition: transform 0.4s ease;
-    }
-
-    .featured-image-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(27, 67, 50, 0.15), rgba(107, 79, 10, 0.35));
-      z-index: 1;
-    }
-
-    .featured-card:hover .featured-image img {
-      transform: scale(1.04);
-    }
-
-    .standard-card {
-      grid-column: span 5;
       background: white;
       border: 1px solid var(--color-border);
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 12px 34px rgba(var(--color-primary-rgb), 0.07);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
 
-    .standard-inner {
-      display: flex;
-      height: 100%;
-      min-height: 180px;
+    .product-card:hover,
+    .product-card:focus-visible {
+      transform: translateY(-4px);
+      border-color: rgba(var(--color-primary-rgb), 0.28);
+      box-shadow: 0 20px 48px rgba(var(--color-primary-rgb), 0.12);
+      outline: none;
     }
 
-    .standard-image {
-      width: 160px;
+    .product-card:active {
+      transform: translateY(-1px);
+    }
+
+    .product-card__image {
+      height: 220px;
       background-color: var(--color-light-gray);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
       overflow: hidden;
       position: relative;
+      flex-shrink: 0;
     }
 
-    .standard-image img {
+    .product-card__image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(26, 54, 38, 0.02), rgba(26, 54, 38, 0.2));
+      pointer-events: none;
+    }
+
+    .product-card__image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -321,15 +237,82 @@ import { products, productCategories } from '../data/products';
       transition: transform 0.4s ease;
     }
 
-    .standard-card:hover .standard-image img {
+    .product-card:hover .product-card__image img,
+    .product-card:focus-visible .product-card__image img {
       transform: scale(1.04);
     }
 
-    .standard-content {
-      padding: 1.5rem;
+    .product-card__body {
+      min-height: 240px;
+      padding: 1.35rem;
       display: flex;
       flex-direction: column;
       flex: 1;
+    }
+
+    .product-card__category {
+      width: fit-content;
+      margin-bottom: 0.85rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-full);
+      background: rgba(var(--color-primary-rgb), 0.08);
+      color: var(--color-primary);
+      font-size: 0.7rem;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .product-card__title {
+      min-height: 3.3rem;
+      margin-bottom: 0.65rem;
+      font-family: var(--font-heading);
+      font-size: clamp(1.35rem, 1.8vw, 1.75rem);
+      line-height: 1.05;
+      color: var(--color-primary);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .product-card__description {
+      min-height: 4.2rem;
+      margin: 0 0 1rem;
+      color: var(--color-text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .product-card__features {
+      min-height: 3.2rem;
+      display: grid;
+      gap: 0.4rem;
+      margin: 0 0 1.25rem;
+      color: var(--color-text-muted);
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+
+    .product-card__features li {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .product-card__footer {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-secondary-light);
+      font-size: 0.875rem;
+      font-weight: 700;
     }
 
     .filter-btn:hover:not(.active) {
@@ -387,29 +370,23 @@ import { products, productCategories } from '../data/products';
       box-shadow: var(--shadow-sm);
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1100px) {
       .product-layout {
-        display: flex;
-        flex-direction: column;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .product-layout {
+        grid-template-columns: 1fr;
       }
 
-      .featured-inner {
-        flex-direction: column-reverse;
-        min-height: auto;
+      .product-card {
+        min-height: 0;
       }
 
-      .featured-image {
-        min-height: 260px;
-        border-radius: 0;
-      }
-
-      .standard-inner {
-        flex-direction: column;
-      }
-
-      .standard-image {
-        width: 100%;
-        height: 220px;
+      .product-card__image {
+        height: 240px;
       }
     }
     
@@ -461,7 +438,7 @@ import { products, productCategories } from '../data/products';
           const matchSearch = currentSearch === '' || name.includes(currentSearch || '');
           
           if (matchCategory && matchSearch) {
-            card.style.display = 'block';
+            card.style.display = '';
             visibleCount++;
           } else {
             card.style.display = 'none';
