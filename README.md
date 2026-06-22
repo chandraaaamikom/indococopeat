@@ -1,43 +1,125 @@
-# Astro Starter Kit: Minimal
+# INDOCOCOPEAT Website
 
-```sh
-npm create astro@latest -- --template minimal
+Official static website for INDOCOCOPEAT / PT. Abbasy Jaya Makmur, a premium Indonesian cocopeat and coconut fiber export brand.
+
+The site is built as a private multi-page Astro website. Visitors enter through an access-code page, then continue to Home, Products, Farm, and Contact pages.
+
+## Tech Stack
+
+- Astro
+- TypeScript
+- CSS custom design system
+- Static site output
+- No backend
+- No database
+
+## Demo Access
+
+Access code:
+
+```text
+INDOCO2024
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The access session is stored in `localStorage` with the key `indococopeat_access`.
 
-## 🚀 Project Structure
+## Routes
 
-Inside of your Astro project, you'll see the following folders and files:
+```text
+/access    Private access validation
+/          Home
+/products  Product catalog
+/farm      Our farm and supply chain
+/contact   Contact
+```
+
+Legacy redirects:
+
+```text
+/home      Redirects to /
+/product   Redirects to /products
+```
+
+## Install
+
+```sh
+npm install
+```
+
+## Run Local
+
+```sh
+npm run dev
+```
+
+The local dev server usually runs at:
+
+```text
+http://localhost:4321
+```
+
+## Build
+
+```sh
+npm run build
+```
+
+The production output is generated in:
+
+```text
+dist/
+```
+
+## Preview Build
+
+```sh
+npm run preview
+```
+
+## Deploy to Vercel
+
+1. Push this repository to GitHub.
+2. Import the repository in Vercel.
+3. Use the default Astro settings:
+   - Framework Preset: Astro
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+4. Deploy.
+
+No backend or environment variables are required for the current static access-code flow.
+
+## Folder Structure
 
 ```text
 /
 ├── public/
+│   ├── favicon.ico
+│   ├── favicon.svg
+│   └── images/
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/
+│   │   ├── Footer.astro
+│   │   └── Navbar.astro
+│   ├── config/
+│   │   └── access.ts
+│   ├── data/
+│   │   ├── company.ts
+│   │   ├── farms.ts
+│   │   ├── products.ts
+│   │   └── social.ts
+│   ├── layouts/
+│   │   └── MainLayout.astro
+│   ├── pages/
+│   │   ├── access.astro
+│   │   ├── contact.astro
+│   │   ├── farm.astro
+│   │   ├── home.astro
+│   │   ├── index.astro
+│   │   ├── product.astro
+│   │   └── products.astro
+│   └── styles/
+│       └── global.css
+├── astro.config.mjs
+├── package.json
+└── tsconfig.json
 ```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

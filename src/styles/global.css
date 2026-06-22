@@ -142,7 +142,7 @@ body {
   font-weight: 400;
   line-height: var(--leading-normal);
   color: var(--color-text-primary);
-  background-color: var(--color-white);
+  background-color: var(--color-offwhite);
   overflow-x: hidden;
 }
 
@@ -639,6 +639,33 @@ input, textarea, select {
 /* --- Page Top Padding (for sticky navbar) --- */
 .page-content {
   padding-top: var(--navbar-height);
+}
+
+.site-texture {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(198, 156, 109, 0.16), transparent 22rem),
+    radial-gradient(circle at 84% 18%, rgba(26, 54, 38, 0.11), transparent 28rem),
+    radial-gradient(circle at 64% 88%, rgba(139, 90, 43, 0.09), transparent 24rem),
+    var(--color-offwhite);
+}
+
+.site-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.11;
+  background-image:
+    linear-gradient(120deg, rgba(26, 54, 38, 0.08) 1px, transparent 1px),
+    linear-gradient(30deg, rgba(139, 90, 43, 0.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+.site-texture > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* --- Responsive Breakpoints --- */

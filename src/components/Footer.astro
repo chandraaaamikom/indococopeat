@@ -3,13 +3,12 @@ import { company } from '../data/company';
 import { socialLinks } from '../data/social';
 
 const quickLinks = [
-  { label: 'Home', href: '/home' },
-  { label: 'Products', href: '/product' },
+  { label: 'Home', href: '/' },
+  { label: 'Products', href: '/products' },
   { label: 'Our Farms', href: '/farm' },
   { label: 'Contact Us', href: '/contact' },
 ];
 
-const addressLine = `${company.address.street}, ${company.address.province}\nIndonesia ${company.address.postalCode}`;
 ---
 
 <footer class="site-footer" role="contentinfo">
@@ -18,8 +17,8 @@ const addressLine = `${company.address.street}, ${company.address.province}\nInd
       <div class="footer-grid">
         <!-- Column 1: About -->
         <div class="footer-col footer-col--about">
-          <a href="/" class="footer-logo" aria-label="INDOCOCOPEAT — Home">
-            <div class="footer-logo__icon">🌴</div>
+          <a href="/" class="footer-logo" aria-label="INDOCOCOPEAT Home">
+            <div class="footer-logo__icon">IC</div>
             <div class="footer-logo__text">
               <span class="footer-logo__main">INDOCOCOPEAT</span>
               <p class="footer-tagline">PT. ABBASY JAYA MAKMUR</p>
@@ -47,18 +46,18 @@ const addressLine = `${company.address.street}, ${company.address.province}\nInd
           <h3 class="footer-heading">Contact</h3>
           <address class="footer-address">
             <div class="footer-contact-item">
-              <span class="footer-contact-icon" aria-hidden="true">📍</span>
+              <span class="footer-contact-icon" aria-hidden="true">01</span>
               <span class="footer-contact-text">
                 {company.address.street}, {company.address.province}<br />
                 Indonesia {company.address.postalCode}
               </span>
             </div>
             <div class="footer-contact-item">
-              <span class="footer-contact-icon" aria-hidden="true">📞</span>
+              <span class="footer-contact-icon" aria-hidden="true">02</span>
               <a href={`tel:+${company.whatsappNumber}`} class="footer-contact-link">{company.hotline}</a>
             </div>
             <div class="footer-contact-item">
-              <span class="footer-contact-icon" aria-hidden="true">✉️</span>
+              <span class="footer-contact-icon" aria-hidden="true">03</span>
               <a href={`mailto:${company.email}`} class="footer-contact-link">{company.email}</a>
             </div>
           </address>

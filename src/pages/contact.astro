@@ -2,195 +2,595 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import { company } from '../data/company';
 import { socialLinks } from '../data/social';
+
+const officialAddress = `${company.address.street} - ${company.address.province}, ${company.address.country} ${company.address.postalCode}`;
+const whatsappMessage = encodeURIComponent('Hello INDOCOCOPEAT, I would like to request product catalog and export quotation.');
+const whatsappUrl = `https://wa.me/${company.whatsappNumber}?text=${whatsappMessage}`;
+const emailUrl = `mailto:${company.email}?subject=${encodeURIComponent('Product catalog and export quotation request')}`;
 ---
 
-<MainLayout title="Contact Us | INDOCOCOPEAT" currentPage="contact">
-  <div class="page-content" style="background-color: var(--color-offwhite); min-height: 100vh;">
-    
-    <!-- Header -->
-    <div class="container" style="padding-top: 4rem; padding-bottom: 2rem;">
-      <div style="max-width: 600px;">
-        <h1 style="font-family: var(--font-heading); font-size: 3rem; margin-bottom: 1rem; color: var(--color-primary);">Get in Touch</h1>
-        <p style="color: var(--color-text-secondary); line-height: 1.6; font-size: 1.125rem;">
-          Whether you need a quotation, product samples, or have a general inquiry, our export team is ready to assist you.
+<MainLayout
+  title="Contact - INDOCOCOPEAT"
+  description="Contact PT. Abbasy Jaya Makmur for INDOCOCOPEAT product catalog, export quotation, WhatsApp inquiry, or email request."
+  currentPage="contact"
+>
+  <main class="page-content site-texture contact-page">
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-label">Contact</span>
+        <h1>Contact Us</h1>
+        <p>
+          Request product catalog, export quotation, or product information from the INDOCOCOPEAT team.
         </p>
       </div>
-    </div>
+    </section>
 
-    <div class="container section" style="padding-top: 2rem;">
-      <div class="grid contact-grid" style="gap: 4rem; align-items: start;">
-        
-        <!-- Left: Contact Info -->
-        <div class="contact-info">
-          
-          <div style="background: white; border: 1px solid var(--color-border); border-radius: 24px; padding: 3rem; box-shadow: var(--shadow-sm);">
-            <div style="margin-bottom: 3rem;">
-              <h3 style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem;">Global Headquarters</h3>
-              
-              <div style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
-                <div style="width: 48px; height: 48px; background: var(--color-light-gray); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; color: var(--color-primary);">📍</div>
+    <section class="container contact-section" aria-label="Contact details and inquiry form">
+      <div class="contact-shell">
+        <aside class="contact-panel" aria-label="Official contact information">
+          <div class="contact-panel__body">
+            <h2>{company.legalName}</h2>
+            <p class="contact-panel__intro">
+              Official contact details for export inquiries and product catalog requests.
+            </p>
+
+            <div class="contact-list">
+              <article>
+                <span aria-hidden="true">01</span>
                 <div>
-                  <div style="font-weight: 600; color: var(--color-primary); margin-bottom: 0.5rem; font-size: 1.125rem;">Address</div>
-                  <div style="color: var(--color-text-secondary); line-height: 1.6; font-size: 0.9375rem;">
-                    {company.address.street}<br/>
-                    {company.address.city}, {company.address.province} {company.address.postalCode}<br/>
-                    {company.address.country}
-                  </div>
+                  <h3>Address</h3>
+                  <p>{officialAddress}</p>
                 </div>
-              </div>
-              
-              <div style="display: flex; gap: 1.5rem; margin-bottom: 2rem;">
-                <div style="width: 48px; height: 48px; background: var(--color-light-gray); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; color: var(--color-primary);">📞</div>
+              </article>
+              <article>
+                <span aria-hidden="true">02</span>
                 <div>
-                  <div style="font-weight: 600; color: var(--color-primary); margin-bottom: 0.5rem; font-size: 1.125rem;">Call Us</div>
-                  <div style="color: var(--color-text-secondary); line-height: 1.6; font-size: 0.9375rem;">
-                    <a href={`tel:+${company.whatsappNumber}`} style="color: inherit; text-decoration: none;">+{company.whatsappNumber}</a>
-                  </div>
-                  <div style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.25rem;">(Available on WhatsApp)</div>
+                  <h3>Hotline</h3>
+                  <p><a href={`tel:+${company.whatsappNumber}`}>{company.hotline}</a></p>
                 </div>
-              </div>
-              
-              <div style="display: flex; gap: 1.5rem;">
-                <div style="width: 48px; height: 48px; background: var(--color-light-gray); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; color: var(--color-primary);">✉️</div>
+              </article>
+              <article>
+                <span aria-hidden="true">03</span>
                 <div>
-                  <div style="font-weight: 600; color: var(--color-primary); margin-bottom: 0.5rem; font-size: 1.125rem;">Email Us</div>
-                  <div style="color: var(--color-text-secondary); line-height: 1.6; font-size: 0.9375rem;">
-                    <a href={`mailto:${company.email}`} style="color: inherit; text-decoration: none;">{company.email}</a>
-                  </div>
+                  <h3>WhatsApp</h3>
+                  <p><a href={whatsappUrl} target="_blank" rel="noopener noreferrer">+{company.whatsappNumber}</a></p>
                 </div>
-              </div>
+              </article>
+              <article>
+                <span aria-hidden="true">04</span>
+                <div>
+                  <h3>Email</h3>
+                  <p><a href={emailUrl}>{company.email}</a></p>
+                </div>
+              </article>
             </div>
 
-            <!-- Social Links -->
+            <div class="contact-panel__actions">
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="btn contact-whatsapp">
+                Chat on WhatsApp
+              </a>
+              <a href={emailUrl} class="btn contact-email">
+                Send Email
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-social">
+            <span>Connect with us</span>
             <div>
-              <h3 style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem;">Connect With Us</h3>
-              <div style="display: flex; gap: 1rem;">
-                {socialLinks.map(social => (
-                  <a href={social.url} target="_blank" rel="noopener noreferrer" style="width: 44px; height: 44px; border: 1px solid var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-primary); transition: all 0.2s;" class="social-hover">
-                    {social.icon}
-                  </a>
-                ))}
-              </div>
+              {socialLinks.map((social) => (
+                <a href={social.url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${social.name}`}>
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
-        </div>
+        </aside>
 
-        <!-- Right: Contact Form -->
-        <div class="contact-form-wrapper">
-          <div style="background: white; border: 1px solid var(--color-border); border-radius: 24px; padding: 3rem; box-shadow: var(--shadow-md);">
-            <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--color-primary); margin-bottom: 0.5rem;">Send a Message</h2>
-            <p style="color: var(--color-text-secondary); margin-bottom: 2rem; font-size: 0.9375rem;">Fill out the form below and we'll get back to you within 24 hours.</p>
-            
-            <form id="contactForm" onsubmit="event.preventDefault(); submitForm();">
-              <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
-                <div class="input-group" style="grid-column: span 1;">
-                  <label for="firstName" style="display: block; font-size: 0.8125rem; font-weight: 600; color: var(--color-text-primary); margin-bottom: 0.5rem;">First Name *</label>
-                  <input type="text" id="firstName" required style="width: 100%; padding: 0.875rem 1rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-offwhite); outline: none; font-family: inherit; font-size: 0.9375rem; transition: border-color 0.2s;" />
-                </div>
-                
-                <div class="input-group" style="grid-column: span 1;">
-                  <label for="lastName" style="display: block; font-size: 0.8125rem; font-weight: 600; color: var(--color-text-primary); margin-bottom: 0.5rem;">Last Name *</label>
-                  <input type="text" id="lastName" required style="width: 100%; padding: 0.875rem 1rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-offwhite); outline: none; font-family: inherit; font-size: 0.9375rem; transition: border-color 0.2s;" />
-                </div>
-                
-                <div class="input-group" style="grid-column: span 1;">
-                  <label for="email" style="display: block; font-size: 0.8125rem; font-weight: 600; color: var(--color-text-primary); margin-bottom: 0.5rem;">Email Address *</label>
-                  <input type="email" id="email" required style="width: 100%; padding: 0.875rem 1rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-offwhite); outline: none; font-family: inherit; font-size: 0.9375rem; transition: border-color 0.2s;" />
-                </div>
-                
-                <div class="input-group" style="grid-column: span 1;">
-                  <label for="company" style="display: block; font-size: 0.8125rem; font-weight: 600; color: var(--color-text-primary); margin-bottom: 0.5rem;">Company Name</label>
-                  <input type="text" id="company" style="width: 100%; padding: 0.875rem 1rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-offwhite); outline: none; font-family: inherit; font-size: 0.9375rem; transition: border-color 0.2s;" />
-                </div>
-                
-                <div class="input-group" style="grid-column: span 2;">
-                  <label for="subject" style="display: block; font-size: 0.8125rem; font-weight: 600; color: var(--color-text-primary); margin-bottom: 0.5rem;">Subject *</label>
-                  <select id="subject" required style="width: 100%; padding: 0.875rem 1rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-offwhite); outline: none; font-family: inherit; font-size: 0.9375rem; transition: border-color 0.2s; appearance: none;">
-                    <option value="" disabled selected>Select an inquiry type</option>
-                    <option value="quotation">Request Quotation</option>
-                    <option value="sample">Request Product Sample</option>
-                    <option value="partnership">Partnership Inquiry</option>
-                    <option value="general">General Question</option>
-                  </select>
-                </div>
-                
-                <div class="input-group" style="grid-column: span 2;">
-                  <label for="message" style="display: block; font-size: 0.8125rem; font-weight: 600; color: var(--color-text-primary); margin-bottom: 0.5rem;">Message *</label>
-                  <textarea id="message" rows="5" required style="width: 100%; padding: 0.875rem 1rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-offwhite); outline: none; font-family: inherit; font-size: 0.9375rem; resize: vertical; transition: border-color 0.2s;"></textarea>
-                </div>
+        <section class="contact-form-card" aria-labelledby="contact-form-title">
+          <h2 id="contact-form-title">Send a message</h2>
+          <p>Use this frontend form to prepare your inquiry. No backend submission is connected.</p>
+
+          <form id="contactForm" novalidate>
+            <div class="contact-form-grid">
+              <div class="form-field">
+                <label for="name">Name <span>*</span></label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
+                <p class="field-error">Please enter your name.</p>
               </div>
-              
-              <button id="submitBtn" type="submit" class="btn" style="background: var(--color-primary); color: white; width: 100%; justify-content: center; padding: 1rem; border-radius: 8px; font-size: 1rem;">
-                Send Message &rarr;
+
+              <div class="form-field">
+                <label for="email">Email <span>*</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+                <p class="field-error">Please enter a valid email address.</p>
+              </div>
+
+              <div class="form-field">
+                <label for="companyName">Company</label>
+                <input id="companyName" name="companyName" type="text" autocomplete="organization" />
+              </div>
+
+              <div class="form-field">
+                <label for="country">Country</label>
+                <input id="country" name="country" type="text" autocomplete="country-name" />
+              </div>
+
+              <div class="form-field form-field--wide">
+                <label for="message">Message <span>*</span></label>
+                <textarea id="message" name="message" rows="6" required></textarea>
+                <p class="field-error">Please write your message.</p>
+              </div>
+            </div>
+
+            <label class="privacy-check" for="privacy">
+              <input id="privacy" name="privacy" type="checkbox" required />
+              <span>I agree that INDOCOCOPEAT may use this information to respond to my inquiry.</span>
+            </label>
+            <p id="privacyError" class="field-error privacy-error">Please confirm the privacy agreement.</p>
+
+            <div class="contact-form-footer">
+              <p id="formStatus" role="status" aria-live="polite">Fill the required fields to prepare your message.</p>
+              <button id="submitBtn" type="submit" class="btn btn--primary">
+                Send Message
               </button>
-              
-              <div id="successMsg" style="display: none; margin-top: 1.5rem; padding: 1rem; background: var(--color-success); color: white; border-radius: 8px; text-align: center; font-size: 0.9375rem;">
-                Thank you! Your message has been sent successfully. We will be in touch shortly.
-              </div>
-            </form>
-          </div>
-        </div>
+            </div>
+
+            <div id="successMsg" class="success-message" role="status" aria-live="polite">
+              Thank you. Your inquiry has been prepared. Please use WhatsApp or email for official submission.
+            </div>
+          </form>
+        </section>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
   <style>
-    .contact-grid {
-      grid-template-columns: 1fr 1.5fr;
+    .contact-page {
+      min-height: 100vh;
     }
-    
-    input:focus, select:focus, textarea:focus {
-      border-color: var(--color-primary) !important;
-      background: white !important;
+
+    .page-hero {
+      padding: 5rem 0 2rem;
+      text-align: center;
     }
-    
-    .social-hover:hover {
-      background: var(--color-primary);
-      color: white !important;
+
+    .page-hero h1 {
+      margin: 0 0 1rem;
+      color: var(--color-primary);
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: 0.98;
     }
-    
-    @media (max-width: 1024px) {
-      .contact-grid {
+
+    .page-hero p {
+      max-width: 620px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+    }
+
+    .contact-section {
+      padding-bottom: 5rem;
+    }
+
+    .contact-shell {
+      display: grid;
+      grid-template-columns: minmax(300px, 0.92fr) minmax(0, 1.25fr);
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .contact-panel,
+    .contact-form-card {
+      border-radius: var(--radius-2xl);
+      box-shadow: 0 24px 70px rgba(var(--color-primary-rgb), 0.11);
+    }
+
+    .contact-panel {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(circle at 88% 8%, rgba(198, 156, 109, 0.24), transparent 12rem),
+        linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+      color: var(--color-white);
+    }
+
+    .contact-panel__body {
+      padding: 2.4rem;
+      flex: 1;
+    }
+
+    .contact-panel h2 {
+      margin-bottom: 0.75rem;
+      color: var(--color-white);
+      font-size: 2rem;
+    }
+
+    .contact-panel__intro {
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.95rem;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .contact-list article {
+      display: grid;
+      grid-template-columns: 2.8rem minmax(0, 1fr);
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .contact-list article > span {
+      width: 2.4rem;
+      height: 2.4rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid rgba(198, 156, 109, 0.5);
+      color: var(--color-accent-warm);
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .contact-list h3 {
+      margin-bottom: 0.3rem;
+      color: var(--color-accent-warm);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .contact-list p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .contact-list a {
+      color: inherit;
+    }
+
+    .contact-panel__actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.6rem;
+    }
+
+    .contact-whatsapp {
+      background: #3d8a45;
+      color: var(--color-white);
+    }
+
+    .contact-email {
+      border: 1px solid var(--color-accent-warm);
+      color: var(--color-accent-warm);
+    }
+
+    .contact-whatsapp:hover,
+    .contact-email:hover {
+      transform: translateY(-1px);
+    }
+
+    .contact-social {
+      margin-top: auto;
+      padding: 1.25rem 2.4rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      background: rgba(253, 251, 247, 0.97);
+      color: var(--color-text-primary);
+    }
+
+    .contact-social span {
+      font-weight: 800;
+      font-size: 0.92rem;
+    }
+
+    .contact-social div {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .contact-social a {
+      width: 2.45rem;
+      height: 2.45rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--color-light-gray);
+      color: var(--color-primary);
+    }
+
+    .contact-form-card {
+      padding: 2.4rem;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--color-border);
+    }
+
+    .contact-form-card h2 {
+      margin-bottom: 0.45rem;
+      color: var(--color-primary);
+      font-size: 2rem;
+    }
+
+    .contact-form-card > p {
+      margin-bottom: 1.8rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .form-field--wide {
+      grid-column: span 2;
+    }
+
+    .form-field label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--color-text-primary);
+      font-size: 0.84rem;
+      font-weight: 800;
+    }
+
+    .form-field label span {
+      color: var(--color-secondary-light);
+    }
+
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-md);
+      background: var(--color-offwhite);
+      color: var(--color-text-primary);
+      outline: none;
+      transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .form-field textarea {
+      min-height: 9rem;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--color-primary);
+      background: var(--color-white);
+      box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+    }
+
+    .form-field.is-invalid input,
+    .form-field.is-invalid textarea {
+      border-color: var(--color-error);
+      background: var(--color-error-bg);
+    }
+
+    .field-error {
+      display: none;
+      margin-top: 0.45rem;
+      color: var(--color-error);
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+
+    .form-field.is-invalid .field-error,
+    .privacy-error.is-visible {
+      display: block;
+    }
+
+    .privacy-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+      color: var(--color-text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      cursor: pointer;
+    }
+
+    .privacy-check input {
+      margin-top: 0.2rem;
+      accent-color: var(--color-primary);
+    }
+
+    .privacy-error {
+      margin-left: 1.65rem;
+    }
+
+    .contact-form-footer {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    #formStatus {
+      margin: 0;
+      padding: 0.95rem 1rem;
+      border-radius: var(--radius-md);
+      background: var(--color-light-gray);
+      color: var(--color-text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    #formStatus.is-ready {
+      background: #edf7e9;
+      color: #2f6e2d;
+    }
+
+    #formStatus.is-error {
+      background: var(--color-error-light);
+      color: var(--color-error);
+    }
+
+    #submitBtn {
+      min-height: 3.2rem;
+      border-radius: var(--radius-md);
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      background: #edf7e9;
+      color: #2f6e2d;
+      font-size: 0.9rem;
+    }
+
+    .success-message.is-visible {
+      display: block;
+    }
+
+    @media (max-width: 1000px) {
+      .contact-shell {
         grid-template-columns: 1fr;
       }
     }
-    
-    @media (max-width: 600px) {
-      .form-grid > div {
-        grid-column: span 2 !important;
+
+    @media (max-width: 640px) {
+      .page-hero {
+        text-align: left;
       }
-      .contact-info > div,
-      .contact-form-wrapper > div {
-        padding: 2rem;
+
+      .page-hero p {
+        margin-left: 0;
+      }
+
+      .contact-panel__body,
+      .contact-form-card {
+        padding: 1.5rem;
+      }
+
+      .contact-panel__actions,
+      .contact-form-grid,
+      .contact-form-footer {
+        grid-template-columns: 1fr;
+      }
+
+      .form-field--wide {
+        grid-column: span 1;
+      }
+
+      .contact-social {
+        padding: 1.2rem 1.5rem;
+        align-items: flex-start;
+        flex-direction: column;
       }
     }
   </style>
 
   <script is:inline>
-    function submitForm() {
-      const btn = document.getElementById('submitBtn');
-      const msg = document.getElementById('successMsg');
-      const form = document.getElementById('contactForm');
-      
-      btn.innerHTML = 'Sending...';
-      btn.style.opacity = '0.7';
-      btn.disabled = true;
-      
-      // Simulate API call
-      setTimeout(() => {
-        btn.style.display = 'none';
-        msg.style.display = 'block';
-        form.reset();
-        
-        // Reset button after 5 seconds
-        setTimeout(() => {
-          btn.style.display = 'flex';
-          btn.innerHTML = 'Send Another Message &rarr;';
-          btn.style.opacity = '1';
-          btn.disabled = false;
-          msg.style.display = 'none';
-        }, 5000);
-      }, 1500);
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var form = document.getElementById('contactForm');
+      var status = document.getElementById('formStatus');
+      var success = document.getElementById('successMsg');
+      var submitBtn = document.getElementById('submitBtn');
+      var privacy = document.getElementById('privacy');
+      var privacyError = document.getElementById('privacyError');
+
+      function getWrapper(field) {
+        return field.closest('.form-field');
+      }
+
+      function validateField(field, showError) {
+        var wrapper = getWrapper(field);
+        var valid = field.checkValidity();
+
+        if (wrapper && showError) {
+          wrapper.classList.toggle('is-invalid', !valid);
+        }
+
+        return valid;
+      }
+
+      function updateStatus() {
+        var requiredFields = form.querySelectorAll('input[required]:not([type="checkbox"]), textarea[required]');
+        var fieldsReady = Array.prototype.every.call(requiredFields, function (field) {
+          return field.checkValidity() && field.value.trim() !== '';
+        });
+        var ready = fieldsReady && privacy.checked;
+
+        status.classList.remove('is-error', 'is-ready');
+
+        if (ready) {
+          status.classList.add('is-ready');
+          status.textContent = 'All good. Your message is ready.';
+        } else {
+          status.textContent = 'Fill the required fields to prepare your message.';
+        }
+      }
+
+      form.querySelectorAll('input, textarea').forEach(function (field) {
+        field.addEventListener('input', function () {
+          validateField(field, false);
+          if (field === privacy) {
+            privacyError.classList.remove('is-visible');
+          }
+          updateStatus();
+        });
+
+        field.addEventListener('blur', function () {
+          if (field.type !== 'checkbox') {
+            validateField(field, field.hasAttribute('required') && field.value.trim() !== '');
+          }
+          updateStatus();
+        });
+      });
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        success.classList.remove('is-visible');
+
+        var requiredFields = form.querySelectorAll('input[required]:not([type="checkbox"]), textarea[required]');
+        var validFields = Array.prototype.every.call(requiredFields, function (field) {
+          return validateField(field, true);
+        });
+        var validPrivacy = privacy.checked;
+
+        privacyError.classList.toggle('is-visible', !validPrivacy);
+
+        if (!validFields || !validPrivacy) {
+          status.classList.add('is-error');
+          status.textContent = 'Please complete the required fields before sending.';
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Preparing message';
+
+        window.setTimeout(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+          success.classList.add('is-visible');
+          form.reset();
+          form.querySelectorAll('.form-field').forEach(function (wrapper) {
+            wrapper.classList.remove('is-invalid');
+          });
+          privacyError.classList.remove('is-visible');
+          updateStatus();
+        }, 650);
+      });
+
+      updateStatus();
+    });
   </script>
 </MainLayout>

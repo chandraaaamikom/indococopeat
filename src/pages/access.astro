@@ -1,0 +1,460 @@
+---
+import '../styles/global.css';
+import { ACCESS_CONFIG } from '../config/access';
+import { company } from '../data/company';
+
+const title = 'INDOCOCOPEAT - Private Access';
+const description = 'Private access portal for INDOCOCOPEAT export partners and buyers.';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="INDOCOCOPEAT" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="access-body">
+    <main class="access-page">
+      <header class="access-header">
+        <a href="/access" class="access-logo" aria-label="INDOCOCOPEAT private access">
+          <span class="access-logo__mark" aria-hidden="true">IC</span>
+          <span>
+            <strong>INDOCOCOPEAT</strong>
+            <small>PT. ABBASY JAYA MAKMUR</small>
+          </span>
+        </a>
+        <span class="access-pill">Partner access</span>
+      </header>
+
+      <section class="access-main" aria-labelledby="access-title">
+        <div class="access-copy">
+          <span class="access-kicker">Premium cocopeat and coconut fiber</span>
+          <h1 id="access-title">Pure fiber, global growth</h1>
+          <p>
+            Private catalog access for buyers and partners sourcing export-ready cocopeat products from Indonesia.
+          </p>
+
+          <div class="access-proof" aria-label="Company highlights">
+            <div>
+              <strong>Export grade</strong>
+              <span>Prepared for international buyers</span>
+            </div>
+            <div>
+              <strong>Natural fiber</strong>
+              <span>Renewable growing media</span>
+            </div>
+            <div>
+              <strong>Indonesia supply</strong>
+              <span>Regional collection network</span>
+            </div>
+          </div>
+        </div>
+
+        <section class="access-card" aria-label="Access code validation">
+          <div class="access-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11V8a5 5 0 0110 0v3" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 11h12v9H6z" />
+            </svg>
+          </div>
+          <h2>Access validation</h2>
+          <p>Enter your private access code to continue to the website.</p>
+
+          <form id="accessForm" novalidate>
+            <label for="accessCode">Access code</label>
+            <input id="accessCode" name="accessCode" type="password" autocomplete="off" placeholder="Enter access code" required />
+            <p id="accessError" class="access-error" role="alert">The access code is not valid. Please check the code and try again.</p>
+            <button id="accessButton" type="submit">Verify access</button>
+          </form>
+
+          <div class="access-help">
+            Need access? Contact our team at <a href={`mailto:${company.email}`}>{company.email}</a>.
+          </div>
+        </section>
+      </section>
+
+      <footer class="access-footer">
+        <span>{company.legalName}</span>
+        <span>{company.address.street} - {company.address.province}, {company.address.country}</span>
+      </footer>
+    </main>
+
+    <style>
+      .access-body {
+        min-height: 100vh;
+        margin: 0;
+        background: var(--color-offwhite);
+      }
+
+      .access-page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background:
+          radial-gradient(circle at 16% 18%, rgba(198, 156, 109, 0.2), transparent 22rem),
+          radial-gradient(circle at 76% 24%, rgba(26, 54, 38, 0.16), transparent 26rem),
+          linear-gradient(135deg, rgba(253, 251, 247, 0.92), rgba(244, 239, 230, 0.86));
+        overflow: hidden;
+      }
+
+      .access-page::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.1;
+        background-image:
+          linear-gradient(120deg, rgba(26, 54, 38, 0.08) 1px, transparent 1px),
+          linear-gradient(30deg, rgba(139, 90, 43, 0.08) 1px, transparent 1px);
+        background-size: 42px 42px;
+      }
+
+      .access-header,
+      .access-main,
+      .access-footer {
+        position: relative;
+        z-index: 1;
+      }
+
+      .access-header {
+        width: min(1180px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 1.4rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .access-logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .access-logo__mark {
+        width: 2.6rem;
+        height: 2.6rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--color-primary);
+        color: var(--color-accent-sand);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+      }
+
+      .access-logo strong {
+        display: block;
+        color: var(--color-primary);
+        font-family: var(--font-heading);
+        font-size: 1.45rem;
+        line-height: 1;
+      }
+
+      .access-logo small {
+        display: block;
+        margin-top: 0.2rem;
+        color: var(--color-text-muted);
+        font-size: 0.58rem;
+        letter-spacing: 0.15em;
+      }
+
+      .access-pill {
+        padding: 0.5rem 0.9rem;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-full);
+        background: rgba(255, 255, 255, 0.7);
+        color: var(--color-text-secondary);
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      .access-main {
+        width: min(1180px, calc(100% - 2rem));
+        margin: auto;
+        padding: 3rem 0;
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.82fr);
+        gap: clamp(2rem, 5vw, 5rem);
+        align-items: center;
+      }
+
+      .access-kicker {
+        display: inline-flex;
+        margin-bottom: 1.4rem;
+        color: var(--color-secondary-light);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .access-copy h1 {
+        max-width: 620px;
+        margin: 0 0 1.25rem;
+        color: var(--color-primary);
+        font-family: var(--font-heading);
+        font-size: clamp(3.4rem, 7vw, 6.2rem);
+        line-height: 0.96;
+        text-wrap: balance;
+      }
+
+      .access-copy p {
+        max-width: 560px;
+        margin: 0 0 2rem;
+        color: var(--color-text-secondary);
+        font-size: 1.08rem;
+        line-height: 1.75;
+      }
+
+      .access-proof {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        max-width: 760px;
+      }
+
+      .access-proof div {
+        padding: 1rem;
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.68);
+        border: 1px solid var(--color-border);
+      }
+
+      .access-proof strong {
+        display: block;
+        color: var(--color-primary);
+        font-size: 0.9rem;
+      }
+
+      .access-proof span {
+        display: block;
+        margin-top: 0.25rem;
+        color: var(--color-text-secondary);
+        font-size: 0.78rem;
+        line-height: 1.4;
+      }
+
+      .access-card {
+        padding: clamp(2rem, 4vw, 3rem);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-2xl);
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: 0 24px 70px rgba(var(--color-primary-rgb), 0.14);
+      }
+
+      .access-card__icon {
+        width: 3.8rem;
+        height: 3.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.25rem;
+        border-radius: 50%;
+        background: var(--color-light-gray);
+        color: var(--color-primary);
+      }
+
+      .access-card__icon svg {
+        width: 1.55rem;
+        height: 1.55rem;
+      }
+
+      .access-card h2 {
+        margin: 0 0 0.55rem;
+        color: var(--color-primary);
+        font-size: 2rem;
+      }
+
+      .access-card > p {
+        margin: 0 0 1.6rem;
+        color: var(--color-text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      #accessForm {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      #accessForm label {
+        color: var(--color-text-primary);
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      #accessCode {
+        width: 100%;
+        padding: 0.95rem 1rem;
+        border: 1.5px solid var(--color-border);
+        border-radius: var(--radius-md);
+        background: var(--color-white);
+        color: var(--color-text-primary);
+        outline: none;
+      }
+
+      #accessCode:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.08);
+      }
+
+      #accessCode.is-error {
+        border-color: var(--color-error);
+        background: var(--color-error-bg);
+      }
+
+      .access-error {
+        display: none;
+        margin: -0.2rem 0 0.25rem;
+        color: var(--color-error);
+        font-size: 0.82rem;
+        line-height: 1.45;
+      }
+
+      .access-error.is-visible {
+        display: block;
+      }
+
+      #accessButton {
+        min-height: 3.2rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--radius-md);
+        background: var(--color-primary);
+        color: var(--color-white);
+        font-size: 0.96rem;
+        font-weight: 800;
+        transition: transform var(--transition-base), background-color var(--transition-base);
+      }
+
+      #accessButton:hover {
+        background: var(--color-primary-dark);
+        color: var(--color-white);
+        transform: translateY(-1px);
+      }
+
+      #accessButton:disabled {
+        cursor: progress;
+        opacity: 0.75;
+      }
+
+      .access-help {
+        margin-top: 1.4rem;
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        background: var(--color-light-gray);
+        color: var(--color-text-secondary);
+        font-size: 0.86rem;
+        line-height: 1.55;
+      }
+
+      .access-help a {
+        font-weight: 800;
+      }
+
+      .access-footer {
+        width: min(1180px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 1.35rem 0;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        color: var(--color-text-muted);
+        font-size: 0.82rem;
+      }
+
+      @media (max-width: 900px) {
+        .access-main {
+          grid-template-columns: 1fr;
+          padding-top: 1.5rem;
+        }
+
+        .access-proof {
+          grid-template-columns: 1fr;
+        }
+
+        .access-footer {
+          flex-direction: column;
+        }
+      }
+    </style>
+
+    <script is:inline define:vars={{
+      accessCode: ACCESS_CONFIG.code,
+      sessionKey: ACCESS_CONFIG.sessionKey,
+      sessionDuration: ACCESS_CONFIG.sessionDuration,
+    }}>
+      (function () {
+        var redirect = new URLSearchParams(window.location.search).get('redirect') || '/';
+        var safeRedirect = redirect.startsWith('/') && !redirect.startsWith('//') ? redirect : '/';
+        var rawSession = localStorage.getItem(sessionKey);
+
+        try {
+          if (rawSession) {
+            var session = JSON.parse(rawSession);
+            var isValidSession = session.authenticated && Date.now() - Number(session.timestamp || 0) <= sessionDuration;
+
+            if (isValidSession) {
+              window.location.replace(safeRedirect);
+              return;
+            }
+          }
+        } catch (error) {
+          localStorage.removeItem(sessionKey);
+        }
+
+        var form = document.getElementById('accessForm');
+        var input = document.getElementById('accessCode');
+        var button = document.getElementById('accessButton');
+        var error = document.getElementById('accessError');
+
+        function showError() {
+          error.classList.add('is-visible');
+          input.classList.add('is-error');
+          input.focus();
+        }
+
+        function clearError() {
+          error.classList.remove('is-visible');
+          input.classList.remove('is-error');
+        }
+
+        input.addEventListener('input', clearError);
+
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          clearError();
+
+          if (input.value.trim().toUpperCase() !== accessCode.toUpperCase()) {
+            showError();
+            return;
+          }
+
+          button.disabled = true;
+          button.textContent = 'Opening private view';
+
+          localStorage.setItem(sessionKey, JSON.stringify({
+            authenticated: true,
+            timestamp: Date.now(),
+          }));
+
+          window.setTimeout(function () {
+            window.location.href = safeRedirect;
+          }, 250);
+        });
+      })();
+    </script>
+  </body>
+</html>

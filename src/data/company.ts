@@ -1,16 +1,17 @@
 // Company information and data
-// EDITABLE — Update company details as needed
+// EDITABLE - Update company details as needed
 
 export const company = {
   name: 'INDOCOCOPEAT',
   legalName: 'PT. Abbasy Jaya Makmur',
   tagline: 'PURE FIBER, GLOBAL GROWTH',
   description:
-    'INDOCOCOPEAT is a premium Indonesian cocopeat and coconut fiber export company under PT. Abbasy Jaya Makmur. We specialize in processing and supplying high-quality cocopeat, coconut fiber, and coir products to international markets. Based in Magelang, Central Java — the heart of Indonesia\'s coconut production region — we connect sustainable agriculture with global demand for renewable growing media.',
+    'INDOCOCOPEAT is a premium Indonesian cocopeat and coconut fiber export company under PT. Abbasy Jaya Makmur. We specialize in processing and supplying high-quality cocopeat, coconut fiber, and coir products to international markets. Based in Magelang, Central Java, we connect sustainable agriculture with global demand for renewable growing media.',
   shortDescription:
     'Premium cocopeat and coconut fiber products from Indonesia, processed to international export standards for sustainable agriculture worldwide.',
   address: {
     street: 'Magelang',
+    city: 'Magelang',
     province: 'Jawa Tengah',
     country: 'Indonesia',
     postalCode: '56512',
@@ -30,77 +31,70 @@ export const statistics = [
 
 export const whyChooseUs = [
   {
-    icon: '🌱',
+    icon: 'Natural',
     title: 'Sustainable Production',
     description:
-      'Our processing methods prioritize environmental responsibility, utilizing coconut husks that would otherwise go to waste, turning agricultural byproducts into valuable resources.',
+      'We turn coconut husk byproducts into practical growing media for agriculture, horticulture, and hydroponic use.',
   },
   {
-    icon: '♻️',
-    title: 'Renewable Resource',
-    description:
-      'Coconut palms produce husks year-round, ensuring a continuous and reliable supply of raw materials without depleting natural resources or causing deforestation.',
-  },
-  {
-    icon: '✅',
-    title: 'Export Quality Standards',
-    description:
-      'Every batch undergoes rigorous quality control, meeting international standards for EC levels, pH balance, moisture content, and purity before shipment.',
-  },
-  {
-    icon: '🔗',
+    icon: 'Supply',
     title: 'Reliable Supply Chain',
     description:
-      'With over 200 partner farmers across Central Java, we maintain consistent production capacity to fulfill large-volume orders on schedule.',
+      'Our regional sourcing network helps maintain consistent raw material availability for export orders.',
   },
   {
-    icon: '🏗️',
+    icon: 'Quality',
+    title: 'Export Quality Standards',
+    description:
+      'Products are prepared with attention to moisture, pH, EC levels, packing, and container loading needs.',
+  },
+  {
+    icon: 'Process',
     title: 'Professional Processing',
     description:
-      'Our modern processing facility ensures proper fiber separation, washing, drying, and compression, delivering products that meet exact buyer specifications.',
+      'Coconut husks are processed, dried, compressed, and packed with buyer specifications in mind.',
   },
   {
-    icon: '🌍',
+    icon: 'Global',
     title: 'International Buyer Focus',
     description:
-      'We understand global trade requirements including documentation, packaging standards, container loading optimization, and shipping logistics.',
+      'We support export inquiries with clear product specifications, documentation awareness, and responsive communication.',
+  },
+  {
+    icon: 'Partner',
+    title: 'Long Term Partnership',
+    description:
+      'Our team works with buyers who need dependable coconut fiber products from Indonesia over the long term.',
   },
 ];
 
 export const businessProcess = [
   {
     step: 1,
-    title: 'Raw Material',
+    title: 'Sustainable Farming',
     description:
-      "Coconut husks collected from partner farmers across Central Java's coconut production regions.",
-    icon: '🥥',
+      'Coconut supply begins with regional growers and collection areas that support renewable raw material sourcing.',
+    icon: '01',
   },
   {
     step: 2,
-    title: 'Processing',
+    title: 'Raw Material Collection',
     description:
-      'Husks undergo soaking, fiber separation, impurity removal, and quality screening at our facility.',
-    icon: '⚙️',
+      'Coconut husks are collected and prepared for processing through our supply network.',
+    icon: '02',
   },
   {
     step: 3,
-    title: 'Production',
+    title: 'Processing & Quality Check',
     description:
-      'Processed material is transformed into cocopeat, fiber, rope, and compressed brick products.',
-    icon: '🏭',
+      'Material is processed, screened, dried, and checked against buyer requirements.',
+    icon: '03',
   },
   {
     step: 4,
-    title: 'Packaging',
+    title: 'Packing & Delivery',
     description:
-      'Products are dried, compressed, and packed in export-ready packaging optimized for container loading.',
-    icon: '📦',
-  },
-  {
-    step: 5,
-    title: 'Distribution',
-    description:
-      'Finished products are shipped to international buyers via major Indonesian ports.',
-    icon: '🚢',
+      'Finished products are compressed, packed, and prepared for domestic handling or export shipment.',
+    icon: '04',
   },
 ];
