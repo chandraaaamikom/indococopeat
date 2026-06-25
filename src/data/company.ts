@@ -3,7 +3,7 @@
 
 export const company = {
   name: 'INDOCOCOPEAT',
-  legalName: 'PT. Abbasy Jaya Makmur',
+  legalName: 'CV LOKA ADI JAYA',
   tagline: 'PURE FIBER, GLOBAL GROWTH',
   description:
     'INDOCOCOPEAT is a premium Indonesian cocopeat and coconut fiber export company under PT. Abbasy Jaya Makmur. We specialize in processing and supplying high-quality cocopeat, coconut fiber, and coir products to international markets. Based in Magelang, Central Java, we connect sustainable agriculture with global demand for renewable growing media.',
@@ -16,9 +16,9 @@ export const company = {
     country: 'Indonesia',
     postalCode: '56512',
   },
-  hotline: '082137097171',
-  whatsappNumber: '6282137097171',
-  email: 'abbasyjayamakmur@gmail.com',
+  hotline: '08112500112',
+  whatsappNumber: '628112500112',
+  email: 'indococopeat@gmail.com',
   website: 'https://indonesiacocopeat.com',
 };
 

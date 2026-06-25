@@ -4,28 +4,29 @@ import { farms, farmStatistics } from '../data/farms';
 ---
 
 <MainLayout title="Our Farm & Supply Chain | INDOCOCOPEAT" currentPage="farm">
-  <div class="page-content" style="background-color: var(--color-offwhite); min-height: 100vh;">
+  <div class="page-content farm-page-content">
     
     <!-- Header -->
-    <div class="container" style="padding-top: 4rem; padding-bottom: 2rem;">
-      <div style="max-width: 700px;">
-        <h1 style="font-family: var(--font-heading); font-size: 3rem; margin-bottom: 1rem; color: var(--color-primary);">
-          Our Farm & Supply Chain
+    <div class="page-hero-section">
+      <div class="container hero-container">
+        <span class="section-badge-kicker">✦ Our Supply Chain</span>
+        <h1 class="hero-section-title">
+          Our Farm &amp; Supply Chain
         </h1>
-        <p style="color: var(--color-text-secondary); line-height: 1.6; font-size: 1.125rem;">
+        <p class="hero-section-text">
           From our farms in Indonesia to your business worldwide.<br />We ensure traceability, quality and sustainability at every step.
         </p>
       </div>
     </div>
 
     <!-- Farm Showcase Grid -->
-    <div class="container section" style="padding-top: 2rem;">
+    <div class="container farm-showcase-section">
       <div class="farm-layout">
         
         <!-- Featured Farm (First item) -->
         {farms.length > 0 && (
-          <div class="farm-card featured-farm reveal" style="grid-column: span 12; background: white; border-radius: 24px; overflow: hidden; display: flex; border: 1px solid var(--color-border); box-shadow: var(--shadow-md);">
-            <div class="farm-image featured-farm-image" style="flex: 1.2; background-color: var(--color-light-gray); position: relative; min-height: 360px; overflow: hidden;">
+          <div class="farm-card featured-farm reveal">
+            <div class="farm-image featured-farm-image">
               <img
                 src="/images/farms/kebun.jpg"
                 alt={farms[0].name}
@@ -34,8 +35,8 @@ import { farms, farmStatistics } from '../data/farms';
 
               <div class="farm-image-overlay"></div>
 
-              <div style="position: absolute; top: 1.5rem; left: 1.5rem; z-index: 2; background: rgba(26,54,38,0.8); color: white; padding: 0.375rem 1rem; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; backdrop-filter: blur(4px);">
-                <svg style="width: 14px; height: 14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="farm-badge-location">
+                <svg class="location-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
@@ -43,42 +44,41 @@ import { farms, farmStatistics } from '../data/farms';
               </div>
             </div>
             
-            <div style="flex: 1; padding: 3rem; display: flex; flex-direction: column;">
-              <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--color-primary); margin-bottom: 1rem;">
+            <div class="featured-farm-content">
+              <span class="featured-label">PRIMARY SOURCE</span>
+              <h2 class="featured-farm-title">
                 {farms[0].name}
               </h2>
-              <p style="color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 2rem;">
+              <p class="featured-farm-description">
                 {farms[0].description}
               </p>
               
-              <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
-                <div style="border: 1px solid var(--color-border); padding: 0.75rem 1rem; border-radius: 12px; display: flex; align-items: center; gap: 0.75rem; background: var(--color-offwhite);">
-                  <div style="color: var(--color-secondary);">👥</div>
+              <div class="farm-stats-grid">
+                <div class="farm-stat-item">
                   <div>
-                    <div style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted);">
-                      Farmers
+                    <div class="farm-stat-label">
+                      Farmers Sourcing
                     </div>
-                    <div style="font-weight: 600; color: var(--color-primary);">
+                    <div class="farm-stat-value">
                       {farms[0].farmerCount}+
                     </div>
                   </div>
                 </div>
                 
-                <div style="border: 1px solid var(--color-border); padding: 0.75rem 1rem; border-radius: 12px; display: flex; align-items: center; gap: 0.75rem; background: var(--color-offwhite);">
-                  <div style="color: var(--color-secondary);">📦</div>
+                <div class="farm-stat-item">
                   <div>
-                    <div style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted);">
-                      Monthly Supply
+                    <div class="farm-stat-label">
+                      Monthly Capacity
                     </div>
-                    <div style="font-weight: 600; color: var(--color-primary);">
+                    <div class="farm-stat-value">
                       {farms[0].monthlyProduction}
                     </div>
                   </div>
                 </div>
               </div>
               
-              <div style="margin-top: auto;">
-                <a href={farms[0].mapsUrl} target="_blank" rel="noopener noreferrer" class="btn" style="background: var(--color-primary); color: white; width: 100%; border-radius: 8px;">
+              <div class="featured-farm-action">
+                <a href={farms[0].mapsUrl} target="_blank" rel="noopener noreferrer" class="btn maps-btn">
                   View on Google Maps &rarr;
                 </a>
               </div>
@@ -87,9 +87,9 @@ import { farms, farmStatistics } from '../data/farms';
         )}
 
         <!-- Standard Farms (Remaining items) -->
-        {farms.slice(1).map((farm) => (
-          <div class="farm-card reveal" style="grid-column: span 4; background: white; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; border: 1px solid var(--color-border); box-shadow: var(--shadow-sm); transition: transform 0.3s, box-shadow 0.3s;">
-            <div class="farm-image" style="height: 180px; background-color: var(--color-light-gray); position: relative; overflow: hidden;">
+        {farms.slice(1).map((farm, index) => (
+          <div class="farm-card standard-farm-card reveal">
+            <div class="farm-image standard-farm-image">
               <img
                 src="/images/farms/kebun.jpg"
                 alt={farm.name}
@@ -98,46 +98,45 @@ import { farms, farmStatistics } from '../data/farms';
 
               <div class="farm-image-overlay"></div>
 
-              <div style="position: absolute; top: 1rem; left: 1rem; z-index: 2; background: rgba(26,54,38,0.8); color: white; padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: 0.625rem; font-weight: 600; display: flex; align-items: center; gap: 0.25rem;">
-                <svg style="width: 10px; height: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="farm-badge-location-sm">
+                <svg class="location-icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                 </svg>
                 {farm.province}
               </div>
             </div>
             
-            <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;">
-              <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: var(--color-primary); margin-bottom: 0.5rem;">
+            <div class="standard-farm-content">
+              <span class="standard-label">COLLECTION POINT 0{index + 1}</span>
+              <h3 class="standard-farm-title">
                 {farm.name}
               </h3>
-              <p style="font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 1.5rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+              <p class="standard-farm-description">
                 {farm.description}
               </p>
               
-              <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-top: 1px solid var(--color-light-gray); padding-top: 1rem;">
-                <div style="flex: 1; text-align: center;">
-                  <div style="font-size: 1.25rem; margin-bottom: 0.25rem;">👨‍🌾</div>
-                  <div style="font-size: 0.625rem; text-transform: uppercase; color: var(--color-text-muted);">
+              <div class="standard-farm-stats">
+                <div class="standard-stat-col">
+                  <div class="standard-stat-label">
                     Farmers
                   </div>
-                  <div style="font-size: 0.875rem; font-weight: 600; color: var(--color-primary);">
+                  <div class="standard-stat-value">
                     {farm.farmerCount}+
                   </div>
                 </div>
-                <div style="width: 1px; background: var(--color-light-gray);"></div>
-                <div style="flex: 1; text-align: center;">
-                  <div style="font-size: 1.25rem; margin-bottom: 0.25rem;">📦</div>
-                  <div style="font-size: 0.625rem; text-transform: uppercase; color: var(--color-text-muted);">
-                    Monthly
+                <div class="standard-stat-divider"></div>
+                <div class="standard-stat-col">
+                  <div class="standard-stat-label">
+                    Monthly Sourcing
                   </div>
-                  <div style="font-size: 0.875rem; font-weight: 600; color: var(--color-primary);">
+                  <div class="standard-stat-value">
                     {farm.monthlyProduction}
                   </div>
                 </div>
               </div>
               
-              <div style="margin-top: auto;">
-                <a href={farm.mapsUrl} target="_blank" rel="noopener noreferrer" style="color: var(--color-accent-warm); font-size: 0.875rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem; text-decoration: none;">
+              <div class="standard-farm-action">
+                <a href={farm.mapsUrl} target="_blank" rel="noopener noreferrer" class="standard-maps-link">
                   View on Google Maps &rarr;
                 </a>
               </div>
@@ -148,52 +147,401 @@ import { farms, farmStatistics } from '../data/farms';
     </div>
 
     <!-- Supply Chain Process Section -->
-    <div class="container section">
-      <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--color-primary); margin-bottom: 2rem;">
+    <div class="container section supply-chain-section">
+      <h2 class="supply-chain-title">
         Our Supply Chain Process
       </h2>
       
-      <div class="process-cards" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
-        <div class="process-card" style="background: white; border: 1px solid var(--color-border); border-radius: 16px; padding: 2rem; position: relative;">
-          <div style="width: 48px; height: 48px; background: var(--color-light-gray); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem;">🌱</div>
-          <h4 style="font-family: var(--font-heading); font-size: 1.125rem; color: var(--color-primary); margin-bottom: 0.5rem;">Sustainable Farming</h4>
-          <p style="font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.6;">Coconuts are grown by our partner farmers using natural practices.</p>
-          <div class="process-arrow hidden md-block" style="position: absolute; right: -1rem; top: 50%; transform: translateY(-50%); font-size: 1.25rem; color: var(--color-border); z-index: 10;">&rarr;</div>
+      <div class="process-cards">
+        <div class="process-card">
+          <div class="process-step-indicator">01</div>
+          <h4 class="process-card-title">Sustainable Sourcing</h4>
+          <p class="process-card-desc">Coconuts are grown by our partner farmers using natural practices without chemicals.</p>
+          <div class="process-arrow hidden md-block">&rarr;</div>
         </div>
         
-        <div class="process-card" style="background: white; border: 1px solid var(--color-border); border-radius: 16px; padding: 2rem; position: relative;">
-          <div style="width: 48px; height: 48px; background: var(--color-light-gray); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem;">🚜</div>
-          <h4 style="font-family: var(--font-heading); font-size: 1.125rem; color: var(--color-primary); margin-bottom: 0.5rem;">Raw Material Collection</h4>
-          <p style="font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.6;">Husks are collected and transported to our processing facility.</p>
-          <div class="process-arrow hidden md-block" style="position: absolute; right: -1rem; top: 50%; transform: translateY(-50%); font-size: 1.25rem; color: var(--color-border); z-index: 10;">&rarr;</div>
+        <div class="process-card">
+          <div class="process-step-indicator">02</div>
+          <h4 class="process-card-title">Material Collection</h4>
+          <p class="process-card-desc">Raw coconut husks are collected and transported to our drying facility.</p>
+          <div class="process-arrow hidden md-block">&rarr;</div>
         </div>
 
-        <div class="process-card" style="background: white; border: 1px solid var(--color-border); border-radius: 16px; padding: 2rem; position: relative;">
-          <div style="width: 48px; height: 48px; background: var(--color-light-gray); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem;">⚙️</div>
-          <h4 style="font-family: var(--font-heading); font-size: 1.125rem; color: var(--color-primary); margin-bottom: 0.5rem;">Processing & Quality Check</h4>
-          <p style="font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.6;">Advanced processing with strict quality control at every stage.</p>
-          <div class="process-arrow hidden md-block" style="position: absolute; right: -1rem; top: 50%; transform: translateY(-50%); font-size: 1.25rem; color: var(--color-border); z-index: 10;">&rarr;</div>
+        <div class="process-card">
+          <div class="process-step-indicator">03</div>
+          <h4 class="process-card-title">Strict Quality Check</h4>
+          <p class="process-card-desc">Advanced screening process to separate fiber, check EC levels and moisture.</p>
+          <div class="process-arrow hidden md-block">&rarr;</div>
         </div>
 
-        <div class="process-card" style="background: white; border: 1px solid var(--color-border); border-radius: 16px; padding: 2rem;">
-          <div style="width: 48px; height: 48px; background: var(--color-light-gray); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem;">🚢</div>
-          <h4 style="font-family: var(--font-heading); font-size: 1.125rem; color: var(--color-primary); margin-bottom: 0.5rem;">Packing & Delivery</h4>
-          <p style="font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.6;">Products are packed carefully and shipped worldwide.</p>
+        <div class="process-card">
+          <div class="process-step-indicator">04</div>
+          <h4 class="process-card-title">Export Packaging</h4>
+          <p class="process-card-desc">Products are pressed into 5kg blocks or loose packaging and loaded into containers.</p>
         </div>
       </div>
     </div>
   </div>
 
   <style>
+    .farm-page-content {
+      background-color: var(--color-offwhite);
+      min-height: 100vh;
+      padding-top: var(--navbar-height);
+    }
+
+    .page-hero-section {
+      padding: 5rem 0 3rem;
+      background-color: var(--color-primary);
+      color: white;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-badge-kicker {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-accent-warm);
+      margin-bottom: 1rem;
+    }
+
+    .hero-section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1rem;
+      color: var(--color-white);
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    .hero-section-text {
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.75;
+      font-size: 1.05rem;
+      max-width: 600px;
+    }
+
+    .farm-showcase-section {
+      padding-top: 4rem;
+    }
+
     .farm-layout {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
+      gap: 2.5rem;
+    }
+
+    .featured-farm {
+      grid-column: span 12;
+      background: var(--color-white);
+      border-radius: 32px;
+      overflow: hidden;
+      display: flex;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+    }
+
+    .featured-farm-image {
+      flex: 1.2;
+      background-color: var(--color-light-gray);
+      position: relative;
+      min-height: 360px;
+      overflow: hidden;
+    }
+
+    .farm-badge-location {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      z-index: 2;
+      background: rgba(26,54,38,0.85);
+      color: white;
+      padding: 0.45rem 1.1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .location-icon {
+      width: 14px;
+      height: 14px;
+    }
+
+    .featured-farm-content {
+      flex: 1;
+      padding: 3.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .featured-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--color-accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .featured-farm-title {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      color: var(--color-primary);
+      margin-bottom: 1.25rem;
+      font-weight: 700;
+    }
+
+    .featured-farm-description {
+      color: var(--color-text-secondary);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      font-size: 1.02rem;
+    }
+
+    .farm-stats-grid {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .farm-stat-item {
+      border: 1px solid var(--color-border);
+      padding: 1rem 1.5rem;
+      border-radius: 16px;
+      flex: 1;
+      background: var(--color-offwhite);
+    }
+
+    .farm-stat-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .farm-stat-value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .featured-farm-action {
+      margin-top: auto;
+    }
+
+    .maps-btn {
+      background: var(--color-primary);
+      color: white;
+      width: 100%;
+      border-radius: var(--radius-full);
+      padding: 0.9rem;
+      font-weight: 600;
+      justify-content: center;
+      transition: background-color 0.2s;
+    }
+
+    .maps-btn:hover {
+      background-color: var(--color-primary-dark);
+      color: white;
+    }
+
+    .standard-farm-card {
+      grid-column: span 6;
+      background: var(--color-white);
+      border-radius: 32px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .standard-farm-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(26,54,38,0.06);
+      border-color: var(--color-accent-warm);
+    }
+
+    .standard-farm-image {
+      height: 240px;
+      background-color: var(--color-light-gray);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .farm-badge-location-sm {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 2;
+      background: rgba(26,54,38,0.85);
+      color: white;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.65rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .location-icon-sm {
+      width: 10px;
+      height: 10px;
+    }
+
+    .standard-farm-content {
+      padding: 2.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .standard-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .standard-farm-title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .standard-farm-description {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1.75rem;
+    }
+
+    .standard-farm-stats {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+      border-top: 1px solid var(--color-light-gray);
+      padding-top: 1.25rem;
+    }
+
+    .standard-stat-col {
+      flex: 1;
+      text-align: center;
+    }
+
+    .standard-stat-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .standard-stat-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .standard-stat-divider {
+      width: 1px;
+      background: var(--color-light-gray);
+    }
+
+    .standard-farm-action {
+      margin-top: auto;
+    }
+
+    .standard-maps-link {
+      color: var(--color-accent);
+      font-size: 0.88rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      text-decoration: none;
+    }
+
+    .standard-maps-link:hover {
+      color: var(--color-accent-dark);
+    }
+
+    .supply-chain-section {
+      padding-bottom: 6rem;
+      padding-top: 6rem;
+    }
+
+    .supply-chain-title {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      color: var(--color-primary);
+      margin-bottom: 3.5rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .process-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
     }
 
-    .farm-card:hover:not(.featured-farm) {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md) !important;
+    .process-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 28px;
+      padding: 2.5rem 2rem;
+      position: relative;
+    }
+
+    .process-step-indicator {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--color-accent-warm);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .process-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .process-card-desc {
+      font-size: 0.88rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    .process-arrow {
+      position: absolute;
+      right: -1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.25rem;
+      color: var(--color-border);
+      z-index: 10;
     }
 
     .farm-image img {
@@ -210,7 +558,7 @@ import { farms, farmStatistics } from '../data/farms';
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.35));
+      background: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.25));
       pointer-events: none;
     }
 
@@ -228,7 +576,7 @@ import { farms, farmStatistics } from '../data/farms';
       }
 
       .farm-card {
-        grid-column: span 6 !important;
+        grid-column: span 12 !important;
       }
 
       .process-cards {
@@ -237,10 +585,6 @@ import { farms, farmStatistics } from '../data/farms';
     }
     
     @media (max-width: 768px) {
-      .farm-card {
-        grid-column: span 12 !important;
-      }
-
       .process-cards {
         grid-template-columns: 1fr !important;
       }

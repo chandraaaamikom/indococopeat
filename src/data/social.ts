@@ -4,28 +4,28 @@
 export interface SocialLink {
   name: string;
   url: string;
-  icon: string;
+  label: string;
 }
 
 export const socialLinks: SocialLink[] = [
   {
     name: 'WhatsApp',
-    url: 'https://wa.me/6282137097171',
-    icon: '💬',
+    url: 'https://wa.me/628112500112',
+    label: 'WA',
   },
   {
     name: 'Instagram',
     url: 'https://instagram.com/indococopeat',
-    icon: '📷',
+    label: 'IG',
   },
   {
     name: 'LinkedIn',
     url: 'https://linkedin.com/company/indococopeat',
-    icon: '💼',
+    label: 'LI',
   },
   {
     name: 'Facebook',
     url: 'https://facebook.com/indococopeat',
-    icon: '👥',
+    label: 'FB',
   },
 ];

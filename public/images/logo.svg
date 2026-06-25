@@ -1,0 +1,20 @@
+<svg viewBox="0 0 56 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Trunk (green) -->
+  <rect x="26" y="36" width="5" height="24" rx="2.5" fill="#526E4E"/>
+  <!-- Center dot (green) -->
+  <circle cx="28.5" cy="28" r="4" fill="#526E4E"/>
+  <!-- Frond Top-Left (green) -->
+  <ellipse cx="14" cy="16" rx="7" ry="13" transform="rotate(-30 14 16)" fill="#526E4E"/>
+  <!-- Frond Top (amber) -->
+  <ellipse cx="28.5" cy="10" rx="5.5" ry="12" fill="#E9A752"/>
+  <!-- Frond Top-Right (amber) -->
+  <ellipse cx="43" cy="16" rx="7" ry="13" transform="rotate(30 43 16)" fill="#E9A752"/>
+  <!-- Frond Left (green) -->
+  <ellipse cx="10" cy="28" rx="5" ry="12" transform="rotate(-70 10 28)" fill="#526E4E"/>
+  <!-- Frond Right (amber) -->
+  <ellipse cx="47" cy="28" rx="5" ry="12" transform="rotate(70 47 28)" fill="#E9A752"/>
+  <!-- Frond Bottom-Left (green) -->
+  <ellipse cx="16" cy="38" rx="5" ry="11" transform="rotate(-50 16 38)" fill="#526E4E"/>
+  <!-- Frond Bottom-Right (amber) -->
+  <ellipse cx="41" cy="38" rx="5" ry="11" transform="rotate(50 41 38)" fill="#E9A752"/>
+</svg>
