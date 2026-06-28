@@ -7,29 +7,58 @@ const officialAddress = `${company.address.street} - ${company.address.province}
 const whatsappMessage = encodeURIComponent('Hello INDOCOCOPEAT, I would like to request product catalog and export quotation.');
 const whatsappUrl = `https://wa.me/${company.whatsappNumber}?text=${whatsappMessage}`;
 const emailUrl = `mailto:${company.email}?subject=${encodeURIComponent('Product catalog and export quotation request')}`;
+const socialIconMap: Record<string, string> = {
+  WhatsApp: `
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.52 3.48A11.87 11.87 0 0 0 12.06 0C5.46 0 .1 5.36.1 11.96c0 2.1.55 4.16 1.6 5.98L0 24l6.2-1.63a11.94 11.94 0 0 0 5.86 1.5h.01c6.6 0 11.96-5.36 11.96-11.96 0-3.2-1.25-6.2-3.51-8.43ZM12.07 21.85h-.01a9.92 9.92 0 0 1-5.05-1.38l-.36-.21-3.68.97.98-3.59-.23-.37a9.9 9.9 0 0 1-1.51-5.31c0-5.45 4.43-9.88 9.88-9.88a9.8 9.8 0 0 1 6.98 2.9 9.8 9.8 0 0 1 2.89 6.98c0 5.45-4.43 9.89-9.89 9.89Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/>
+    </svg>
+  `,
+  Instagram: `
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/>
+      <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+    </svg>
+  `,
+  LinkedIn: `
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M6.94 8.98H3.92V20h3.02V8.98ZM5.43 4A1.75 1.75 0 1 0 5.4 7.5 1.75 1.75 0 0 0 5.43 4ZM20.1 13.7c0-3.02-1.62-4.42-3.78-4.42a3.25 3.25 0 0 0-2.95 1.62h-.04V8.98h-2.9V20h3.02v-5.45c0-1.44.27-2.83 2.05-2.83 1.75 0 1.78 1.64 1.78 2.92V20h3.02v-6.3h-.2Z"/>
+    </svg>
+  `,
+  Facebook: `
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M14.2 8.2V6.9c0-.65.15-1.05 1.08-1.05h1.45V3.2A18.6 18.6 0 0 0 14.6 3c-2.1 0-3.55 1.28-3.55 3.62V8.2H8.65v2.95h2.4V21h3.15v-9.85h2.45l.38-2.95h-2.83Z"/>
+    </svg>
+  `,
+};
+
+const getSocialIcon = (name: string) => socialIconMap[name] ?? socialIconMap.Facebook;
 ---
 
 <MainLayout
   title="Contact - INDOCOCOPEAT"
-  description="Contact PT. Abbasy Jaya Makmur for INDOCOCOPEAT product catalog, export quotation, WhatsApp inquiry, or email request."
+  description="Contact CV LOKA ADI JAYA"
   currentPage="contact"
 >
   <main class="page-content contact-page">
-    <section class="page-hero">
-      <div class="container">
-        <span class="section-badge-kicker">✦ Contact</span>
-        <h1 class="hero-section-title">Contact Us</h1>
-        <p class="hero-section-text">
-          Request product catalog, export quotation, or product information from the INDOCOCOPEAT team.
-        </p>
-      </div>
-    </section>
+    <section class="contact-section" aria-label="Contact details and export inquiry information">
+      <div class="contact-section__bg" aria-hidden="true"></div>
+      <div class="contact-section__overlay" aria-hidden="true"></div>
 
-    <section class="container contact-section" aria-label="Contact details and inquiry form">
-      <div class="contact-shell">
+      <section class="page-hero">
+        <div class="container hero-content">
+          <span class="section-badge-kicker">Contact</span>
+          <h1 class="hero-section-title">Contact CV LOKA ADI JAYA</h1>
+          <p class="hero-section-text">
+            Request product catalog, specifications, packing details, container loading informatio.
+          </p>
+        </div>
+      </section>
+
+      <div class="container contact-shell">
         <aside class="contact-panel" aria-label="Official contact information">
           <div class="contact-panel__body">
-            <span class="panel-kicker">OFFICIAL PARTNER</span>
+            <span class="panel-kicker">Official Company</span>
             <h2 class="panel-title">{company.legalName}</h2>
             <p class="contact-panel__intro">
               Official contact details for export inquiries and product catalog requests.
@@ -68,9 +97,16 @@ const emailUrl = `mailto:${company.email}?subject=${encodeURIComponent('Product 
 
             <div class="contact-panel__actions">
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="btn contact-whatsapp">
+                <svg class="action-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.52 3.48A11.87 11.87 0 0 0 12.06 0C5.46 0 .1 5.36.1 11.96c0 2.1.55 4.16 1.6 5.98L0 24l6.2-1.63a11.94 11.94 0 0 0 5.86 1.5h.01c6.6 0 11.96-5.36 11.96-11.96 0-3.2-1.25-6.2-3.51-8.43ZM12.07 21.85h-.01a9.92 9.92 0 0 1-5.05-1.38l-.36-.21-3.68.97.98-3.59-.23-.37a9.9 9.9 0 0 1-1.51-5.31c0-5.45 4.43-9.88 9.88-9.88a9.8 9.8 0 0 1 6.98 2.9 9.8 9.8 0 0 1 2.89 6.98c0 5.45-4.43 9.89-9.89 9.89Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/>
+                </svg>
                 Chat WhatsApp
               </a>
               <a href={emailUrl} class="btn contact-email">
+                <svg class="action-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 6.75h16v10.5H4V6.75Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="m4.75 7.5 7.25 5.25 7.25-5.25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
                 Send Email
               </a>
             </div>
@@ -79,82 +115,115 @@ const emailUrl = `mailto:${company.email}?subject=${encodeURIComponent('Product 
           <div class="contact-social">
             <span class="social-title">Connect with us</span>
             <div class="social-pills-row">
-              {socialLinks.map((social) => (
-                <a href={social.url} target="_blank" rel="noopener noreferrer" class="social-pill" aria-label={`Open ${social.name}`}>
-                  {social.label}
-                </a>
-              ))}
-            </div>
+  {socialLinks.map((social) => (
+    <a
+      href={social.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="social-pill"
+      aria-label={`Open ${social.name}`}
+      title={social.name}
+    >
+      <span class="social-pill-icon" set:html={getSocialIcon(social.name)}></span>
+    </a>
+  ))}
+</div>
           </div>
         </aside>
 
-        <section class="contact-form-card" aria-labelledby="contact-form-title">
-          <h2 id="contact-form-title" class="form-title">Send a message</h2>
-          <p class="form-intro">Use this form to prepare your inquiry. Our team will follow up shortly.</p>
+        <section class="contact-insight" aria-labelledby="contact-insight-title">
+          <h2 id="contact-insight-title" class="sr-only">Why work with us</h2>
 
-          <form id="contactForm" novalidate>
-            <div class="contact-form-grid">
-              <div class="form-field">
-                <label for="name" class="field-label">Name <span class="required-star">*</span></label>
-                <input id="name" name="name" type="text" autocomplete="name" class="animated-input" required />
-                <p class="field-error">Please enter your name.</p>
+          <div class="insight-list">
+            <article class="insight-item">
+              <span class="insight-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <path d="M24 39V20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M24 21c-8.5-8.8-15.5-8-17.5-7 0 6 2.8 14 17.5 14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M24 22c8.5-8.8 15.5-8 17.5-7 0 6-2.8 14-17.5 14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div>
+                <h3>Why Work With Us</h3>
+                <p>
+                  Consistent supply from selected coconut producing areas across Java with reliable
+                  quality and export-ready packaging.
+                </p>
               </div>
+            </article>
 
-              <div class="form-field">
-                <label for="email" class="field-label">Email <span class="required-star">*</span></label>
-                <input id="email" name="email" type="email" autocomplete="email" class="animated-input" required />
-                <p class="field-error">Please enter a valid email address.</p>
+            <article class="insight-item">
+              <span class="insight-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <path d="m24 7 15 8.5v17L24 41 9 32.5v-17L24 7Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M9 15.5 24 24l15-8.5" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M24 24v17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <div>
+                <h3>Products We Serve</h3>
+                <p>
+                  Cocopeat, cocofiber, coconut coir rope, cocopeat polybag, cocopeat block,
+                  and coconut shell briquettes.
+                </p>
               </div>
+            </article>
 
-              <div class="form-field">
-                <label for="companyName" class="field-label">Company</label>
-                <input id="companyName" name="companyName" type="text" class="animated-input" autocomplete="organization" />
+            <article class="insight-item">
+              <span class="insight-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2.5"/>
+                  <path d="M8 24h32M24 8c5 4.4 7.5 9.7 7.5 16S29 35.6 24 40c-5-4.4-7.5-9.7-7.5-16S19 12.4 24 8Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div>
+                <h3>Export Coverage</h3>
+                <p>
+                  We support export inquiries worldwide with flexible container loading and
+                  custom packaging.
+                </p>
               </div>
+            </article>
+          </div>
 
-              <div class="form-field">
-                <label for="country" class="field-label">Country</label>
-                <input id="country" name="country" type="text" class="animated-input" autocomplete="country-name" />
-              </div>
-
-              <div class="form-field form-field--wide">
-                <label for="message" class="field-label">Message <span class="required-star">*</span></label>
-                <textarea id="message" name="message" rows="6" class="animated-textarea" required></textarea>
-                <p class="field-error">Please write your message.</p>
-              </div>
+          <article class="catalog-card">
+            <span class="catalog-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none">
+                <path d="M15 7h14l8 8v26H15V7Z" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"/>
+                <path d="M29 7v9h8" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"/>
+                <path d="M23 22v9m0 0-4-4m4 4 4-4" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M30 35h6" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <div>
+              <h3>Request Product Catalog</h3>
+              <p>Request our latest product catalog and specifications.</p>
             </div>
-
-            <label class="privacy-check" for="privacy">
-              <input id="privacy" name="privacy" type="checkbox" required />
-              <span class="privacy-text">I agree that INDOCOCOPEAT may use this information to respond to my inquiry.</span>
-            </label>
-            <p id="privacyError" class="field-error privacy-error">Please confirm the privacy agreement.</p>
-
-            <div class="contact-form-footer">
-              <p id="formStatus" role="status" aria-live="polite">Fill the required fields to prepare your message.</p>
-              <button id="submitBtn" type="submit" class="btn submit-action-btn">
-                Send Message
-              </button>
-            </div>
-
-            <div id="successMsg" class="success-message" role="status" aria-live="polite">
-              Thank you. Your inquiry has been prepared. Please use WhatsApp or email for official submission.
-            </div>
-          </form>
+            <a href={emailUrl} class="btn catalog-btn">
+              <svg class="action-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 4v10m0 0-4-4m4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5 18h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              Request Catalog
+            </a>
+          </article>
         </section>
       </div>
     </section>
   </main>
 
   <style>
-    .contact-page {
-      background-color: var(--color-offwhite);
-      min-height: 100vh;
-      padding-top: var(--navbar-height);
-    }
+    
 
     .page-hero {
-      padding: 5rem 0 3rem;
+      position: relative;
+      padding: 5rem 0 2.5rem;
       text-align: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
     }
 
     .section-badge-kicker {
@@ -163,7 +232,7 @@ const emailUrl = `mailto:${company.email}?subject=${encodeURIComponent('Product 
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: var(--color-accent);
+      color: var(--color-accent-warm);
       margin-bottom: 1rem;
     }
 
@@ -171,13 +240,13 @@ const emailUrl = `mailto:${company.email}?subject=${encodeURIComponent('Product 
       font-family: var(--font-heading);
       font-size: clamp(2.5rem, 5vw, 4rem);
       margin-bottom: 1.25rem;
-      color: var(--color-primary);
+      color: var(--color-white);
       line-height: 1.1;
       font-weight: 700;
     }
 
     .hero-section-text {
-      color: var(--color-text-secondary);
+      color: rgba(255, 255, 255, 0.78);
       line-height: 1.7;
       font-size: 1.05rem;
       max-width: 620px;
@@ -185,28 +254,63 @@ const emailUrl = `mailto:${company.email}?subject=${encodeURIComponent('Product 
     }
 
     .contact-section {
-      padding-bottom: 6rem;
+      position: relative;
+      padding: 0 0 5.5rem;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .contact-section__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('/images/hero/bg-kelapa.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      z-index: -2;
+    }
+
+    .contact-section__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4, 8, 5, 0.72) 0%,
+      rgba(4, 8, 5, 0.75) 30%,
+      rgba(4, 8, 5, 0.82) 60%,
+      rgba(4, 8, 5, 0.92) 100%
+    );
+  z-index: -1;
+}
+
+    .contact-shell {
+      position: relative;
+      z-index: 1;
     }
 
     .contact-shell {
       display: grid;
-      grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.3fr);
+      grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.1fr);
       gap: 2.5rem;
-      align-items: stretch;
+      align-items: center;
     }
 
     .contact-panel {
-      border-radius: 32px;
+      border-radius: 24px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+      background: rgba(20, 38, 26, 0.55);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       color: var(--color-white);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
     }
 
     .contact-panel__body {
-      padding: 3rem;
+      padding: 2.5rem;
       flex: 1;
     }
 
@@ -293,6 +397,12 @@ const emailUrl = `mailto:${company.email}?subject=${encodeURIComponent('Product 
       gap: 1rem;
     }
 
+    .action-icon {
+      width: 1.05rem;
+      height: 1.05rem;
+      flex: 0 0 auto;
+    }
+
     .contact-whatsapp {
       background: #3d8a45;
       color: var(--color-white);
@@ -339,194 +449,171 @@ const emailUrl = `mailto:${company.email}?subject=${encodeURIComponent('Product 
     }
 
     .social-pills-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff !important;
+  padding: 0;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  text-decoration: none;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+
+.social-pill:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+  color: var(--color-primary) !important;
+  transform: translateY(-3px);
+}
+
+.social-pill-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: inherit !important;
+}
+
+/* Penting untuk SVG dari set:html di Astro */
+:global(.social-pill-icon svg) {
+  width: 18px !important;
+  height: 18px !important;
+  display: block !important;
+  color: inherit !important;
+}
+
+:global(.social-pill-icon svg path),
+:global(.social-pill-icon svg rect),
+:global(.social-pill-icon svg circle) {
+  color: inherit !important;
+}
+
+:global(.social-pill-icon svg [fill='currentColor']) {
+  fill: currentColor !important;
+}
+
+:global(.social-pill-icon svg [stroke='currentColor']) {
+  stroke: currentColor !important;
+}
+
+    .contact-insight {
       display: flex;
-      gap: 0.6rem;
-    }
-
-    .social-pill {
-      font-size: 0.75rem;
-      font-weight: 700;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      color: var(--color-white);
-      padding: 0.35rem 0.85rem;
-      border-radius: var(--radius-full);
-      transition: background-color 0.2s, border-color 0.2s;
-    }
-
-    .social-pill:hover {
-      border-color: var(--color-accent);
-      background-color: rgba(255,255,255,0.05);
+      min-height: 100%;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2.25rem;
       color: var(--color-white);
     }
 
-    /* Form Card Styles (Apple Minimalist Style) */
-    .contact-form-card {
-      background-color: var(--color-white);
-      border: 1px solid var(--color-border);
-      border-radius: 32px;
-      padding: 3.5rem;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+    .insight-list {
+      display: flex;
+      flex-direction: column;
     }
 
-    .form-title {
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
-      color: var(--color-primary);
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .form-intro {
-      font-size: 0.95rem;
-      color: var(--color-text-secondary);
-      margin-bottom: 3rem;
-    }
-
-    .contact-form-grid {
+    .insight-item {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2rem;
-    }
-
-    .form-field--wide {
-      grid-column: span 2;
-    }
-
-    .field-label {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--color-primary);
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .required-star {
-      color: var(--color-accent);
-    }
-
-    /* Apple-like bottom-line inputs */
-    .animated-input,
-    .animated-textarea {
-      width: 100%;
-      background: transparent;
-      border: none;
-      border-bottom: 2px solid var(--color-border);
-      padding: 0.8rem 0;
-      font-size: 1rem;
-      color: var(--color-text-primary);
-      outline: none;
-      transition: border-bottom-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      border-radius: 0;
-    }
-
-    .animated-textarea {
-      min-height: 9rem;
-      resize: vertical;
-      line-height: 1.6;
-    }
-
-    .animated-input:focus,
-    .animated-textarea:focus {
-      border-bottom-color: var(--color-primary);
-    }
-
-    .form-field.is-invalid .animated-input,
-    .form-field.is-invalid .animated-textarea {
-      border-bottom-color: var(--color-error);
-    }
-
-    .field-error {
-      display: none;
-      font-size: 0.8rem;
-      color: var(--color-error);
-      margin-top: 0.5rem;
-    }
-
-    .form-field.is-invalid .field-error,
-    .privacy-error.is-visible {
-      display: block;
-    }
-
-    .privacy-check {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      margin-top: 2rem;
-      cursor: pointer;
-    }
-
-    .privacy-check input {
-      margin-top: 0.25rem;
-      accent-color: var(--color-primary);
-    }
-
-    .privacy-text {
-      font-size: 0.88rem;
-      color: var(--color-text-secondary);
-      line-height: 1.5;
-    }
-
-    .privacy-error {
-      margin-top: 0.5rem;
-    }
-
-    .contact-form-footer {
-      display: flex;
-      justify-content: space-between;
+      grid-template-columns: 5.25rem minmax(0, 1fr);
+      gap: 1.65rem;
       align-items: center;
-      gap: 2rem;
-      margin-top: 2.5rem;
-      border-top: 1px solid var(--color-offwhite);
-      padding-top: 2rem;
+      padding: 1.9rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
     }
 
-    #formStatus {
+    .insight-item:first-child {
+      padding-top: 0;
+    }
+
+    .insight-icon,
+    .catalog-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 4.25rem;
+      height: 4.25rem;
+      border-radius: 50%;
+      color: #f1b44f;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background:
+        radial-gradient(circle at 35% 20%, rgba(255, 255, 255, 0.14), transparent 48%),
+        rgba(12, 58, 38, 0.76);
+      box-shadow: inset 0 0 28px rgba(255, 255, 255, 0.04);
+    }
+
+    .insight-icon svg,
+    .catalog-icon svg {
+      width: 2.1rem;
+      height: 2.1rem;
+    }
+
+    .insight-item h3,
+    .catalog-card h3 {
+      margin: 0 0 0.55rem;
+      color: var(--color-white);
+      font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+      line-height: 1.25;
+      font-weight: 800;
+    }
+
+    .insight-item p,
+    .catalog-card p {
+      max-width: 28rem;
       margin: 0;
-      font-size: 0.88rem;
-      color: var(--color-text-muted);
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 0.98rem;
+      line-height: 1.72;
+      text-wrap: pretty;
     }
 
-    #formStatus.is-ready {
-      color: var(--color-primary);
-      font-weight: 600;
+    .catalog-card {
+      display: grid;
+      grid-template-columns: 4.75rem minmax(0, 1fr) auto;
+      gap: 1.6rem;
+      align-items: center;
+      padding: 1.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.17);
+      border-radius: 14px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(11, 42, 27, 0.68)),
+        rgba(25, 52, 35, 0.5);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
     }
 
-    #formStatus.is-error {
-      color: var(--color-error);
-      font-weight: 600;
+    .catalog-card h3 {
+      color: #f1b44f;
     }
 
-    .submit-action-btn {
-      background-color: var(--color-primary);
-      color: white;
-      padding: 0.9rem 2.5rem;
+    .catalog-btn {
+      min-height: 3rem;
+      padding: 0.75rem 1.35rem;
+      border: 1.5px solid rgba(241, 180, 79, 0.78);
+      color: #f1b44f;
+      background: rgba(10, 26, 18, 0.18);
       border-radius: var(--radius-full);
-      font-weight: 600;
-      transition: background-color 0.2s, transform 0.2s;
+      font-weight: 700;
     }
 
-    .submit-action-btn:hover {
-      background-color: var(--color-primary-dark);
-      transform: translateY(-1px);
-      color: white;
-    }
-
-    .success-message {
-      display: none;
-      margin-top: 1.5rem;
-      padding: 1.25rem;
-      border-radius: 16px;
-      background: rgba(26, 54, 38, 0.05);
-      color: var(--color-primary);
-      font-size: 0.9rem;
-      line-height: 1.6;
-      border: 1px solid var(--color-primary);
-    }
-
-    .success-message.is-visible {
-      display: block;
+    .catalog-btn:hover {
+      color: #162617;
+      border-color: #f1b44f;
+      background: #f1b44f;
+      transform: translateY(-2px);
     }
 
     @media (max-width: 1000px) {
@@ -534,123 +621,47 @@ const emailUrl = `mailto:${company.email}?subject=${encodeURIComponent('Product 
         grid-template-columns: 1fr;
         gap: 2rem;
       }
+
+      .contact-section__bg {
+        background-attachment: scroll;
+      }
     }
 
     @media (max-width: 640px) {
-      .contact-form-card {
+      .page-hero {
+        padding: 3.5rem 0 2rem;
+      }
+
+      .contact-panel__body {
         padding: 2rem;
       }
 
-      .contact-form-grid {
+      .contact-panel__actions,
+      .catalog-card {
         grid-template-columns: 1fr;
       }
 
-      .contact-form-footer {
+      .contact-social {
         flex-direction: column;
-        align-items: stretch;
-        gap: 1.5rem;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.5rem 2rem;
       }
 
-      .submit-action-btn {
-        width: 100%;
-        text-align: center;
+      .insight-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1.6rem 0;
+      }
+
+      .catalog-card {
+        gap: 1rem;
+        padding: 1.5rem;
+      }
+
+      .catalog-btn {
+        justify-self: start;
       }
     }
   </style>
-
-  <script is:inline>
-    document.addEventListener('DOMContentLoaded', function () {
-      var form = document.getElementById('contactForm');
-      var status = document.getElementById('formStatus');
-      var success = document.getElementById('successMsg');
-      var submitBtn = document.getElementById('submitBtn');
-      var privacy = document.getElementById('privacy');
-      var privacyError = document.getElementById('privacyError');
-
-      function getWrapper(field) {
-        return field.closest('.form-field');
-      }
-
-      function validateField(field, showError) {
-        var wrapper = getWrapper(field);
-        var valid = field.checkValidity();
-
-        if (wrapper && showError) {
-          wrapper.classList.toggle('is-invalid', !valid);
-        }
-
-        return valid;
-      }
-
-      function updateStatus() {
-        var requiredFields = form.querySelectorAll('input[required]:not([type="checkbox"]), textarea[required]');
-        var fieldsReady = Array.prototype.every.call(requiredFields, function (field) {
-          return field.checkValidity() && field.value.trim() !== '';
-        });
-        var ready = fieldsReady && privacy.checked;
-
-        status.classList.remove('is-error', 'is-ready');
-
-        if (ready) {
-          status.classList.add('is-ready');
-          status.textContent = 'All good. Your message is ready.';
-        } else {
-          status.textContent = 'Fill the required fields to prepare your message.';
-        }
-      }
-
-      form.querySelectorAll('input, textarea').forEach(function (field) {
-        field.addEventListener('input', function () {
-          validateField(field, false);
-          if (field === privacy) {
-            privacyError.classList.remove('is-visible');
-          }
-          updateStatus();
-        });
-
-        field.addEventListener('blur', function () {
-          if (field.type !== 'checkbox') {
-            validateField(field, field.hasAttribute('required') && field.value.trim() !== '');
-          }
-          updateStatus();
-        });
-      });
-
-      form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        success.classList.remove('is-visible');
-
-        var requiredFields = form.querySelectorAll('input[required]:not([type="checkbox"]), textarea[required]');
-        var validFields = Array.prototype.every.call(requiredFields, function (field) {
-          return validateField(field, true);
-        });
-        var validPrivacy = privacy.checked;
-
-        privacyError.classList.toggle('is-visible', !validPrivacy);
-
-        if (!validFields || !validPrivacy) {
-          status.classList.add('is-error');
-          status.textContent = 'Please complete the required fields before sending.';
-          return;
-        }
-
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Preparing message';
-
-        window.setTimeout(function () {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Send Message';
-          success.classList.add('is-visible');
-          form.reset();
-          form.querySelectorAll('.form-field').forEach(function (wrapper) {
-            wrapper.classList.remove('is-invalid');
-          });
-          privacyError.classList.remove('is-visible');
-          updateStatus();
-        }, 650);
-      });
-
-      updateStatus();
-    });
-  </script>
 </MainLayout>

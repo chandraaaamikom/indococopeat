@@ -18,7 +18,7 @@ export const company = {
   },
   hotline: '08112500112',
   whatsappNumber: '628112500112',
-  email: 'indococopeat@gmail.com',
+  email: 'info.indococopeat@gmail.com',
   website: 'https://indonesiacocopeat.com',
 };
 
@@ -32,39 +32,39 @@ export const statistics = [
 export const whyChooseUs = [
   {
     icon: 'Natural',
-    title: 'Sustainable Production',
+    title: 'Sustainable Raw Materials',
     description:
-      'We turn coconut husk byproducts into practical growing media for agriculture, horticulture, and hydroponic use.',
+      'We process coconut husk byproducts into cocopeat and coconut fiber products for agriculture, horticulture, hydroponic systems, and industrial use.',
   },
   {
     icon: 'Supply',
-    title: 'Reliable Supply Chain',
+    title: 'Java Coconut Supply Base',
     description:
-      'Our regional sourcing network helps maintain consistent raw material availability for export orders.',
+      'Our supply network is supported by selected coconut-producing areas across Java, with an estimated coconut farmer base of up to ±140,000 farmers across key regions.',
   },
   {
     icon: 'Quality',
-    title: 'Export Quality Standards',
+    title: 'Product Specification Control',
     description:
-      'Products are prepared with attention to moisture, pH, EC levels, packing, and container loading needs.',
+      'Our products are prepared with attention to moisture, pH, electrical conductivity, impurities, packing, and container loading requirements.',
   },
   {
     icon: 'Process',
-    title: 'Professional Processing',
+    title: 'Processed for Buyer Needs',
     description:
-      'Coconut husks are processed, dried, compressed, and packed with buyer specifications in mind.',
+      'Coconut husks are collected, separated, dried, compressed, and packed into products such as polybag, cocofiber, coir rope, block, and briquettes.',
   },
   {
     icon: 'Global',
-    title: 'International Buyer Focus',
+    title: 'Domestic & Export Support',
     description:
-      'We support export inquiries with clear product specifications, documentation awareness, and responsive communication.',
+      'We support buyer needs for domestic supply and export inquiries, including cocopeat polybag demand for China and growbag demand for Korea.',
   },
   {
     icon: 'Partner',
-    title: 'Long Term Partnership',
+    title: 'Practical Product Options',
     description:
-      'Our team works with buyers who need dependable coconut fiber products from Indonesia over the long term.',
+      'We provide several product options, including cocopeat polybag, cocopeat block, cocofiber, coconut coir rope, shisha briquettes, and BBQ briquettes.',
   },
 ];
 

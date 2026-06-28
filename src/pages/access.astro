@@ -5,6 +5,10 @@ import { company } from '../data/company';
 
 const title = 'INDOCOCOPEAT - Private Access';
 const description = 'Private access portal for INDOCOCOPEAT export partners and buyers.';
+const accessMedia = {
+  product: '/images/hero/bg-kelapa.webp',
+  logo: '/images/Indococopeat.png',
+};
 ---
 
 <!DOCTYPE html>
@@ -20,166 +24,285 @@ const description = 'Private access portal for INDOCOCOPEAT export partners and 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
+
   <body class="access-body">
     <main class="access-page">
-      
-      <!-- Logo Header -->
-      <header class="access-header">
-        <div class="access-logo">
-          <span class="logo-indo">INDO</span><span class="logo-coco">COCOPEAT</span>
-        </div>
-        <span class="access-pill">Secure Partner Access</span>
-      </header>
+      <section class="access-shell" aria-labelledby="access-title">
+        <div class="access-card">
+          <div class="access-card__left">
+            <header class="access-brand" aria-label="INDOCOCOPEAT">
+              <img
+                src={accessMedia.logo}
+                alt="Indococopeat logo"
+                class="access-brand__logo"
+              />
 
-      <!-- Glassmorphic Form Card -->
-      <section class="access-main">
-        <div class="access-container">
-          
-          <div class="lock-graphic">
-            <!-- Modern Minimal Lock Icon -->
-            <svg class="lock-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <rect x="5" y="11" width="14" height="10" rx="2" stroke-width="2"/>
-              <path d="M8 11V7C8 4.79 9.79 3 12 3C14.21 3 16 4.79 16 7V11" stroke-width="2"/>
-            </svg>
-          </div>
+              <div class="access-brand__text">
+                <span class="logo-indo">INDO</span><span class="logo-coco">COCOPEAT</span>
+              </div>
+            </header>
 
-          <h1 id="access-title" class="access-heading">Private Portal</h1>
-          <p class="access-subtext">Enter your partner access passcode below to access the global catalog and pricing.</p>
+            <div class="access-copy">
+              <span class="access-pill">Secure Partner Access</span>
 
-          <form id="accessForm" novalidate>
-            <div class="input-wrap">
-              <input id="accessCode" name="accessCode" type="password" autocomplete="off" placeholder="••••••••••••" required />
-              <div class="input-glow"></div>
+              <h1 id="access-title" class="access-heading">
+                Private <span>Portal</span><br />
+                Partner Area
+              </h1>
+
+              <p class="access-subtext">
+                Enter your partner access passcode below to access the global catalog and pricing.
+              </p>
+
+              <form id="accessForm" novalidate>
+                <div class="input-wrap">
+                  <input
+                    id="accessCode"
+                    name="accessCode"
+                    type="password"
+                    autocomplete="off"
+                    placeholder="............"
+                    required
+                  />
+                  <button
+                    type="button"
+                    id="toggleAccessCode"
+                    class="toggle-visibility-btn"
+                    aria-label="Show passcode"
+                    aria-pressed="false"
+                  >
+                    <svg class="icon-eye" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 5c-5.05 0-9.27 3.11-11 7.5 1.73 4.39 5.95 7.5 11 7.5s9.27-3.11 11-7.5C21.27 8.11 17.05 5 12 5Zm0 12.5a5 5 0 1 1 0-10 5 5 0 0 1 0 10Zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
+                    </svg>
+                    <svg class="icon-eye-off" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M3.28 2.22 2.22 3.28l3.1 3.1C3.36 7.96 1.86 9.96 1 12.5c1.73 4.39 5.95 7.5 11 7.5 1.95 0 3.76-.44 5.34-1.22l3.38 3.38 1.06-1.06L3.28 2.22ZM12 17.5a5 5 0 0 1-5-5c0-.76.17-1.48.46-2.13l1.55 1.55a3 3 0 0 0 3.57 3.57l1.55 1.55c-.65.29-1.37.46-2.13.46Zm-.66-7.91 4.57 4.57c.06-.21.09-.43.09-.66a3 3 0 0 0-3-3c-.23 0-.45.03-.66.09ZM12 7c5.05 0 9.27 3.11 11 7.5a13.4 13.4 0 0 1-2.06 3.49l-1.42-1.42A11.4 11.4 0 0 0 21 14.5C19.27 10.11 15.05 7 12 7c-.64 0-1.27.04-1.88.13L8.6 5.6C9.68 5.21 10.82 5 12 5v2Z" />
+                    </svg>
+                  </button>
+                </div>
+
+                <p id="accessError" class="access-error" role="alert">
+                  Access passcode is incorrect. Please try again.
+                </p>
+
+                <button id="accessButton" type="submit" class="access-submit-btn">
+                  <span>Verify Access</span>
+                  <span aria-hidden="true">&#8599;</span>
+                </button>
+              </form>
             </div>
-            <p id="accessError" class="access-error" role="alert">Access passcode is incorrect. Please try again.</p>
-            <button id="accessButton" type="submit" class="access-submit-btn">Verify Access</button>
-          </form>
 
-          <div class="access-help">
-            Need an access code? Contact <a href={`mailto:${company.email}`}>{company.email}</a>.
+            <div class="access-help">
+              Need an access code? <a href={`mailto:${company.email}`}>Contact {company.email}</a>
+            </div>
           </div>
+
+          <aside class="access-card__right" aria-label="Premium cocopeat preview">
+            <div class="quality-pill">
+              <span aria-hidden="true"></span>
+              Premium Cocopeat
+            </div>
+
+            <div class="media-stage">
+              <div class="media-frame">
+                <img src={accessMedia.product} alt="Premium Indonesian cocopeat and coconut fiber" />
+              </div>
+
+              <div class="social-float" aria-label="Social links">
+                <a
+                  href={`https://wa.me/${company.whatsappNumber}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open WhatsApp"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12.04 4a7.86 7.86 0 0 0-6.76 11.86L4 20l4.25-1.24A7.95 7.95 0 1 0 12.04 4Zm4.6 11.26c-.2.58-1.16 1.08-1.6 1.12-.43.04-.96.06-1.55-.1-.36-.1-.82-.26-1.42-.52-2.5-1.08-4.13-3.6-4.25-3.76-.12-.16-1.02-1.36-1.02-2.58 0-1.24.64-1.84.86-2.1.22-.26.5-.32.66-.32h.48c.16 0 .36-.06.56.42.2.5.68 1.72.74 1.84.06.12.1.28.02.44-.08.16-.12.26-.24.4-.12.14-.26.32-.36.42-.12.12-.24.24-.1.48.14.24.62 1.02 1.34 1.66.92.82 1.68 1.08 1.94 1.2.24.12.38.1.54-.06.16-.18.62-.72.78-.96.16-.24.34-.2.56-.12.24.08 1.5.7 1.76.84.26.12.44.18.5.3.06.12.06.68-.14 1.26Z" />
+                  </svg>
+                </a>
+
+                <a
+                  href="https://instagram.com/indococopeat"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open Instagram"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7.7 3h8.6A4.7 4.7 0 0 1 21 7.7v8.6a4.7 4.7 0 0 1-4.7 4.7H7.7A4.7 4.7 0 0 1 3 16.3V7.7A4.7 4.7 0 0 1 7.7 3Zm.1 2A2.8 2.8 0 0 0 5 7.8v8.4A2.8 2.8 0 0 0 7.8 19h8.4a2.8 2.8 0 0 0 2.8-2.8V7.8A2.8 2.8 0 0 0 16.2 5H7.8Zm8.82 1.55a.95.95 0 1 1 0 1.9.95.95 0 0 1 0-1.9ZM12 7.4a4.6 4.6 0 1 1 0 9.2 4.6 4.6 0 0 1 0-9.2Zm0 2a2.6 2.6 0 1 0 0 5.2 2.6 2.6 0 0 0 0-5.2Z" />
+                  </svg>
+                </a>
+
+                <a
+                  href="https://facebook.com/indococopeat"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open Facebook"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M13.7 21v-7.3h2.46l.37-2.86H13.7V9.02c0-.82.23-1.38 1.42-1.38h1.5V5.08A20.7 20.7 0 0 0 14.42 5c-2.18 0-3.67 1.33-3.67 3.78v2.06H8.28v2.86h2.47V21h2.95Z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <footer class="access-footer">
+              <strong>{company.legalName}</strong>
+              <span>{company.address.city}, {company.address.country}</span>
+            </footer>
+          </aside>
         </div>
       </section>
-
-      <!-- Footer Info -->
-      <footer class="access-footer">
-        <span>{company.legalName}</span>
-        <span>{company.address.city}, {company.address.country}</span>
-      </footer>
     </main>
 
     <style>
       .access-body {
         min-height: 100vh;
         margin: 0;
-        background-color: var(--color-primary-dark);
-        color: var(--color-white);
+        background-color: #07180f;
+        color: #101522;
         font-family: var(--font-body);
         overflow-x: hidden;
       }
 
       .access-page {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background: radial-gradient(circle at center, #1e452f 0%, #0e2016 100%);
-        padding: 2rem;
+        min-height: 100dvh;
+        display: grid;
+        place-items: center;
+        padding: clamp(1rem, 3vw, 3.5rem);
+        background:
+          linear-gradient(90deg, rgba(4, 16, 9, 0.48), rgba(7, 25, 14, 0.2)),
+          url('/images/hero/bg-fiber.webp') center / cover no-repeat;
+        position: relative;
+        isolation: isolate;
       }
 
-      .access-header {
-        display: flex;
+      .access-page::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: rgba(0, 18, 8, 0.52);
+        backdrop-filter: blur(8px) saturate(0.9);
+        -webkit-backdrop-filter: blur(8px) saturate(0.9);
+      }
+
+      .access-page::after {
+        content: '';
+        position: absolute;
+        inset: auto 0 0;
+        height: 44%;
+        z-index: -1;
+        background: linear-gradient(to top, rgba(1, 12, 7, 0.74), transparent);
+      }
+
+      .access-shell {
+        width: min(100%, 1100px);
+      }
+
+      .access-card {
+        min-height: min(680px, calc(100dvh - 2rem));
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+        gap: clamp(2rem, 5vw, 4.25rem);
+        padding: clamp(2rem, 4vw, 3rem);
+        background: #ffffff;
+        border-radius: clamp(1.4rem, 2.4vw, 2.05rem);
+        box-shadow:
+          0 34px 100px rgba(0, 0, 0, 0.36),
+          0 2px 0 rgba(255, 255, 255, 0.45) inset;
+      }
+
+      .access-card__left {
+        min-height: 100%;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        align-items: start;
+      }
+
+      .access-brand {
+        display: inline-flex;
         align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
+        gap: 0.75rem;
+        width: fit-content;
       }
 
-      .access-logo {
-        font-size: 1.25rem;
+      .access-brand__logo {
+        width: 38px;
+        height: 38px;
+        display: block;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
+      .access-brand__text {
+        display: inline-flex;
+        align-items: center;
+        font-size: 1.16rem;
         font-weight: 800;
-        letter-spacing: -0.01em;
+        line-height: 1;
+        letter-spacing: 0.01em;
       }
 
       .logo-indo {
-        color: var(--color-white);
+        color: #111827;
       }
 
       .logo-coco {
-        color: var(--color-accent);
+        color: #d18c00;
+      }
+
+      .access-copy {
+        align-self: center;
+        max-width: 440px;
       }
 
       .access-pill {
-        padding: 0.4rem 1rem;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: var(--radius-full);
-        background: rgba(255, 255, 255, 0.05);
-        color: rgba(255, 255, 255, 0.75);
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-      }
-
-      .access-main {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 3rem 0;
-      }
-
-      /* Premium Glassmorphic Portal Box */
-      .access-container {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 32px;
-        padding: 3.5rem 3rem;
-        max-width: 440px;
-        width: 100%;
-        text-align: center;
-        box-shadow: 0 32px 80px rgba(0,0,0,0.3);
-      }
-
-      .lock-graphic {
-        width: 3.5rem;
-        height: 3.5rem;
-        border-radius: 50%;
-        background: rgba(200, 137, 42, 0.1);
-        color: var(--color-accent-warm);
         display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-      }
-
-      .lock-svg {
-        width: 1.5rem;
-        height: 1.5rem;
+        width: fit-content;
+        padding: 0.42rem 0.95rem;
+        border: 1px solid #dfe4eb;
+        border-radius: 999px;
+        background: #fff;
+        color: #697386;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.105em;
+        text-transform: uppercase;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+        margin-bottom: clamp(2.8rem, 6vh, 4rem);
       }
 
       .access-heading {
         font-family: var(--font-heading);
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--color-white);
-        margin-bottom: 0.5rem;
+        font-size: clamp(2.35rem, 4vw, 3.55rem);
+        font-weight: 800;
+        letter-spacing: 0;
+        line-height: 1.12;
+        color: #101522;
+        margin-bottom: 1.05rem;
+        text-wrap: balance;
+      }
+
+      .access-heading span {
+        display: inline-block;
+        padding: 0.03em 0.36em 0.12em;
+        margin-left: 0.1em;
+        color: #f8fff6;
+        background: #092f1c;
+        border-radius: 999px;
+        font-weight: 600;
       }
 
       .access-subtext {
-        font-size: 0.88rem;
-        color: rgba(255, 255, 255, 0.65);
-        line-height: 1.6;
-        margin-bottom: 2.25rem;
+        max-width: 420px;
+        font-size: 0.96rem;
+        color: #6d7788;
+        line-height: 1.65;
+        margin-bottom: 2rem;
       }
 
       #accessForm {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 0.95rem;
       }
 
       .input-wrap {
@@ -189,33 +312,81 @@ const description = 'Private access portal for INDOCOCOPEAT export partners and 
 
       #accessCode {
         width: 100%;
-        background: rgba(255,255,255,0.04);
-        border: 1.5px solid rgba(255, 255, 255, 0.12);
-        border-radius: var(--radius-full);
-        padding: 0.95rem 1.5rem;
+        min-height: 54px;
+        background: #f9fafb;
+        border: 1px solid #e4e8ef;
+        border-radius: 16px;
+        padding: 0.95rem 3.1rem 0.95rem 1.35rem;
         font-size: 1rem;
-        color: var(--color-white);
+        color: #111827;
         outline: none;
-        text-align: center;
-        letter-spacing: 0.25em;
-        transition: border-color 0.3s, background-color 0.3s;
+        letter-spacing: 0.28em;
+        transition: border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
       }
 
       #accessCode:focus {
-        border-color: var(--color-accent);
-        background: rgba(255, 255, 255, 0.08);
+        border-color: #d18c00;
+        background: #fff;
+        box-shadow: 0 0 0 4px rgba(209, 140, 0, 0.1);
       }
 
       #accessCode.is-error {
         border-color: var(--color-error);
-        background: rgba(180, 59, 59, 0.08);
+        background: var(--color-error-bg);
+      }
+
+      .toggle-visibility-btn {
+        position: absolute;
+        top: 50%;
+        right: 0.7rem;
+        transform: translateY(-50%);
+        width: 34px;
+        height: 34px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        border-radius: 10px;
+        color: #9aa3b2;
+        cursor: pointer;
+        padding: 0;
+        transition: color 0.18s ease, background-color 0.18s ease;
+      }
+
+      .toggle-visibility-btn:hover {
+        color: #555f6e;
+        background: rgba(15, 23, 42, 0.06);
+      }
+
+      .toggle-visibility-btn:focus-visible {
+        outline: 2px solid #d18c00;
+        outline-offset: 2px;
+      }
+
+      .toggle-visibility-btn svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+      }
+
+      .toggle-visibility-btn .icon-eye-off {
+        display: none;
+      }
+
+      .toggle-visibility-btn[aria-pressed="true"] .icon-eye {
+        display: none;
+      }
+
+      .toggle-visibility-btn[aria-pressed="true"] .icon-eye-off {
+        display: inline-flex;
       }
 
       .access-error {
         display: none;
-        color: #ff6b6b;
+        color: var(--color-error);
         font-size: 0.8rem;
-        margin-top: 0.25rem;
+        margin-top: -0.1rem;
       }
 
       .access-error.is-visible {
@@ -223,39 +394,48 @@ const description = 'Private access portal for INDOCOCOPEAT export partners and 
       }
 
       .access-submit-btn {
-        background-color: var(--color-accent);
-        color: var(--color-white);
-        padding: 0.95rem;
-        border-radius: var(--radius-full);
-        font-size: 0.92rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.65rem;
+        min-height: 54px;
+        background-color: #d18c00;
+        color: #fff;
+        padding: 0.95rem 1.5rem;
+        border-radius: 14px;
+        font-size: 0.98rem;
         font-weight: 700;
         cursor: pointer;
-        transition: background-color 0.2s, transform 0.2s;
+        transition: background-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
         border: none;
-        margin-top: 0.5rem;
+        box-shadow: 0 16px 30px rgba(209, 140, 0, 0.2);
       }
 
       .access-submit-btn:hover {
-        background-color: var(--color-accent-dark);
-        transform: translateY(-1px);
+        background-color: #bd7f00;
+        transform: translateY(-2px);
+        box-shadow: 0 20px 36px rgba(209, 140, 0, 0.26);
+      }
+
+      .access-submit-btn:active {
+        transform: translateY(0) scale(0.99);
       }
 
       .access-submit-btn:disabled {
         opacity: 0.65;
         cursor: not-allowed;
+        transform: none;
       }
 
       .access-help {
-        margin-top: 2rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-        font-size: 0.8rem;
-        color: rgba(255, 255, 255, 0.45);
+        align-self: end;
+        font-size: 0.86rem;
+        color: #737d90;
       }
 
       .access-help a {
-        color: var(--color-accent-warm);
-        font-weight: 600;
+        color: #d18c00;
+        font-weight: 700;
         text-decoration: none;
       }
 
@@ -263,32 +443,234 @@ const description = 'Private access portal for INDOCOCOPEAT export partners and 
         text-decoration: underline;
       }
 
-      .access-footer {
-        display: flex;
-        justify-content: space-between;
+      .access-card__right {
+        min-height: 100%;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
         align-items: center;
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        font-size: 0.75rem;
-        color: rgba(255, 255, 255, 0.45);
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        padding-top: 1.5rem;
+        justify-items: center;
+        position: relative;
+        padding-top: 2rem;
       }
 
-      @media (max-width: 500px) {
-        .access-page {
-          padding: 1.25rem;
+      .quality-pill {
+        justify-self: center;
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.58rem 1.05rem;
+        border-radius: 999px;
+        background: #fff;
+        color: #111827;
+        font-size: 0.82rem;
+        font-weight: 700;
+        box-shadow: 0 9px 26px rgba(15, 23, 42, 0.1);
+        margin-bottom: 1.15rem;
+      }
+
+      .quality-pill span {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: #22c55e;
+      }
+
+      .media-stage {
+        width: min(100%, 390px);
+        position: relative;
+        padding-bottom: 82px;
+        filter: drop-shadow(0 26px 48px rgba(15, 23, 42, 0.14));
+      }
+
+      .media-frame {
+        width: 100%;
+        aspect-ratio: 0.98;
+        position: relative;
+        overflow: hidden;
+        border-radius: 22px;
+        background: #e6e0d5;
+      }
+
+      .media-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 0% 87%;
+        transform: scale(1.5);
+        filter: saturate(0.86) contrast(1.04) brightness(0.82);
+      }
+
+      .social-float {
+        position: absolute;
+        right: 18px;
+        bottom: 44px;
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        gap: 0.78rem;
+        padding: 0.78rem 0.98rem;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 16px 34px rgba(15, 23, 42, 0.16);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      .social-float a {
+        width: 34px;
+        height: 34px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: #fff;
+        color: #111827;
+        box-shadow: 0 6px 16px rgba(15, 23, 42, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .social-float a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 22px rgba(15, 23, 42, 0.16);
+      }
+
+      .social-float svg {
+        width: 21px;
+        height: 21px;
+        fill: currentColor;
+      }
+
+      .social-float a:nth-child(1) {
+        color: #22c55e;
+      }
+
+      .social-float a:nth-child(2) {
+        color: #d9468f;
+      }
+
+      .social-float a:nth-child(3) {
+        color: #1877f2;
+      }
+
+      .access-footer {
+        justify-self: end;
+        display: grid;
+        gap: 0.18rem;
+        text-align: right;
+        font-size: 0.74rem;
+        color: #7a8496;
+        margin-top: -18px;
+        padding-right: 0.1rem;
+      }
+
+      .access-footer strong {
+        color: #172033;
+        font-size: 0.78rem;
+        letter-spacing: 0;
+      }
+
+      @media (max-width: 900px) {
+        .access-card {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          min-height: auto;
         }
 
-        .access-container {
-          padding: 2.5rem 1.5rem;
+        .access-card__left {
+          gap: 3rem;
+        }
+
+        .access-card__right {
+          padding-top: 0;
+        }
+
+        .media-stage {
+          width: min(100%, 520px);
+          padding-bottom: 84px;
+        }
+
+        .media-frame {
+          aspect-ratio: 1.35;
+        }
+
+        .social-float {
+          right: 20px;
+          bottom: 44px;
+        }
+      }
+
+      .access-footer {
+        justify-self: center;
+        text-align: center;
+        margin-top: -16px;
+        padding-right: 0;
+      }
+
+      @media (max-width: 560px) {
+        .access-page {
+          padding: 0.85rem;
+        }
+
+        .access-card {
+          padding: 1.35rem;
+          border-radius: 1.35rem;
+        }
+
+        .access-card__left {
+          gap: 2.35rem;
+        }
+
+        .access-brand__logo {
+          width: 34px;
+          height: 34px;
+        }
+
+        .access-brand__text {
+          font-size: 1.02rem;
+        }
+
+        .access-pill {
+          margin-bottom: 2rem;
+        }
+
+        .access-heading {
+          font-size: clamp(2.2rem, 12vw, 3rem);
+        }
+
+        .media-stage {
+          width: 100%;
+          padding-bottom: 86px;
+        }
+
+        .media-frame {
+          aspect-ratio: 1;
+          border-radius: 18px;
+        }
+
+        .media-frame::after {
+          width: 54%;
+          height: 64px;
+          border-top-left-radius: 18px;
+        }
+
+        .social-float {
+          left: 50%;
+          right: auto;
+          bottom: 44px;
+          transform: translateX(-50%);
+          padding: 0.7rem 0.82rem;
+          border-radius: 20px;
+        }
+
+        .social-float a:hover {
+          transform: translateY(-2px);
         }
 
         .access-footer {
-          flex-direction: column;
-          gap: 0.5rem;
           text-align: center;
+          justify-self: center;
+          margin-top: -16px;
+          padding-right: 0;
         }
       }
     </style>
@@ -321,6 +703,7 @@ const description = 'Private access portal for INDOCOCOPEAT export partners and 
         var input = document.getElementById('accessCode');
         var button = document.getElementById('accessButton');
         var error = document.getElementById('accessError');
+        var toggleBtn = document.getElementById('toggleAccessCode');
 
         function showError() {
           error.classList.add('is-visible');
@@ -334,6 +717,13 @@ const description = 'Private access portal for INDOCOCOPEAT export partners and 
         }
 
         input.addEventListener('input', clearError);
+
+        toggleBtn.addEventListener('click', function () {
+          var isHidden = input.type === 'password';
+          input.type = isHidden ? 'text' : 'password';
+          toggleBtn.setAttribute('aria-pressed', isHidden ? 'true' : 'false');
+          toggleBtn.setAttribute('aria-label', isHidden ? 'Hide passcode' : 'Show passcode');
+        });
 
         form.addEventListener('submit', function (event) {
           event.preventDefault();

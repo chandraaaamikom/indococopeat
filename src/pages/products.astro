@@ -5,7 +5,7 @@ import { products, productCategories } from '../data/products';
 
 <MainLayout
   title="Products - INDOCOCOPEAT"
-  description="Explore INDOCOCOPEAT cocopeat and coconut fiber products, including cocopeat polybag, cocofiber, coir rope, and cocopeat brick."
+  description="Explore INDOCOCOPEAT cocopeat and coconut derivative products, including cocopeat polybag, cocopeat block, cocofiber, coconut coir rope, and coconut shell briquettes."
   currentPage="products"
 >
   <main class="page-content products-page">
@@ -13,12 +13,12 @@ import { products, productCategories } from '../data/products';
     <!-- Header -->
     <div class="page-hero-section">
       <div class="container products-hero-content">
-        <span class="section-badge-kicker">✦ Our Products</span>
+        <span class="section-badge-kicker">OUR PRODUCTS</span>
         <h1 class="hero-section-title">
-          Product Catalog
+          Cocopeat & Coconut Derivative Products
         </h1>
         <p class="hero-section-text">
-          High quality coconut coir products from Indonesia, crafted for global horticulture and industrial needs.
+          Explore CV LOKA ADI JAYA product catalog, including cocopeat growing media, cocofiber, coconut coir rope, cocopeat polybag, cocopeat block, and coconut shell briquettes for agriculture, horticulture, export, and industrial needs.
         </p>
       </div>
     </div>
@@ -55,7 +55,7 @@ import { products, productCategories } from '../data/products';
     <div class="container product-grid-section">
       <div id="noResults" class="no-results-box">
         <h3>No products found</h3>
-        <p>Try adjusting your search or category filter.</p>
+        <p>Try adjusting your search keyword or product category.</p>
       </div>
 
       <div class="product-layout" id="productGrid">
@@ -64,6 +64,7 @@ import { products, productCategories } from '../data/products';
             class="product-card" 
             data-category={product.category}
             data-name={product.name.toLowerCase()}
+            data-search={`${product.name} ${product.category} ${product.description} ${product.features.join(' ')} ${Object.values(product.specifications).join(' ')}`.toLowerCase()}
             role="button"
             tabindex="0"
             onclick={`openModal('${product.id}')`}
@@ -77,12 +78,15 @@ import { products, productCategories } from '../data/products';
                 class="product-card__image"
               />
               <div class="product-card__overlay">
-                <span class="product-card__hover-action">Explore Specs →</span>
+                <span class="product-card__hover-action">Explore Specs</span>
               </div>
             </div>
 
             <div class="product-card__content">
-              <span class="product-card__number">0{index + 1}</span>
+              <span class="product-card__number">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
               <div class="product-card__header-row">
                 <h2 class="product-card__title">
                   {product.name}
@@ -143,7 +147,7 @@ import { products, productCategories } from '../data/products';
           <!-- Content side -->
           <div class="modal-body-content">
             <div class="modal-featured-badge">
-              PT. ABBASY JAYA MAKMUR
+              CV LOKA ADI JAYA
             </div>
 
             <h2 id="modalTitle" class="modal-title-heading">
@@ -180,18 +184,68 @@ import { products, productCategories } from '../data/products';
       padding-top: var(--navbar-height);
     }
 
-    .page-hero-section {
-      padding: 5rem 0 3rem;
-      background-color: var(--color-primary);
-      color: white;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      position: relative;
-    }
+  .page-hero-section {
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 0 5rem;
+  color: white;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background-image: url('public/images/hero/bg-kelapa.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
 
-    .products-hero-content {
-      position: relative;
-      z-index: 1;
-    }
+/* overlay gelap full, bukan sebelah */
+.page-hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.62);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* matikan glow/gradient tambahan */
+.page-hero-section::after {
+  display: none !important;
+}
+
+/* pastikan teks ada di atas overlay */
+.hero-container,
+.products-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.products-hero-content .hero-section-title {
+  max-width: 1120px;
+}
+
+.products-hero-content .hero-section-text {
+  max-width: 980px;
+}
+
+.hero-section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1rem;
+  color: var(--color-white);
+  line-height: 1.1;
+  font-weight: 700;
+  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+}
+
+.hero-section-text {
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.75;
+  font-size: 1.05rem;
+  max-width: 680px;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+}
 
     .section-badge-kicker {
       display: inline-block;
@@ -216,7 +270,7 @@ import { products, productCategories } from '../data/products';
       color: rgba(255, 255, 255, 0.75);
       line-height: 1.75;
       font-size: 1.05rem;
-      max-width: 540px;
+      max-width: 680px;
     }
 
     .products-toolbar {
@@ -303,6 +357,7 @@ import { products, productCategories } from '../data/products';
     }
 
     .no-results-box {
+      display: none;
       text-align: center;
       padding: 4rem 0;
     }
@@ -317,7 +372,6 @@ import { products, productCategories } from '../data/products';
       color: var(--color-text-secondary);
     }
 
-    /* Asymmetric & Apple-style card layout */
     .product-layout {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -468,7 +522,6 @@ import { products, productCategories } from '../data/products';
       color: var(--color-accent);
     }
 
-    /* Modal Overlay & Styling */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -647,16 +700,15 @@ import { products, productCategories } from '../data/products';
       color: white;
     }
 
-    /* Hide scrollbar utility */
     .hide-scrollbar::-webkit-scrollbar {
       display: none;
     }
+
     .hide-scrollbar {
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
 
-    /* Responsive Grid */
     @media (max-width: 900px) {
       .product-layout {
         grid-template-columns: 1fr;
@@ -697,12 +749,12 @@ import { products, productCategories } from '../data/products';
       function filterProducts() {
         let visibleCount = 0;
         
-        cards.forEach(card => {
-          const cat = card.getAttribute('data-category');
-          const name = card.getAttribute('data-name');
+        cards.forEach((card) => {
+          const cat = card.getAttribute('data-category') || '';
+          const searchText = card.getAttribute('data-search') || '';
           
           const matchCategory = currentCategory === 'All' || cat === currentCategory;
-          const matchSearch = currentSearch === '' || name.includes(currentSearch || '');
+          const matchSearch = currentSearch === '' || searchText.includes(currentSearch);
           
           if (matchCategory && matchSearch) {
             card.style.display = '';
@@ -712,12 +764,14 @@ import { products, productCategories } from '../data/products';
           }
         });
         
-        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        if (noResults) {
+          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
       }
 
-      filterBtns.forEach(btn => {
+      filterBtns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
-          filterBtns.forEach(b => {
+          filterBtns.forEach((b) => {
             b.classList.remove('active');
           });
           
@@ -735,13 +789,15 @@ import { products, productCategories } from '../data/products';
           filterProducts();
         });
       }
+
+      filterProducts();
     });
 
     // Modal Logic
     const modal = document.getElementById('productModal');
     
     window.openModal = function(productId) {
-      const product = window.PRODUCTS_DATA.find(p => p.id === productId);
+      const product = window.PRODUCTS_DATA.find((p) => p.id === productId);
       if (!product) return;
       
       document.getElementById('modalTitle').textContent = product.name;
@@ -752,7 +808,6 @@ import { products, productCategories } from '../data/products';
       modalImage.src = product.image;
       modalImage.alt = product.name;
       
-      // Specs
       const specsContainer = document.getElementById('modalSpecs');
       specsContainer.innerHTML = '';
 
@@ -777,14 +832,12 @@ import { products, productCategories } from '../data/products';
       document.body.style.overflow = '';
     };
     
-    // Close on backdrop click
     if (modal) {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
       });
     }
     
-    // Close on escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
         closeModal();

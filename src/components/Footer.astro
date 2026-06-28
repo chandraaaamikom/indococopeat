@@ -8,71 +8,107 @@ const quickLinks = [
   { label: 'Our Farms', href: '/farm' },
   { label: 'Contact Us', href: '/contact' },
 ];
+
+const socialIconMap: Record<string, string> = {
+  whatsapp: `
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.52 3.48A11.87 11.87 0 0 0 12.06 0C5.46 0 .1 5.36.1 11.96c0 2.1.55 4.16 1.6 5.98L0 24l6.2-1.63a11.94 11.94 0 0 0 5.86 1.5h.01c6.6 0 11.96-5.36 11.96-11.96 0-3.2-1.25-6.2-3.51-8.43ZM12.07 21.85h-.01a9.92 9.92 0 0 1-5.05-1.38l-.36-.21-3.68.97.98-3.59-.23-.37a9.9 9.9 0 0 1-1.51-5.31c0-5.45 4.43-9.88 9.88-9.88a9.8 9.8 0 0 1 6.98 2.9 9.8 9.8 0 0 1 2.89 6.98c0 5.45-4.43 9.89-9.89 9.89Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/>
+    </svg>
+  `,
+  instagram: `
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/>
+      <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+    </svg>
+  `,
+  linkedin: `
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M6.94 8.98H3.92V20h3.02V8.98ZM5.43 4A1.75 1.75 0 1 0 5.4 7.5 1.75 1.75 0 0 0 5.43 4ZM20.1 13.7c0-3.02-1.62-4.42-3.78-4.42a3.25 3.25 0 0 0-2.95 1.62h-.04V8.98h-2.9V20h3.02v-5.45c0-1.44.27-2.83 2.05-2.83 1.75 0 1.78 1.64 1.78 2.92V20h3.02v-6.3h-.2Z"/>
+    </svg>
+  `,
+  facebook: `
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M14.2 8.2V6.9c0-.65.15-1.05 1.08-1.05h1.45V3.2A18.6 18.6 0 0 0 14.6 3c-2.1 0-3.55 1.28-3.55 3.62V8.2H8.65v2.95h2.4V21h3.15v-9.85h2.45l.38-2.95h-2.83Z"/>
+    </svg>
+  `,
+  link: `
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M10 13a5 5 0 0 0 7.07 0l2-2a5 5 0 0 0-7.07-7.07l-1.15 1.15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M14 11a5 5 0 0 0-7.07 0l-2 2A5 5 0 0 0 12 20.07l1.15-1.15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  `,
+};
+
+const getSocialKey = (name: string) => {
+  const key = name.toLowerCase();
+
+  if (key.includes('whatsapp')) return 'whatsapp';
+  if (key.includes('instagram')) return 'instagram';
+  if (key.includes('facebook')) return 'facebook';
+  if (key.includes('linkedin')) return 'linkedin';
+
+  return 'link';
+};
+
+const getSocialIcon = (name: string) => {
+  const key = getSocialKey(name);
+  return socialIconMap[key] ?? socialIconMap.link;
+};
 ---
 
 <footer class="site-footer" role="contentinfo">
-
-  <!-- Top CTA Band -->
-  <div class="footer-cta-band">
-    <div class="container footer-cta-inner">
-      <div class="footer-cta-text">
-        <span class="footer-cta-label">✦ Ready to Source?</span>
-        <h2>Premium cocopeat, direct from Indonesia.</h2>
-      </div>
-      <div class="footer-cta-actions">
-        <a href="/contact" class="btn btn--accent btn--lg">Request Quotation →</a>
-        <a href="/products" class="btn btn--white-outline btn--lg">View Products</a>
-      </div>
-    </div>
-  </div>
-
   <!-- Main Footer -->
   <div class="footer-main">
     <div class="container footer-grid">
-
       <!-- Column 1: Brand -->
       <div class="footer-brand">
-        <a href="/" class="navbar__logo" aria-label="INDOCOCOPEAT home">
-  <img
-    src="/images/Indococopeat.png"
-    alt="INDOCOCOPEAT Logo"
-    class="navbar__logo-img"
-  />
+        <a href="/" class="footer-brand-link" aria-label="INDOCOCOPEAT home">
+          <span class="footer-brand-logo-wrap">
+            <img
+              src="/images/Indococopeat.png"
+              alt="INDOCOCOPEAT Logo"
+              class="footer-brand-img"
+            />
+          </span>
 
-  <div class="navbar__logo-text">
-    <span class="navbar__logo-main">
-      <span class="navbar__logo-indo">INDO</span>
-      <span class="navbar__logo-coco">COCOPEAT</span>
-    </span>
+          <span class="footer-brand-text">
+            <span class="footer-brand-main">
+              <span class="footer-brand-indo">INDO</span>
+              <span class="footer-brand-coco">COCOPEAT</span>
+            </span>
 
-    <span class="navbar__logo-sub">
-      CV LOKA ADI JAYA
-    </span>
-  </div>
-</a>
+            <span class="footer-brand-sub">CV LOKA ADI JAYA</span>
+          </span>
+        </a>
 
-        <p class="footer-desc">{company.shortDescription}</p>
+        <p class="footer-desc">
+          Sustainable cocopeat and coconut fiber products from Indonesia for agriculture, horticulture, hydroponics, and export needs.
+        </p>
 
-        <!-- Social -->
-        <div class="footer-social">
-          {socialLinks.map((social) => (
-            <a
-              href={social.url}
-              class="footer-social-btn"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Follow us on ${social.name}`}
-              title={social.name}
-            >
-              <span aria-hidden="true">{social.label}</span>
-            </a>
-          ))}
+        <div class="footer-social" aria-label="Social media links">
+          <div class="social-glass">
+            {socialLinks.map((social) => (
+              <a
+                href={social.url}
+                class="social-glass-btn"
+                data-social={getSocialKey(social.name)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Follow us on ${social.name}`}
+                title={social.name}
+              >
+                <span class="social-glass-icon" set:html={getSocialIcon(social.name)}></span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
 
       <!-- Column 2: Quick Links -->
       <div class="footer-col">
         <h3 class="footer-col__heading">Quick Links</h3>
+
         <nav aria-label="Footer navigation">
           <ul class="footer-links" role="list">
             {quickLinks.map((link) => (
@@ -90,31 +126,46 @@ const quickLinks = [
       <!-- Column 3: Contact -->
       <div class="footer-col">
         <h3 class="footer-col__heading">Contact</h3>
+
         <address class="footer-address">
           <div class="footer-contact-item">
             <span class="footer-contact-icon" aria-hidden="true">
-              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
             </span>
+
             <span>
               {company.address.street}, {company.address.province}<br />
               Indonesia {company.address.postalCode}
             </span>
           </div>
+
           <div class="footer-contact-item">
             <span class="footer-contact-icon" aria-hidden="true">
-              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
             </span>
-            <a href={`tel:+${company.whatsappNumber}`} class="footer-contact-link">{company.hotline}</a>
+
+            <a href={`tel:+${company.whatsappNumber}`} class="footer-contact-link">
+              {company.hotline}
+            </a>
           </div>
+
           <div class="footer-contact-item">
             <span class="footer-contact-icon" aria-hidden="true">
-              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
             </span>
-            <a href={`mailto:${company.email}`} class="footer-contact-link">{company.email}</a>
+
+            <a href={`mailto:${company.email}`} class="footer-contact-link">
+              {company.email}
+            </a>
           </div>
         </address>
       </div>
-
     </div>
   </div>
 
@@ -122,181 +173,234 @@ const quickLinks = [
   <div class="footer-bottom">
     <div class="container footer-bottom-inner">
       <p class="footer-copy">© 2025 INDOCOCOPEAT · {company.legalName}. All rights reserved.</p>
-      <p class="footer-tagline-text">Pure Fiber, Global Growth.</p>
+      <p class="footer-tagline-text">Coconut Derivatives, Sustainable Growth.</p>
     </div>
   </div>
-
 </footer>
 
 <style>
   .site-footer {
     width: 100%;
     overflow: hidden;
+    background: #0b1f18;
   }
 
-  /* ===== CTA Band ===== */
-  .footer-cta-band {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    position: relative;
-    overflow: hidden;
-    padding: 4rem 0;
-  }
-
-  .footer-cta-band::before {
-    content: '';
-    position: absolute;
-    top: -80px;
-    right: -80px;
-    width: 360px;
-    height: 360px;
-    background: radial-gradient(circle, rgba(200, 137, 42, 0.18) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .footer-cta-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 1;
-  }
-
-  .footer-cta-text {
-    flex: 1;
-    min-width: 260px;
-  }
-
-  .footer-cta-label {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 0.75rem;
-  }
-
-  .footer-cta-text h2 {
-    color: var(--color-white);
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
-    line-height: 1.2;
-    max-width: 560px;
-  }
-
-  .footer-cta-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    flex-shrink: 0;
+  .site-footer::before,
+  .site-footer::after,
+  .footer-main::before,
+  .footer-main::after,
+  .footer-bottom::before,
+  .footer-bottom::after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
   }
 
   /* ===== Main Footer ===== */
   .footer-main {
-    background-color: #0E1F18;
-    padding: 4rem 0 2.5rem;
+    background: #0b1f18;
+    padding: 4rem 0 3rem;
   }
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.6fr 0.9fr 1fr;
+    grid-template-columns: 1.45fr 0.95fr 1.15fr;
     gap: 4rem;
+    align-items: start;
   }
 
   /* ===== Brand Column ===== */
-  .footer-brand {}
-
-  .footer-logo {
+  .footer-brand-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.65rem;
+    gap: 0.85rem;
     text-decoration: none;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.35rem;
+    max-width: max-content;
   }
 
-  .footer-logo__svg {
-    width: 40px;
-    height: 46px;
-    flex-shrink: 0;
-    transition: transform var(--transition-base);
-  }
-
-  .footer-logo:hover .footer-logo__svg {
-    transform: scale(1.06);
-  }
-
-  .footer-logo__text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
-  }
-
-  .footer-logo__main {
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    letter-spacing: 0.01em;
-  }
-
-  .logo-indo {
-    color: var(--color-accent);
-  }
-
-  .logo-coco {
-    color: var(--color-white);
-  }
-
-  .footer-logo__sub {
-    margin-top: 0.2rem;
-    font-size: 0.45rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    font-family: var(--font-body);
-    font-weight: 600;
-    color: rgba(255,255,255,0.45);
-  }
-
-  .footer-desc {
-    font-size: 0.875rem;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.55);
-    max-width: 300px;
-    margin-bottom: 1.75rem;
-  }
-
-  .footer-social {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  .footer-social-btn {
+  .footer-brand-logo-wrap {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    max-width: 48px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.875rem;
-    text-decoration: none;
-    transition: all var(--transition-base);
+    overflow: hidden;
+    flex: 0 0 48px;
   }
 
-  .footer-social-btn:hover {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-    transform: translateY(-3px);
+  .footer-brand-img,
+  .footer-brand-link img {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    max-width: 48px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+
+  .footer-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    min-width: 0;
+  }
+
+  .footer-brand-main {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.28rem;
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+
+  .footer-brand-indo {
+    color: var(--color-accent);
+  }
+
+  .footer-brand-coco {
+    color: rgba(255, 255, 255, 0.94);
+  }
+
+  .footer-brand-sub {
+    margin-top: 0.35rem;
+    font-size: 0.56rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    font-weight: 700;
+    color: rgba(255,255,255,0.62);
+    white-space: nowrap;
+  }
+
+  .footer-desc {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.66);
+    max-width: 380px;
+    margin-bottom: 1.8rem;
+  }
+
+  /* ===== Social Icons ===== */
+  .footer-social {
+    display: flex;
+    align-items: center;
+  }
+
+  .social-glass {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0;
+    border-radius: 999px;
+  }
+
+  .social-glass-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--color-primary);
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+    transition:
+      transform 0.22s ease,
+      box-shadow 0.22s ease,
+      color 0.22s ease,
+      background-color 0.22s ease;
+  }
+
+  .social-glass-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.22);
+  }
+
+  .social-glass-btn[data-social='whatsapp'] {
+    color: #25D366;
+  }
+
+  .social-glass-btn[data-social='instagram'] {
+    color: #E4405F;
+  }
+
+  .social-glass-btn[data-social='facebook'] {
+    color: #1877F2;
+  }
+
+  .social-glass-btn[data-social='linkedin'] {
+    color: #0A66C2;
+  }
+
+  .social-glass-btn[data-social='whatsapp']:hover {
+    background: #25D366;
+    color: #ffffff;
+  }
+
+  .social-glass-btn[data-social='instagram']:hover {
+    background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4);
+    color: #ffffff;
+  }
+
+  .social-glass-btn[data-social='facebook']:hover {
+    background: #1877F2;
+    color: #ffffff;
+  }
+
+  .social-glass-btn[data-social='linkedin']:hover {
+    background: #0A66C2;
+    color: #ffffff;
+  }
+
+  .social-glass-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: inherit !important;
+  }
+
+  :global(.social-glass-icon svg) {
+    width: 20px !important;
+    height: 20px !important;
+    display: block !important;
+    color: inherit !important;
+  }
+
+  :global(.social-glass-icon svg path),
+  :global(.social-glass-icon svg rect),
+  :global(.social-glass-icon svg circle) {
+    color: inherit !important;
+  }
+
+  :global(.social-glass-icon svg [fill='currentColor']) {
+    fill: currentColor !important;
+  }
+
+  :global(.social-glass-icon svg [stroke='currentColor']) {
+    stroke: currentColor !important;
   }
 
   /* ===== Other Columns ===== */
   .footer-col__heading {
     font-family: var(--font-body);
-    font-size: 0.7rem;
-    font-weight: 700;
+    font-size: 0.72rem;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.48);
     margin-bottom: 1.5rem;
   }
 
@@ -313,17 +417,21 @@ const quickLinks = [
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.72);
     text-decoration: none;
-    padding: 0.4rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    transition: color var(--transition-fast), gap var(--transition-fast);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.055);
+    transition:
+      color var(--transition-fast),
+      gap var(--transition-fast),
+      border-color var(--transition-fast);
   }
 
   .footer-link:hover {
-    color: var(--color-white);
+    color: var(--color-accent);
     gap: 0.75rem;
+    border-color: rgba(200,137,42,0.28);
   }
 
   .footer-link__arrow {
@@ -341,34 +449,34 @@ const quickLinks = [
     font-style: normal;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.05rem;
   }
 
   .footer-contact-item {
     display: flex;
     align-items: flex-start;
-    gap: 0.75rem;
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.6);
-    line-height: 1.6;
+    gap: 0.85rem;
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.65;
   }
 
   .footer-contact-icon {
     flex-shrink: 0;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
     background: rgba(200, 137, 42, 0.15);
-    border: 1px solid rgba(200, 137, 42, 0.25);
+    border: 1px solid rgba(200, 137, 42, 0.28);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--color-accent);
-    margin-top: 0.1rem;
+    margin-top: 0.05rem;
   }
 
   .footer-contact-link {
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.74);
     text-decoration: none;
     transition: color var(--transition-fast);
   }
@@ -379,9 +487,9 @@ const quickLinks = [
 
   /* ===== Bottom Bar ===== */
   .footer-bottom {
-    background-color: #081410;
-    padding: 1.25rem 0;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    background-color: #07140f;
+    padding: 1.35rem 0;
+    border-top: 1px solid rgba(255,255,255,0.065);
   }
 
   .footer-bottom-inner {
@@ -394,15 +502,15 @@ const quickLinks = [
 
   .footer-copy,
   .footer-tagline-text {
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.42);
     margin: 0;
     line-height: 1.5;
   }
 
   .footer-tagline-text {
     font-style: italic;
-    color: rgba(200, 137, 42, 0.5);
+    color: rgba(200, 137, 42, 0.78);
   }
 
   /* ===== Responsive ===== */
@@ -417,23 +525,22 @@ const quickLinks = [
     }
 
     .footer-desc {
-      max-width: 480px;
+      max-width: 520px;
     }
   }
 
   @media (max-width: 640px) {
-    .footer-cta-inner {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .footer-cta-actions {
-      justify-content: center;
-    }
-
     .footer-grid {
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 2.5rem;
+    }
+
+    .footer-brand-link {
+      align-items: center;
+    }
+
+    .footer-brand-main {
+      font-size: 1.15rem;
     }
 
     .footer-bottom-inner {
